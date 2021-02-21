@@ -46,7 +46,7 @@ Page({
     }
   },
   getUserInfo(e) {
-    console.log(e)
+    // console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -55,7 +55,12 @@ Page({
   },
   login(e) {
     var _self = this
-    var data = wx.login({
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
+    wx.login({
       success (res) {
         if (res.code) {
           //发起网络请求
@@ -67,32 +72,44 @@ Page({
               user_name: app.globalData.userInfo.nickName
             },
             success (res) {
-              // console.log(res.data)
-              var ret = res.data.content
-              wx.showToast({
-                title: '登录成功',
-              })
-              var access_token = ret.access_token
-              var refresh_token = ret.refresh_token
-              var user_id = ret.user_id
-              var user_name = ret.user_name
+              console.log(res)
+              if (res.statusCode != 200) {
+                wx.showModal({
+                  title: '登录失败',
+                  content: res.data.msg
+                })
+              } else {
+                var ret = res.data.content
+                wx.showToast({
+                  title: '登录成功',
+                })
+                var access_token = ret.access_token
+                var refresh_token = ret.refresh_token
+                var user_id = ret.user_id
+                var user_name = ret.user_name
 
-              _self.setData({"logined": true, "appUserInfo": {"user_id": user_id, "user_name": user_name}})
-              wx.setStorage({
-                data: access_token,
-                key: 'access_token',
-              })
-              wx.setStorage({
-                data: refresh_token,
-                key: 'refresh_token',
-              })
-              wx.setStorage({
-                data: user_id,
-                key: 'user_id',
-              })
-              wx.setStorage({
+                _self.setData({"logined": true, "appUserInfo": {"user_id": user_id, "user_name": user_name}})
+                wx.setStorage({
+                  data: access_token,
+                  key: 'access_token',
+                })
+                wx.setStorage({
+                  data: refresh_token,
+                  key: 'refresh_token',
+                })
+                wx.setStorage({
+                  data: user_id,
+                  key: 'user_id',
+                })
+                wx.setStorage({
                 data: user_name,
                 key: 'user_name',
+              })
+              }
+            },
+            fail (res) {
+              wx.showToast({
+                title: '登录失败',
               })
             }
           })
