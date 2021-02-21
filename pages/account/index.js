@@ -8,8 +8,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    logined: false,
-    appUserInfo: {},
+    logined: wx.getStorageSync('access_token') && wx.getStorageSync('user_id'),
+    appUserInfo: {"user_id": wx.getStorageSync('user_id'), "user_name": wx.getStorageSync('user_name')}
   },
   // 事件处理函数
   bindViewTap() {
@@ -88,7 +88,7 @@ Page({
               })
               wx.setStorage({
                 data: user_id,
-                key: 'user-id',
+                key: 'user_id',
               })
               wx.setStorage({
                 data: user_name,
