@@ -57,17 +57,34 @@ Page({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'https://web.net.motn.top/account/login_via_wxapp/',
+            url: 'https://web.net.motn.top/account/wxapp/login/',
             method: 'POST',
             data: {
-              code: res.code
+              code: res.code,
+              user_name: app.globalData.userInfo.nickName
             },
             success (res) {
-              console.log(res.data)
+              // console.log(res.data)
+              var ret = res.data.content
+              wx.showToast({
+                title: '登录成功',
+              })
+              var access_token = ret.access_token
+              var refresh_token = ret.refresh_token
+              wx.setStorage({
+                data: access_token,
+                key: 'access_token',
+              })
+              wx.setStorage({
+                data: refresh_token,
+                key: 'refresh_token',
+              })
             }
           })
         } else {
-          console.log('登录失败！' + res.errMsg)
+          wx.showToast({
+            title: '登录失败！' + res.errMsg,
+          })
         }
       }
     })
