@@ -74,9 +74,15 @@ Page({
             success (res) {
               console.log(res)
               if (res.statusCode != 200) {
+                var msg = ""
+                if (res.data.msg !== undefined ) {
+                  msg = res.data.msg
+                } else {
+                  msg = '错误代码：' + res.statusCode
+                }
                 wx.showModal({
                   title: '登录失败',
-                  content: res.data.msg
+                  content: msg
                 })
               } else {
                 var ret = res.data.content
