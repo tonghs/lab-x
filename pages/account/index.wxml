@@ -16,7 +16,7 @@
   </view>
 </view>
 <view class="flex-column settings" wx:if="{{logined}}">
-  <view class="flex-view-item settings-item">
+  <view class="flex-view-item settings-item" bindtap="getUsers">
     <image class="setting-icon" src="/images/settings/user_manage.png" mode="cover"></image>
     <text class="setting-icon-txt">用户管理</text>
   </view>

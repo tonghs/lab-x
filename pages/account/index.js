@@ -1,5 +1,6 @@
 // index.js
 // 获取应用实例
+const req = require('../../common/request.js')
 const app = getApp()
 
 Page({
@@ -65,7 +66,7 @@ Page({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'https://web.net.motn.top/account/wxapp/login/',
+            url: req.getUrl('/account/wxapp/login/'),
             method: 'POST',
             data: {
               code: res.code,
@@ -108,9 +109,9 @@ Page({
                   key: 'user_id',
                 })
                 wx.setStorage({
-                data: user_name,
-                key: 'user_name',
-              })
+                  data: user_name,
+                  key: 'user_name',
+                })
               }
             },
             fail (res) {
@@ -126,7 +127,6 @@ Page({
         }
       }
     })
-    
   },
   logout(e) {
     wx.clearStorage({
@@ -142,6 +142,14 @@ Page({
           logined: false
         })
       },
+    })
+  },
+  getUsers(e){
+    req.request({
+      url: req.getUrl('/users/'),
+      method: 'GET',
+      data: {
+      }
     })
   }
 })
