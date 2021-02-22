@@ -1,8 +1,4 @@
 /* pages/index/index.wxss */
-.container {
-  padding: 5rpx;
-}
-
 view.info {
   padding: 200rpx 0;
   text-align: center;

@@ -7,16 +7,19 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
+     "borderStyle": "white",
     "list": [{
       "pagePath": "pages/index/index",
-      "text": "首页"
+      "iconPath": "images/_home.png",
+      "selectedIconPath": "images/home.png"
     },{
       "pagePath": "pages/account/index",
-      "text": "我"
+      "iconPath": "images/_profile.png",
+      "selectedIconPath": "images/profile.png"
     }]
   },
   "style": "v2",

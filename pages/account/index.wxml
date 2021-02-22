@@ -1,17 +1,18 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <block wx:if="{{hasUserInfo && canIUse}}" >
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+  <view class="userinfo flex-row">
+    <view class="flex-view-item avatar" wx:if="{{hasUserInfo && canIUse}}" >
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <!-- <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
-    </block>
+    </view>
+    <view class="flex-view-item nickname" wx:if="{{logined}}">
+      <text class="userinfo-nickname">{{appUserInfo.user_name}}</text>
+    </view>
   </view>
+  <view wx:if="{{logined}}" class="line"></view>
   <view class="account">
     <block wx:if="{{!logined}}">
       <button class="login" size="mini" open-type="getUserInfo" bindgetuserinfo="login">登录</button>
-    </block>
-    <block wx:if="{{logined}}">
-      <text class="userinfo-nickname">{{appUserInfo.user_name}}</text>
     </block>
   </view>
   <view class="usermotto">

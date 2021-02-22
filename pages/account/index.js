@@ -12,11 +12,11 @@ Page({
     appUserInfo: {"user_id": wx.getStorageSync('user_id'), "user_name": wx.getStorageSync('user_name')}
   },
   // 事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
+  // bindViewTap() {
+  //   wx.navigateTo({
+  //     url: '../logs/logs'
+  //   })
+  // },
   onLoad() {
     if (app.globalData.userInfo) {
       this.setData({
