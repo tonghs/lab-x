@@ -14,3 +14,15 @@
   height:1rpx;
   background:#cdcdcd60;
 }
+
+.flex-row, .flex-column {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}

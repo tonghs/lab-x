@@ -127,5 +127,21 @@ Page({
       }
     })
     
+  },
+  logout(e) {
+    wx.clearStorage({
+      success: (res) => {
+        wx.showToast({
+          title: '退出成功',
+        })
+        this.setData({
+          appUserInfo: {},
+          userInfo: {},
+          hasUserInfo: false,
+          canIUser: false,
+          logined: false
+        })
+      },
+    })
   }
 })
