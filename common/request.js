@@ -47,6 +47,9 @@ function refrehToken(options){
 }
 
 function request(options){
+  wx.showLoading({
+    title: '加载中',
+  })
   options.data = options.data || {}
   var access_token = wx.getStorageSync('access_token')
   options.header = {Auth: access_token}
@@ -68,14 +71,20 @@ function request(options){
           } else {
             msg = '错误代码：' + res.statusCode
           }
+          wx.hideLoading({
+            success: (res) => {},
+          })
           wx.showModal({
             title: '请求失败',
             content: msg
           })
         }
       } else {
-        wx.showToast({
-          title: 'ok'
+        if (options.success !== undefined) {
+          options.success(res)
+        }
+        wx.hideLoading({
+          success: (res) => {},
         })
       }
     }

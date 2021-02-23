@@ -1,27 +1,33 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/account/index",
+    "pages/users/index",
+
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
-     "borderStyle": "white",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "iconPath": "images/_home.png",
-      "selectedIconPath": "images/home.png"
-    },{
-      "pagePath": "pages/account/index",
-      "iconPath": "images/_profile.png",
-      "selectedIconPath": "images/profile.png"
-    }]
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/_home.png",
+        "selectedIconPath": "images/home.png"
+      },
+      {
+        "pagePath": "pages/account/index",
+        "iconPath": "images/_profile.png",
+        "selectedIconPath": "images/profile.png"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
+
 }

@@ -1,21 +1,21 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo flex-row" wx:if="{{logined}}">
+  <view class="userinfo flex-row" wx:if="{{is_logined}}">
     <view class="flex-view-item avatar" wx:if="{{hasUserInfo && canIUse}}" >
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <!-- <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
     </view>
-    <view class="flex-view-item nickname" wx:if="{{logined}}">
+    <view class="flex-view-item nickname" wx:if="{{is_logined}}">
       <text class="userinfo-nickname">{{appUserInfo.user_name}}</text>
     </view>
   </view>
-  <view class="account"  wx:if="{{!logined}}">
+  <view class="account"  wx:if="{{!is_logined}}">
     <block>
       <button class="login" size="mini" open-type="getUserInfo" bindgetuserinfo="login">登录</button>
     </block>
   </view>
 </view>
-<view class="flex-column settings" wx:if="{{logined}}">
+<view class="flex-column settings" wx:if="{{is_logined}}">
   <view class="flex-view-item settings-item" bindtap="getUsers">
     <image class="setting-icon" src="/images/settings/user_manage.png" mode="cover"></image>
     <text class="setting-icon-txt">用户管理</text>
@@ -25,7 +25,7 @@
     <text class="setting-icon-txt">关于</text>
   </view>
 </view>
-<view class="logout" bindtap="logout" wx:if="{{logined}}">
+<view class="logout" bindtap="logout" wx:if="{{is_logined}}">
   <text>退出登录</text>
 </view>
 <view class="usermotto">

@@ -1,0 +1,33 @@
+<!--pages/users/index.wxml-->
+<page-meta>
+  <navigation-bar
+    title="用户管理"
+  />
+</page-meta>
+
+<view class="header-title flext-column">
+  <view class="flex-row flex-item">
+    <view class="flex-item-left title">
+      用户
+    </view>
+    <view class="flex-item-right title">
+      管理员
+    </view>
+  </view>
+</view>
+<view class="line"></view>
+<view wx:if="{{users.length > 0}}" class="flext-column content">
+  <view wx:for="{{users}}" wx:key="id" wx:for-index="idx" wx:for-item="item">
+    <view class="flex-row flex-item users">
+      <view class="flex-item-left">
+        <text>{{item.user_id}} - {{item.user_name}}</text>
+      </view>
+      <view class="flex-item-right">
+        <view class="flex-column switch-ops">
+          <switch checked="{{item.is_admin}}" data-id="{{item.user_id}}" bindchange="setOrClearAdmin"/>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+

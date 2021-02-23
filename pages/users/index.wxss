@@ -1,0 +1,46 @@
+/* pages/users/index.wxss */
+.header-title, .content {
+  width: 100%;
+}
+
+.header-title {
+  margin-bottom: 10rpx;
+}
+
+.flex-item {
+  padding: 10rpx 40rpx;
+}
+
+.flex-item.users {
+  font-size: 27rpx;
+  border-style: solid;
+  border-color: #cdcdcd60;
+  border-width: 1rpx 0;
+  align-items: center;
+  display: flex;
+}
+
+.flex-item-left, .flex-item-right {
+  width: 50%;
+}
+
+.switch-ops {
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: right;
+}
+
+.switch-ops switch {
+  text-align: right;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 30rpx;
+}
+
+.flex-item-right.title {
+  text-align: right;
+  padding-right: 16rpx;
+}

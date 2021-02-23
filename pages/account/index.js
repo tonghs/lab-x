@@ -9,16 +9,23 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    logined: wx.getStorageSync('access_token') && wx.getStorageSync('user_id'),
-    appUserInfo: {"user_id": wx.getStorageSync('user_id'), "user_name": wx.getStorageSync('user_name')}
+    is_logined: false,
+    appUserInfo: {}
   },
-  // 事件处理函数
-  // bindViewTap() {
-  //   wx.navigateTo({
-  //     url: '../logs/logs'
-  //   })
-  // },
+
   onLoad() {
+    if (app.globalData.appUserInfo) {
+      this.setData({
+          appUserInfo: app.globalData.appUserInfo,
+      })
+    }
+
+    if (app.globalData.is_logined) {
+      this.setData({
+        is_logined: app.globalData.is_logined
+      })
+    }
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -47,7 +54,6 @@ Page({
     }
   },
   getUserInfo(e) {
-    // console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -55,6 +61,9 @@ Page({
     })
   },
   login(e) {
+    wx.showLoading({
+      title: '登录中',
+    })
     var _self = this
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -73,7 +82,6 @@ Page({
               user_name: app.globalData.userInfo.nickName
             },
             success (res) {
-              console.log(res)
               if (res.statusCode != 200) {
                 var msg = ""
                 if (res.data.msg !== undefined ) {
@@ -81,6 +89,9 @@ Page({
                 } else {
                   msg = '错误代码：' + res.statusCode
                 }
+                wx.hideLoading({
+                  success: (res) => {},
+                })
                 wx.showModal({
                   title: '登录失败',
                   content: msg
@@ -94,8 +105,22 @@ Page({
                 var refresh_token = ret.refresh_token
                 var user_id = ret.user_id
                 var user_name = ret.user_name
+                var is_admin = ret.is_admin
+                _self.setData({
+                  is_logined: true,
+                  appUserInfo: {
+                    user_id: user_id,
+                    user_name: user_name,
+                    is_admin: is_admin
+                  }
+                })
+                app.globalData.appUserInfo = {
+                  user_id: user_id,
+                  user_name: user_name,
+                  is_admin: is_admin
+                }
+                app.globalData.is_logined = true
 
-                _self.setData({"logined": true, "appUserInfo": {"user_id": user_id, "user_name": user_name}})
                 wx.setStorage({
                   data: access_token,
                   key: 'access_token',
@@ -104,13 +129,9 @@ Page({
                   data: refresh_token,
                   key: 'refresh_token',
                 })
-                wx.setStorage({
-                  data: user_id,
-                  key: 'user_id',
-                })
-                wx.setStorage({
-                  data: user_name,
-                  key: 'user_name',
+
+                wx.hideLoading({
+                  success: (res) => {},
                 })
               }
             },
@@ -118,15 +139,22 @@ Page({
               wx.showToast({
                 title: '登录失败',
               })
+              wx.hideLoading({
+                success: (res) => {},
+              })
             }
           })
         } else {
           wx.showToast({
             title: '登录失败！' + res.errMsg,
           })
+          wx.hideLoading({
+            success: (res) => {},
+          })
         }
       }
     })
+    
   },
   logout(e) {
     wx.clearStorage({
@@ -138,18 +166,18 @@ Page({
           appUserInfo: {},
           userInfo: {},
           hasUserInfo: false,
-          canIUser: false,
-          logined: false
+          is_logined: false
         })
+        app.globalData.appUserInfo = {}
+        app.globalData.userInfo = {}
+        app.globalData.hasUserInfo = false
+        app.globalData.is_logined = false
       },
     })
   },
   getUsers(e){
-    req.request({
-      url: req.getUrl('/users/'),
-      method: 'GET',
-      data: {
-      }
+    wx.navigateTo({
+      url: '/pages/users/index',
     })
   }
 })
