@@ -26,3 +26,16 @@
 .flex-row {
   flex-direction: row;
 }
+
+.footer {
+  font-weight: 300;
+  color: #cdcdcd;
+  font-size: 24rpx;
+  width:100%;
+  text-align: center;
+
+}
+
+.footer .line {
+  margin-bottom: 40rpx;
+}

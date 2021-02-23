@@ -71,17 +71,7 @@ view.account {
   padding-top: 30rpx;
 }
 
-.usermotto {
-  font-weight: 300;
-  color: #cdcdcd;
-  font-size: 24rpx;
-  width:100%;
-  text-align: center;
+.footer {
   position: absolute;
   bottom: 40rpx;
 }
-
-.usermotto .line {
-  margin-bottom: 40rpx;
-}
-

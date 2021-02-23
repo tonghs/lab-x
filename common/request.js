@@ -38,9 +38,12 @@ function refrehToken(options){
         })
         options.success()
       } else {
-        wx.showModal({
-          title: '请退出后重新登录',
+        wx.switchTab({
+          url: '/pages/account/index',
         })
+        // wx.showModal({
+        //   title: '请退出后重新登录',
+        // })
       }
     }
   })

@@ -9,28 +9,49 @@ Page({
    */
   data: {
     users: [],
-    nextCursor: ''
+    currentCursor: '',
+    nextCursor: '',
+    refreshing: false,
+    loginedUserId: 0
   },
 
+  getData() {
+    var _self = this
+    if ((this.data.nextCursor !== "" || this.data.currentCursor === "") && !this.data.refreshing) {
+      this.setData({
+        currentCursor: this.data.nextCursor,
+        refreshing: true
+      }, () => {
+        req.request({
+          url: req.getUrl('/users/'),
+          method: 'GET',
+          data: {
+            size: 20,
+            cursor: this.data.currentCursor
+          },
+          success(res) {
+            _self.setData({
+              users: _self.data.users.concat(res.data.content.users),
+              nextCursor: res.data.content.next_cursor,
+              refreshing: false
+            })
+            wx.hideLoading({
+              success: (res) => {},
+            })
+          }
+        })
+      })
+      
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _self = this
-    req.request({
-      url: req.getUrl('/users/'),
-      method: 'GET',
-      data: {},
-      success(res) {
-        _self.setData({
-          "users": res.data.content.users,
-          "nextCursor": res.data.content.next_cursor
-        })
-        wx.hideLoading({
-          success: (res) => {},
-        })
-      }
+    this.setData({
+      loginedUserId: app.globalData.appUserInfo.user_id
     })
+    this.getData()
   },
 
   /**
@@ -84,5 +105,8 @@ Page({
   setOrClearAdmin: function (e) {
     var user_id = e.currentTarget.dataset.id
     console.log(user_id)
+  },
+  lower: function() {
+    this.getData()
   }
 })

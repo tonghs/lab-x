@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/account/index",
     "pages/users/index",
-
     "pages/logs/logs"
   ],
   "window": {

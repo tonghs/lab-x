@@ -1,6 +1,14 @@
 /* pages/users/index.wxss */
+page {
+  height: 100%;
+}
+
 .header-title, .content {
   width: 100%;
+}
+
+.list-container {
+  height: 100%;
 }
 
 .header-title {
@@ -43,4 +51,21 @@
 .flex-item-right.title {
   text-align: right;
   padding-right: 16rpx;
+}
+
+.scroll {
+  flex: 1;
+  overflow: scroll;
+}
+
+.list-view {
+  height: 100%;
+}
+
+.footer {
+  height: 180rpx;
+}
+
+.self-indicator {
+  color: #04BE02;
 }

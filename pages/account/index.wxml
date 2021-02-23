@@ -28,8 +28,8 @@
 <view class="logout" bindtap="logout" wx:if="{{is_logined}}">
   <text>退出登录</text>
 </view>
-<view class="usermotto">
+<view class="footer">
   <view class="line"></view>
-  <text class="user-motto-txt">{{motto}}</text>
+  <text class="user-motto-txt">探索未知实验室</text>
 </view>
 
