@@ -107,7 +107,7 @@ Page({
   },
   navTo(e){
     wx.navigateTo({
-      url: e.target.dataset.url,
+      url: e.currentTarget.dataset.url,
     })
   }
 })
