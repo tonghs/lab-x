@@ -34,6 +34,6 @@
   </view>
   <view class="footer">
     <view class="line"></view>
-    <text class="user-motto-txt">探索未知实验室</text>
+    <text class="slogan">探索未知实验室</text>
   </view>
 </view>

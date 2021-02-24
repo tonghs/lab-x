@@ -1,4 +1,5 @@
 const config = require('../config.js')
+const sha1 = require('./crypto.js');
 
 function getUrl(route){
   return `https://${config.host}${route}`
@@ -6,12 +7,14 @@ function getUrl(route){
 
 function refrehToken(options){
   var refresh_token = wx.getStorageSync('refresh_token')
+  var data = {
+    refresh_token: refresh_token
+  }
+  data.sign = getSign(data)
   wx.request({
     url: getUrl('/account/refresh_token/'),
     method: 'POST',
-    data: {
-      refresh_token: refresh_token
-    },
+    data: data,
     success(res) {
       if (res.statusCode === 200) {
         var ret = res.data.content
@@ -54,8 +57,12 @@ function request(options){
     title: '加载中',
   })
   options.data = options.data || {}
+  options.data.sign = getSign(options.data)
+
   var access_token = wx.getStorageSync('access_token')
-  options.header = {Auth: access_token}
+  options.header = options.header || {}
+  options.header.Auth = access_token
+  options.header["content-type"] = "application/json"
   wx.request({
     ...options,
     success (res) {
@@ -67,7 +74,6 @@ function request(options){
               request(options)
             }
           })
-
         } else {
           if (res.data.msg !== undefined ) {
             msg = res.data.msg
@@ -94,8 +100,28 @@ function request(options){
   })
 }
 
+function getSign(params) {
+  var secret = config.apiSecret
+
+  if (typeof params == "string") {
+      return paramsStrSort(params, secret);
+  } else if (typeof params == "object") {
+      var arr = [];
+      for (var i in params) {
+          arr.push((i + "=" + params[i]));
+      }
+      return paramsStrSort(arr.join(("&")), secret);
+  }
+}
+
+function paramsStrSort(paramsStr, secret) {
+  var newParamStr = paramsStr.split("&").sort().join("&")
+  return sha1.HmacSHA1(newParamStr, secret).toString();
+}
+
 module.exports = {
   getUrl: getUrl,
   refrehToken: refrehToken,
-  request: request
+  request: request,
+  getSign: getSign
 }

@@ -3,7 +3,11 @@
     "pages/index/index",
     "pages/account/index",
     "pages/users/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/rss/index",
+    "pages/chart/index",
+    "pages/account/update/index",
+    "pages/about/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -13,20 +17,35 @@
   },
   "tabBar": {
     "borderStyle": "white",
+    "color": "#cdcdcd",
+    "selectedColor": "#515151",
     "list": [
       {
         "pagePath": "pages/index/index",
         "iconPath": "images/_home.png",
-        "selectedIconPath": "images/home.png"
+        "selectedIconPath": "images/home.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/rss/index",
+        "iconPath": "images/_chart.png",
+        "selectedIconPath": "images/chart.png",
+        "text": "指标"
+      },
+      {
+        "pagePath": "pages/rss/index",
+        "iconPath": "images/_rss.png",
+        "selectedIconPath": "images/rss.png",
+        "text": "RSS"
       },
       {
         "pagePath": "pages/account/index",
         "iconPath": "images/_profile.png",
-        "selectedIconPath": "images/profile.png"
+        "selectedIconPath": "images/profile.png",
+        "text": "我"
       }
     ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
-
 }

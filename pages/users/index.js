@@ -49,7 +49,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      loginedUserId: app.globalData.appUserInfo.user_id
+      loginedUserId: wx.getStorageSync('user_id')
     })
     this.getData()
   },

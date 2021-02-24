@@ -1,35 +1,43 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo flex-row" wx:if="{{is_logined}}">
-    <view class="flex-view-item avatar" wx:if="{{hasUserInfo && canIUse}}" >
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <!-- <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
-    </view>
-    <view class="flex-view-item nickname" wx:if="{{is_logined}}">
-      <text class="userinfo-nickname">{{appUserInfo.user_name}}</text>
-    </view>
+<view class="userinfo flex-row" wx:if="{{is_logined}}" data-url="/pages/account/update/index" bindtap="navTo">
+  <view class="flex-view-item avatar" wx:if="{{hasUserInfo && canIUse}}" >
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <!-- <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
   </view>
-  <view class="account"  wx:if="{{!is_logined}}">
-    <block>
-      <button class="login" size="mini" open-type="getUserInfo" bindgetuserinfo="login">登录</button>
-    </block>
+  <view class="flex-view-item nickname" wx:if="{{is_logined}}">
+    <text class="userinfo-nickname">{{appUserInfo.user_name}}</text>
   </view>
 </view>
+<view class="account"  wx:if="{{!is_logined}}">
+  <block>
+    <button class="login" size="mini" open-type="getUserInfo" bindgetuserinfo="login">登录</button>
+  </block>
+</view>
 <view class="flex-column settings" wx:if="{{is_logined}}">
-  <view class="flex-view-item settings-item" bindtap="getUsers" wx:if="{{appUserInfo.is_admin}}">
+  <view class="flex-view-item settings-item" wx:if="{{appUserInfo.is_admin}}">
+    <image class="setting-icon" src="/images/settings/user_manage.png" mode="cover"></image>
+    <text class="setting-icon-txt">指标管理</text>
+  </view>
+  <view class="flex-view-item settings-item">
+    <image class="setting-icon" src="/images/settings/rss.png" mode="cover"></image>
+    <text class="setting-icon-txt">RSS 订阅源管理</text>
+  </view>
+</view>
+
+<view class="flex-column settings" wx:if="{{is_logined}}">
+  <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/users/index" wx:if="{{appUserInfo.is_admin}}">
     <image class="setting-icon" src="/images/settings/user_manage.png" mode="cover"></image>
     <text class="setting-icon-txt">用户管理</text>
   </view>
-  <view class="flex-view-item settings-item">
+  <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/about/index">
     <image class="setting-icon" src="/images/settings/about.png" mode="cover"></image>
     <text class="setting-icon-txt">关于</text>
   </view>
 </view>
+
 <view class="logout" bindtap="logout" wx:if="{{is_logined}}">
   <text>退出登录</text>
 </view>
 <view class="footer">
-  <view class="line"></view>
-  <text class="user-motto-txt">探索未知实验室</text>
+  <text class="slogan">探索未知实验室</text>
 </view>
-

@@ -105,9 +105,9 @@ Page({
       }
     })
   },
-  getUsers(e){
+  navTo(e){
     wx.navigateTo({
-      url: '/pages/users/index',
+      url: e.target.dataset.url,
     })
   }
 })

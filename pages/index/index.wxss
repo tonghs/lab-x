@@ -1,4 +1,7 @@
 /* pages/index/index.wxss */
+page {
+  background-color: #fff;
+}
 view.info {
   padding: 200rpx 0;
   text-align: center;
