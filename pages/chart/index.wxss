@@ -1,1 +1,32 @@
 /* pages/chart/index.wxss */
+page {
+  background-color: #fafafa;
+}
+
+view {
+  background-color: initial;
+}
+
+.container {
+  padding: 0 20rpx;
+}
+
+.card {
+  padding: 30rpx;
+  margin: 15rpx 0 15rpx;
+  box-shadow: 0 3rpx 5px 1px #cdcdcd60;
+  border-radius: 20rpx;
+  border: 1px solid #cdcdcd60;
+  background-color: #fff;
+}
+
+.card .title {
+  font-size: 32rpx;
+}
+
+.card .body {
+  font-size: 30rpx;
+  font-weight: 300;
+  padding-top: 15rpx;
+  justify-content: space-between;
+}

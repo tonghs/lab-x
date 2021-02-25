@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/chart/index",
     "pages/index/index",
     "pages/account/index",
     "pages/users/index",
     "pages/logs/logs",
     "pages/rss/index",
-    "pages/chart/index",
     "pages/account/edit/index",
     "pages/about/index"
   ],
