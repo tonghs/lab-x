@@ -10,14 +10,14 @@ Page({
   data: {
     users: [],
     currentCursor: '',
-    nextCursor: '',
+    nextCursor: null,
     refreshing: false,
     loginedUserId: 0
   },
 
   getData() {
     var _self = this
-    if ((this.data.nextCursor !== "" || this.data.currentCursor === "") && !this.data.refreshing) {
+    if ((this.data.nextCursor !== "") && !this.data.refreshing) {
       this.setData({
         currentCursor: this.data.nextCursor,
         refreshing: true
