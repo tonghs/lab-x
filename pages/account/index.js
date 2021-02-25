@@ -109,5 +109,8 @@ Page({
     wx.navigateTo({
       url: e.currentTarget.dataset.url,
     })
+  },
+  onShow() {
+    this.onLoad()
   }
 })

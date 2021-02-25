@@ -6,7 +6,7 @@
     "pages/logs/logs",
     "pages/rss/index",
     "pages/chart/index",
-    "pages/account/update/index",
+    "pages/account/edit/index",
     "pages/about/index"
   ],
   "window": {
@@ -27,7 +27,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/rss/index",
+        "pagePath": "pages/chart/index",
         "iconPath": "images/_chart.png",
         "selectedIconPath": "images/chart.png",
         "text": "指标"

@@ -47,3 +47,12 @@ view {
 .footer .line {
   margin-bottom: 40rpx;
 }
+
+.bottom-footer {
+  position: absolute;
+  bottom: 60rpx;
+}
+
+.full-width {
+  width: 100%;
+}

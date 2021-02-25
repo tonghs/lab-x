@@ -58,6 +58,9 @@ function request(options){
   })
   options.data = options.data || {}
   options.data.sign = getSign(options.data)
+  if (options.url.indexOf(config.host) === -1) {
+    options.url = this.getUrl(options.url)
+  }
 
   var access_token = wx.getStorageSync('access_token')
   options.header = options.header || {}

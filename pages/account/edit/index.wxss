@@ -1,0 +1,19 @@
+/* pages/account/update/index.wxss */
+page {
+  background-color: #fff;
+}
+
+label {
+  color: #51515160;
+  width: 25%;
+}
+
+.flex-item {
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #cdcdcd60;
+  align-items: center;
+}
+
+button {
+  margin-top: 40rpx;
+}

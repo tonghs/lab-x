@@ -1,0 +1,17 @@
+<!--pages/account/update/index.wxml-->
+<view class="flex-column full-width">
+  <views class="user-info flex-column">
+    <view class="flex-item flex-row">
+      <label>用户名</label>
+      <input value="{{userInfo.user_name}}" bindinput='getInputValue'/>
+    </view>
+  </views>
+  <view class="user-misc">
+    
+  </view>
+  <button size="mini" type="primary" bindtap="save">保存</button>
+  <view class="footer bottom-footer">
+    <view class="line"></view>
+    <text class="slogan">探索未知实验室</text>
+  </view>
+</view>
