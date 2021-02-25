@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/chart/index",
     "pages/index/index",
+    "pages/chart/index",
     "pages/account/index",
     "pages/users/index",
     "pages/logs/logs",
@@ -32,12 +32,7 @@
         "selectedIconPath": "images/chart.png",
         "text": "指标"
       },
-      {
-        "pagePath": "pages/rss/index",
-        "iconPath": "images/_rss.png",
-        "selectedIconPath": "images/rss.png",
-        "text": "RSS"
-      },
+      
       {
         "pagePath": "pages/account/index",
         "iconPath": "images/_profile.png",
