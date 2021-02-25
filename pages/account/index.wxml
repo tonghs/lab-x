@@ -18,12 +18,11 @@
     <image class="setting-icon" src="/images/settings/metric.png" mode="cover"></image>
     <text class="setting-icon-txt">指标管理</text>
   </view>
-  <view class="flex-view-item settings-item">
+  <!--<view class="flex-view-item settings-item">
     <image class="setting-icon" src="/images/settings/rss.png" mode="cover"></image>
     <text class="setting-icon-txt">RSS 订阅源管理</text>
-  </view>
+  </view>-->
 </view>
-
 <view class="flex-column settings" wx:if="{{is_logined}}">
   <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/users/index" wx:if="{{appUserInfo.is_admin}}">
     <image class="setting-icon" src="/images/settings/user_manage.png" mode="cover"></image>

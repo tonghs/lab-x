@@ -1,7 +1,4 @@
 /* pages/chart/index.wxss */
-page {
-  background-color: #fafafa;
-}
 
 view {
   background-color: initial;
