@@ -1,5 +1,5 @@
 <!--pages/chart/index.wxml-->
-<view class="container flex-column">
+<view class="flex-column">
   <view class="card">
     <view class="title">这里是标题</view>
     <view class="body">你几乎可以在任何元素上使用box-shadow来添加阴影效果。</view>
