@@ -35,9 +35,6 @@ var uploadFile = function (options) {
         req.request({
             method: 'POST',
             url: '/auth/cos_temp_credential/',
-            data: {
-                "category": options.category
-            },
             dataType: 'json',
             success: function (result) {
                 var data = result.data.content;
@@ -84,7 +81,7 @@ var uploadFile = function (options) {
                 name: 'file',
                 filePath: filePath,
                 formData: {
-                    'key': "document/" + Key,
+                    'key': options.prefix + Key,
                     'success_action_status': 200,
                     'Signature': AuthData.Authorization,
                     'x-cos-security-token': AuthData.XCosSecurityToken,

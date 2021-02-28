@@ -67,7 +67,7 @@ Page({
   },
   uploadDoc: function() {
     cos.uploadFile({
-      "category": 2
+      prefix: "document/"
     })
   }
 })

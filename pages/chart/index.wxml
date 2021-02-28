@@ -2,7 +2,7 @@
 <view class="flex-column">
   <view class="card">
     <view class="title">这里是标题</view>
-    <view class="body" bindtap="uploadDoc">你几乎可以在任何元素上使用box-shadow来添加阴影效果。</view>
+    <view class="body" bindtap="uploadDoc">你几乎可以在任何元素上使用box-shadow来添加阴影效果。点击这里来上传一张图片吧。</view>
   </view>
   <view class="card">
     <view class="title">这里是标题</view>
