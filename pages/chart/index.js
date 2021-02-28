@@ -1,4 +1,6 @@
 // pages/chart/index.js
+const cos = require("../../common/cos.js")
+
 Page({
 
   /**
@@ -62,5 +64,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  uploadDoc: function() {
+    cos.uploadFile({
+      "category": 2
+    })
   }
 })
