@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/chart/index",
     "pages/index/index",
+    "pages/chart/index",
+    "pages/document/index",
     "pages/account/index",
     "pages/users/index",
     "pages/logs/logs",
@@ -25,15 +26,17 @@
         "iconPath": "images/_home.png",
         "selectedIconPath": "images/home.png",
         "text": "首页"
-      },
-      {
+      }, {
         "pagePath": "pages/chart/index",
         "iconPath": "images/_chart.png",
         "selectedIconPath": "images/chart.png",
         "text": "指标"
-      },
-      
-      {
+      }, {
+        "pagePath": "pages/document/index",
+        "iconPath": "images/_report.png",
+        "selectedIconPath": "images/_report.png",
+        "text": "报告和单据"
+      }, {
         "pagePath": "pages/account/index",
         "iconPath": "images/_profile.png",
         "selectedIconPath": "images/profile.png",
