@@ -72,3 +72,7 @@ view {
   margin-top: 40rpx;
   text-align: right;
 }
+
+.btn-container button {
+  margin-left: 20rpx;
+}

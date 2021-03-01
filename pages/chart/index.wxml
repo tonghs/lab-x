@@ -33,6 +33,7 @@
         </view>
       </view>
     </view>
+    
     <view class="btn-container" wx:if="{{previewImgs && previewImgs.length === 0}}">
       <button type="default" size="mini" bindtap="uploadDoc">选择图片</button>
     </view>

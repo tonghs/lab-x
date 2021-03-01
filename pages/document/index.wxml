@@ -37,6 +37,7 @@
       <button type="default" size="mini" bindtap="uploadDoc">选择图片</button>
     </view>
     <view class="btn-container" wx:if="{{previewImgs && previewImgs.length > 0}}">
+      <button type="default" size="mini" bindtap="uploadDoc">重新选择</button> 
       <button type="primary" size="mini" bindtap="uploadDoc">开始上传</button>
     </view>
   </view>
