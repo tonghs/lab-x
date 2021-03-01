@@ -118,13 +118,20 @@ var uploadFile = function (options) {
         });
     };
 
+    var imgs = []
+
     // 选择文件
     wx.chooseImage({
-        count: 4, // 默认9
+        count: 9, // 默认9
         sizeType: ['original'], // 可以指定是原图还是压缩图，这里默认用原图
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
         success: function (res) {
-            uploadFile(res.tempFiles[0].path);
+            if (options.preview != undefined) {
+                options.preview({
+                    imgs: res.tempFiles
+                })
+            }
+            // uploadFile(res.tempFiles[0].path);
         }
     })
 };

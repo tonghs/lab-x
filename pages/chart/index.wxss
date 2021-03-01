@@ -24,7 +24,7 @@ view {
 }
 
 .card .title {
-  font-size: 32rpx;
+  font-size: 35rpx;
 }
 
 .card .body {
@@ -32,4 +32,43 @@ view {
   font-weight: 300;
   padding-top: 15rpx;
   justify-content: space-between;
+}
+
+.preview {
+  width:32%;
+  margin: 0 15rpx 15rpx 0;
+  box-shadow: 0 0 5rpx #cdcdcd;
+  height: 160rpx;
+  background-size: cover;
+  background-position: center;
+}
+
+.preview:last-child {
+  margin-right: 0;
+}
+
+.preview-full {
+  box-shadow: 0 0 5rpx #cdcdcd;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 420rpx;
+}
+
+.preview-double {
+  box-shadow: 0 0 5rpx #cdcdcd;
+  background-size: cover;
+  background-position: center;
+  width: 50%;
+  height: 240rpx;
+  margin-right: 15rpx;
+}
+
+.imgs {
+  margin-top: 30rpx;
+}
+
+.btn-container {
+  margin-top: 40rpx;
+  text-align: right;
 }

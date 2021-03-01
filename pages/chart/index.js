@@ -1,5 +1,6 @@
 // pages/chart/index.js
 const cos = require("../../common/cos.js")
+const utils = require("../../common/utils.js")
 
 Page({
 
@@ -7,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "uploadedImg": ""
+    "previewImgs": []
   },
 
   /**
@@ -69,10 +70,13 @@ Page({
     var _self = this
     cos.uploadFile({
       prefix: "document/",
-      success: (res) => {
+      preview: (res) => {
         _self.setData({
-          uploadedImg: res.url
+          previewImgs: utils.sliceArray(res.imgs, 3)
         })
+      },
+      success: (res) => {
+        
       }
     })
   }

@@ -1,10 +1,44 @@
 <!--pages/chart/index.wxml-->
 <view class="flex-column">
   <view class="card">
-    <view class="title">这里是标题</view>
-    <view class="body" bindtap="uploadDoc">你几乎可以在任何元素上使用box-shadow来添加阴影效果。点击这里来上传一张图片吧。</view>
-
-    <image src="{{uploadedImg}}" wx:if="{{uploadedImg}}" mode="widthFix" style="width: 100%;"></image>
+    <view class="title">开始上传</view>
+    <view class="body">
+      你可以上传处方、化验/检验报告、收据、发票等等，我们会帮你妥善保持，来上传一张图片吧。
+      <view class="imgs">
+        <view wx:if="{{previewImgs && previewImgs[0] && previewImgs[0].length === 1}}" class="flex-column">
+          <view class="flex-row">
+            <view class="preview-full" style="background-image: url('{{previewImgs[0][0].path}}');"></view>
+          </view>
+        </view>
+        <view wx:if="{{previewImgs && previewImgs[0] && previewImgs[0].length === 2}}" class="flex-column">
+          <view class="flex-row">
+            <view class="preview-double" style="background-image: url('{{previewImgs[0][0].path}}');"></view>
+            <view class="preview-double" style="background-image: url('{{previewImgs[0][1].path}}');"></view>
+          </view>
+        </view>
+        <view
+          wx:if="{{previewImgs && previewImgs[0] && previewImgs[0].length > 2}}"
+          wx:for="{{previewImgs}}"
+          wx:for-index="idx" wx:key="_id"
+          wx:for-item="rows" class="flex-column">
+          <view class="flex-row">
+            <view
+              wx:for="{{rows}}"
+              wx:for-item="item"
+              wx:key="path"
+              class="preview"
+              style="background-image: url('{{item.path}}');">
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="btn-container" wx:if="{{previewImgs && previewImgs.length === 0}}">
+      <button type="default" size="mini" bindtap="uploadDoc">选择图片</button>
+    </view>
+    <view class="btn-container" wx:if="{{previewImgs && previewImgs.length > 0}}">
+      <button type="primary" size="mini" bindtap="uploadDoc">开始上传</button>
+    </view>
   </view>
   <view class="card">
     <view class="title">这里是标题</view>
