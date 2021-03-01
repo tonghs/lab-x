@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    "uploadedImg": ""
   },
 
   /**
@@ -66,8 +66,14 @@ Page({
 
   },
   uploadDoc: function() {
+    var _self = this
     cos.uploadFile({
-      prefix: "document/"
+      prefix: "document/",
+      success: (res) => {
+        _self.setData({
+          uploadedImg: res.url
+        })
+      }
     })
   }
 })

@@ -7,7 +7,7 @@ var Region = config.qcloudCosRegion;
 var ForcePathStyle = false; // 是否使用后缀式，涉及签名计算和域名白名单配置，后缀式说明看上文
 
 var uploadFile = function (options) {
-
+    options.prefix = options.prefix || ""
     // 请求用到的参数
     var prefix = 'https://' + Bucket + '.cos.' + Region + '.myqcloud.com/';
     if (ForcePathStyle) {
@@ -88,17 +88,22 @@ var uploadFile = function (options) {
                     'Content-Type': '',
                 },
                 success: function (res) {
-                    var url = prefix + camSafeUrlEncode(Key).replace(/%2F/g, '/');
+                    console.log(res)
+                    var url = prefix + options.prefix + camSafeUrlEncode(Key).replace(/%2F/g, '/');
                     console.log(res.statusCode);
                     console.log(url);
                     if (/^2\d\d$/.test('' + res.statusCode)) {
-                        wx.showModal({title: '上传成功', content: url, showCancel: false});
+                        // wx.showModal({title: '上传成功', content: url, showCancel: false});
+                        if (options.success !== undefined) {
+                            options.success({
+                                "url": url,
+                                "key": options.prefix + Key
+                            })
+                        }
                     } else {
                         wx.showModal({title: '上传失败', content: JSON.stringify(res), showCancel: false});
                     }
-                    if (options.success !== undefined) {
-                        options.success(res)
-                    }
+                    
                 },
                 fail: function (res) {
                     wx.showModal({title: '上传失败', content: JSON.stringify(res), showCancel: false});
@@ -115,7 +120,7 @@ var uploadFile = function (options) {
 
     // 选择文件
     wx.chooseImage({
-        count: 1, // 默认9
+        count: 4, // 默认9
         sizeType: ['original'], // 可以指定是原图还是压缩图，这里默认用原图
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
         success: function (res) {

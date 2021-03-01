@@ -4,8 +4,7 @@
     <view class="title">这里是标题</view>
     <view class="body" bindtap="uploadDoc">你几乎可以在任何元素上使用box-shadow来添加阴影效果。点击这里来上传一张图片吧。</view>
 
-    <image src="https://chronic-condition-1252348210.cos.ap-beijing.myqcloud.com/WPsTFrzaE15P215ebbca47852b303652fc588ee3ff0e.jpg"></image>
-    <image src="http://cc.cos.motn.top/WPsTFrzaE15P215ebbca47852b303652fc588ee3ff0e.jpg"></image>
+    <image src="{{uploadedImg}}" wx:if="{{uploadedImg}}" mode="widthFix" style="width: 100%;"></image>
   </view>
   <view class="card">
     <view class="title">这里是标题</view>
