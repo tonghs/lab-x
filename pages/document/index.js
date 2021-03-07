@@ -9,7 +9,7 @@ Page({
    */
   data: {
     files: [],
-    uploadedFiles: [],
+    uploadedFileUrls: [],
     uploadedKeys: []
   },
 
@@ -71,7 +71,6 @@ Page({
   onShareAppMessage: function () {
 
   },
-
   chooseImage: function (e) {
     var that = this;
     wx.chooseImage({
@@ -79,9 +78,8 @@ Page({
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
         success: function (res) {
             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-            // console.log(res)
             that.setData({
-              files: that.data.files.concat(res.tempFilePaths)
+                files: that.data.files.concat(res.tempFilePaths)
             });
         }
     })
@@ -89,7 +87,7 @@ Page({
   previewImage: function(e){
       wx.previewImage({
           current: e.currentTarget.id, // 当前显示图片的http链接
-          urls: this.data.files // 需要预览的图片http链接列表
+          urls: this.data.uploadedFileUrls // 需要预览的图片http链接列表
       })
   },
   selectFile(files) {
@@ -105,9 +103,9 @@ Page({
           cos.uploadFile({
             path: files.tempFilePaths[i],
             success: (res) => {
-              _self.data.uploadedKeys.push(res.key)
-              _self.data.uploadedFiles.push({url: res.url + "?imageMogr2/crop/240x240/gravity/center/rquality/90"})
-              if (_self.data.uploadedFiles.length == files.tempFilePaths.length) {
+              _self.data.uploadedKeys.push(res.key)  // 存储 key
+              _self.data.uploadedFileUrls.push({url: res.url + "?imageView2/q/85"})
+              if (_self.data.uploadedFileUrls.length >= files.tempFilePaths.length) {
                 resolve({
                   urls: files.tempFilePaths
                 })
@@ -129,7 +127,7 @@ Page({
       // wx.showModal({title: '上传成功', showCancel: false});
     // console.log(this.data.uploadedKeys)
     this.setData({
-      files: this.data.uploadedFiles
+      files: this.data.uploadedFileUrls  // 替换 tmp 路径为线上 url
     })
   }
 })
