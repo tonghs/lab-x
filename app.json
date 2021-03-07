@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/document/index",
-
+    "pages/document/upload/index",
     "pages/index/index",
     "pages/chart/index",
     "pages/account/index",

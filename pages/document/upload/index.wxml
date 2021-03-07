@@ -1,0 +1,29 @@
+<!--pages/chart/index.wxml-->
+<view class="flex-column">
+  <view class="card">
+    <view class="title"></view>
+    <view class="body">
+      <textarea placeholder="在这里输入这些图片的备注。你可以写所在医院，存档的是什么文件，比如化验单/收据等。"
+        maxlength="140" model:value="{{desc}}" bindinput=""></textarea>
+      <mp-cells>
+        <mp-cell>
+            <mp-uploader
+              bindfail="uploadError"
+              bindsuccess="uploadSuccess"
+              select="{{selectFile}}"
+              upload="{{uplaodFile}}"
+              files="{{files}}"
+              max-count="9" max-size="{{10 * 1024 * 1024}}"
+              title="" tips="在这里上传处方、化验/检验报告、收据、发票等等，我们会帮你妥善保存。"></mp-uploader>
+        </mp-cell>
+    </mp-cells>
+    </view>
+    <view class="btn-container">
+      <button type="primary" size="mini" class="btn" bindtap="save">保存</button>
+    </view>
+  </view>
+</view>
+<view class="footer bottom-footer">
+    <view class="line"></view>
+    <text class="slogan">探索未知实验室</text>
+</view>

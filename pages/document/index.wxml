@@ -1,26 +1,10 @@
-<!--pages/chart/index.wxml-->
+
 <view class="flex-column">
-  <view class="card">
+  <view class="card linked" bindtap='navToUploader'>
     <view class="title">开始上传</view>
-    <view class="body">
-      你可以上传处方、化验/检验报告、收据、发票等等，我们会帮你妥善保持，来上传一张图片吧。
-      <mp-cells>
-        <mp-cell>
-            <mp-uploader
-              bindfail="uploadError"
-              bindsuccess="uploadSuccess"
-              select="{{selectFile}}"
-              upload="{{uplaodFile}}"
-              files="{{files}}"
-              max-count="9" max-size="{{10 * 1024 * 1024}}"
-              title="" tips=""></mp-uploader>
-        </mp-cell>
-    </mp-cells>
-    </view>
   </view>
   <view class="card">
     <view class="title">这里是标题</view>
     <view class="body">这里是内容</view>
-    
   </view>
 </view>
