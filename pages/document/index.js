@@ -121,7 +121,8 @@ Page({
       })
   },
   uploadError(e) {
-      console.log('upload error', e.detail)
+      // console.log('upload error', e.detail)
+      wx.showModal({title: '图片尺寸过大！', showCancel: false, });
   },
   uploadSuccess(e) {
       // console.log('upload success', e.detail)
