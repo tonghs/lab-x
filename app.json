@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/document/index",
+
     "pages/index/index",
     "pages/chart/index",
-    "pages/document/index",
     "pages/account/index",
     "pages/users/index",
     "pages/logs/logs",
@@ -45,5 +46,8 @@
     ]
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  }
 }

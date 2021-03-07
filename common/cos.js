@@ -7,7 +7,6 @@ var Region = config.qcloudCosRegion;
 var ForcePathStyle = false; // 是否使用后缀式，涉及签名计算和域名白名单配置，后缀式说明看上文
 
 var uploadFile = function (options) {
-    options.prefix = options.prefix || ""
     // 请求用到的参数
     var prefix = 'https://' + Bucket + '.cos.' + Region + '.myqcloud.com/';
     if (ForcePathStyle) {
@@ -81,59 +80,45 @@ var uploadFile = function (options) {
                 name: 'file',
                 filePath: filePath,
                 formData: {
-                    'key': options.prefix + Key,
+                    'key': Key,
                     'success_action_status': 200,
                     'Signature': AuthData.Authorization,
                     'x-cos-security-token': AuthData.XCosSecurityToken,
                     'Content-Type': '',
                 },
                 success: function (res) {
-                    console.log(res)
-                    var url = prefix + options.prefix + camSafeUrlEncode(Key).replace(/%2F/g, '/');
-                    console.log(res.statusCode);
-                    console.log(url);
+                    var url = prefix + camSafeUrlEncode(Key).replace(/%2F/g, '/');
                     if (/^2\d\d$/.test('' + res.statusCode)) {
-                        // wx.showModal({title: '上传成功', content: url, showCancel: false});
                         if (options.success !== undefined) {
                             options.success({
                                 "url": url,
-                                "key": options.prefix + Key
+                                "key": Key
                             })
                         }
                     } else {
+                        if (options.fail !== undefined) {
+                            options.fail(res)
+                        }
                         wx.showModal({title: '上传失败', content: JSON.stringify(res), showCancel: false});
                     }
                     
                 },
                 fail: function (res) {
+                    if (options.fail !== undefined) {
+                        options.fail(res)
+                    }
                     wx.showModal({title: '上传失败', content: JSON.stringify(res), showCancel: false});
                 }
             });
             requestTask.onProgressUpdate(function (res) {
-                console.log('进度:', res);
+                //.log('进度:', res);
                 if (options.onProgressUpdate !== undefined) {
                     options.onProgressUpdate(res)
                 }
             });
         });
     };
-
-    var imgs = []
-
-    // 选择文件
-    wx.chooseImage({
-        count: 9, // 默认9
-        sizeType: ['original'], // 可以指定是原图还是压缩图，这里默认用原图
-        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-        success: function (res) {
-            if (options.preview != undefined) {
-                options.preview({
-                    imgs: res.tempFiles
-                })
-            }
-            // uploadFile(res.tempFiles[0].path);
-        }
-    })
+    uploadFile(options.path);
 };
 
 module.exports = {
