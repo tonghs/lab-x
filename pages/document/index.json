@@ -5,5 +5,7 @@
     "mp-cell": "weui-miniprogram/cell/cell",
     "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet"
   },
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#fafafa",
+  "backgroundTextStyle": "dark"
 }
