@@ -130,11 +130,22 @@ Page({
   },
   preview: function (e) {
     var packageId = e.currentTarget.dataset.itemId
+    var docPackages = this.data.docPackages
+    var urls = []
+    for (var i = 0; i < docPackages.length; i++) {
+      if (docPackages[i].id === packageId) {
+        for (var m = 0; m < docPackages[i].ident_urls.length; m++) {
+          for (var n = 0; n < docPackages[i].ident_urls[m].length; n++) {
+            urls.push(docPackages[i].ident_urls[m][n])
+          }
+        }
+        break
+      }
+    }
     var url = e.currentTarget.dataset.url
-    console.log(url)
     wx.previewImage({
       current: url, // 当前显示图片的http链接
-      urls: [url] // 需要预览的图片http链接列表
+      urls: urls // 需要预览的图片http链接列表
     })
   },
 
