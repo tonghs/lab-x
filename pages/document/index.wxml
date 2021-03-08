@@ -58,5 +58,5 @@
   </view>
 </view>
 
-<mp-actionSheet bindactiontap="actionSheetItemClient" show="{{showActionsheet}}" actions="{{actionGroups}}" title="这是一个标题，可以为一行或者两行。">
+<mp-actionSheet bindactiontap="actionSheetItemClient" show="{{showActionsheet}}" actions="{{actionGroups}}" title="更多操作">
 </mp-actionSheet>
