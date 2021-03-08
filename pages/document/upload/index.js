@@ -1,6 +1,7 @@
 // pages/chart/index.js
 const cos = require("../../../common/cos.js")
 const req = require("../../../common/request.js")
+const config = require("../../../config")
 
 Page({
 
@@ -11,7 +12,8 @@ Page({
     files: [],
     uploadedFileUrls: [],
     uploadedKeys: [],
-    desc: ""
+    desc: "",
+    slogan: config.slogan
   },
 
   /**

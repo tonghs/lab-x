@@ -1,7 +1,7 @@
 // pages/chart/index.js
-const cos = require("../../common/cos.js")
 const utils = require("../../common/utils.js")
 const req = require("../../common/request")
+const config = require("../../config")
 
 Page({
 
@@ -14,7 +14,8 @@ Page({
     apiUrl: "/chronic_condition/doc_package/",
     pageSize: 20,
     showActionsheet: false,
-    actionGroups: []
+    actionGroups: [],
+    slogan: config.slogan
   },
 
   /**
@@ -54,8 +55,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
-    
+    if (this.data.docPackages.length == 0) {
+      this.onLoad()
+    }
   },
 
   /**
@@ -77,6 +79,9 @@ Page({
    */
   onPullDownRefresh: function () {
     this.onLoad()
+    wx.stopPullDownRefresh({
+      success: (res) => {},
+    })
   },
 
   /**
@@ -165,12 +170,21 @@ Page({
         success: function (sm) {
           if (sm.confirm) {
               // 用户点击了确定 可以调用删除方法了
-              console.log('用户点击确定')
-              _self.setData({
-                showActionsheet: false
+              req.request({
+                url: _self.data.apiUrl,
+                data: {"package_id": packageId},
+                method: 'DELETE',
+                success: () => {
+                  _self.setData({
+                    showActionsheet: false
+                  }, function () {
+                    this.onLoad()
+                  })
+                }
               })
+              
             } else if (sm.cancel) {
-              console.log('用户点击取消')
+              // console.log('用户点击取消')
               _self.setData({
                 showActionsheet: false
               })
@@ -178,5 +192,5 @@ Page({
           }
         })
     }
-  }
+  },
 })

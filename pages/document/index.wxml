@@ -1,7 +1,8 @@
 
 <view class="flex-column">
-  <view class="card linked" bindtap='navToUploader'>
-    <view class="title">开始上传</view>
+  <view class="input-container flex-row">
+    <input class="txt-search" placeholder="搜索"></input>
+    <image class="btn-upload" src="/images/upload.png" bindtap="navToUploader"></image>
   </view>
   <view class="card" wx:for="{{docPackages}}" wx:key="id" wx:for-item="item">
     <view class="title">{{item.desc}}</view>
@@ -57,6 +58,13 @@
     </view>
   </view>
 </view>
-
+<view class="placeholder-tips" wx:if="{{docPackages.length == 0}}">
+点击右上角"+"开始上传
+</view>
 <mp-actionSheet bindactiontap="actionSheetItemClient" show="{{showActionsheet}}" actions="{{actionGroups}}" title="更多操作">
 </mp-actionSheet>
+
+<view class="footer bottom-footer" wx:if="{{docPackages.length == 0}}">
+    <view class="line"></view>
+    <text class="slogan">{{slogan}}</text>
+</view>

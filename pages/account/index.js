@@ -14,7 +14,7 @@ Page({
     appUserInfo: {}
   },
 
-  onLoad() {
+  onLoad(e) {
     var user_id = wx.getStorageSync("user_id")
     var user_name = wx.getStorageSync("user_name")
     var is_admin = wx.getStorageSync("is_admin")
@@ -74,6 +74,8 @@ Page({
     var _self = this
     accountUtils.login({
       success(res) {
+        var loginRedirectUrl = app.globalData.loginRedirectUrl
+        app.globalData.loginRedirectUrl = null
         _self.setData({
           userInfo: app.globalData.userInfo,
           hasUserInfo: true,
@@ -83,6 +85,10 @@ Page({
             user_name: res.user_name,
             is_admin: res.is_admin
           }
+        }, function() {
+          wx.switchTab({
+            url: loginRedirectUrl,
+          })
         })
       }
     })

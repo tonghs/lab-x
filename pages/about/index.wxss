@@ -1,1 +1,22 @@
-/* pages/about/index.wxss */
+/* pages/index/index.wxss */
+page {
+  background-color: #fff;
+}
+view.info {
+  padding: 200rpx 0;
+  text-align: center;
+}
+
+text#logo {
+  display: block;
+  text-align: center;
+  font-size: 250rpx;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  line-height: 200rpx;
+}
+
+text#slogan {
+  font-size: 30rpx;
+  font-weight: 300;
+}

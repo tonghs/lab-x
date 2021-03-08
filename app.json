@@ -23,16 +23,6 @@
     "selectedColor": "#515151",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "iconPath": "images/_home.png",
-        "selectedIconPath": "images/home.png",
-        "text": "首页"
-      }, {
-        "pagePath": "pages/chart/index",
-        "iconPath": "images/_chart.png",
-        "selectedIconPath": "images/chart.png",
-        "text": "指标"
-      }, {
         "pagePath": "pages/document/index",
         "iconPath": "images/_report.png",
         "selectedIconPath": "images/_report.png",

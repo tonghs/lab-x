@@ -33,7 +33,9 @@
 }
 
 view.account {
-  margin: 40rpx 0 40rpx;
+  width: 100%;
+  text-align: center;
+  padding: 50rpx 0;
 }
 
 .settings {

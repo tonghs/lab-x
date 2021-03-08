@@ -1,6 +1,8 @@
 const config = require('../config.js')
 const sha1 = require('./crypto.js');
 
+const app = getApp()
+
 function getUrl(route){
   return `https://${config.host}${route}`
 }
@@ -41,6 +43,7 @@ function refrehToken(options){
         })
         options.success()
       } else {
+        app.globalData.loginRedirectUrl = "/" + getCurrentPages()[0].route
         wx.switchTab({
           url: '/pages/account/index',
         })

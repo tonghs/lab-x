@@ -3,7 +3,7 @@
   <view class="card">
     <view class="title"></view>
     <view class="body">
-      <textarea placeholder="在这里输入这些图片的备注。你可以写所在医院，存档的是什么文件，比如化验单/收据等。"
+      <textarea placeholder="在这里输入这些图片的备注。比如：中日友好医院干眼症处方。"
         maxlength="140" model:value="{{desc}}" bindinput=""></textarea>
       <mp-cells>
         <mp-cell>
@@ -14,7 +14,7 @@
               upload="{{uplaodFile}}"
               files="{{files}}"
               max-count="9" max-size="{{10 * 1024 * 1024}}"
-              title="" tips="在这里上传处方、化验/检验报告、收据、发票等等，我们会帮你妥善保存。"></mp-uploader>
+              title="" tips=""></mp-uploader>
         </mp-cell>
     </mp-cells>
     </view>
@@ -25,5 +25,5 @@
 </view>
 <view class="footer bottom-footer">
     <view class="line"></view>
-    <text class="slogan">探索未知实验室</text>
+    <text class="slogan">{{slogan}}</text>
 </view>
