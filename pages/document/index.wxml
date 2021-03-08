@@ -3,8 +3,60 @@
   <view class="card linked" bindtap='navToUploader'>
     <view class="title">开始上传</view>
   </view>
-  <view class="card">
-    <view class="title">这里是标题</view>
-    <view class="body">这里是内容</view>
+  <view class="card" wx:for="{{docPackages}}" wx:key="id" wx:for-item="item">
+    <view class="title">{{item.desc}}</view>
+    <view class="body">
+      <view>
+        <view class="imgs">
+          <view wx:if="{{item.ident_urls && item.ident_urls[0] && item.ident_urls[0].length === 1}}" class="flex-column">
+            <view class="flex-row">
+              <view class="preview-full"
+                data-item-id="{{item.id}}" data-url="{{item.ident_urls[0][0]}}" bindtap="preview"
+                style="background-image: url('{{item.ident_urls[0][0]}}');"></view>
+            </view>
+          </view>
+          <view wx:if="{{item.ident_urls && item.ident_urls[0] && item.ident_urls[0].length === 2}}" class="flex-column">
+            <view class="flex-row">
+              <view class="preview-double"
+                data-item-id="{{item.id}}" data-url="{{item.ident_urls[0][0]}}" bindtap="preview"
+                style="background-image: url('{{item.ident_urls[0][0]}}');"></view>
+              <view class="preview-double"
+                data-item-id="{{item.id}}" data-url="{{item.ident_urls[0][1]}}" bindtap="preview"
+                style="background-image: url('{{item.ident_urls[0][1]}}');"></view>
+            </view>
+          </view>
+          <view
+            wx:if="{{item.ident_urls && item.ident_urls[0] && item.ident_urls[0].length > 2}}"
+            wx:for="{{item.ident_urls}}"
+            wx:for-index="idx" wx:key="_id"
+            wx:for-item="rows" class="flex-column">
+            <view class="flex-row">
+              <view
+                wx:for="{{rows}}"
+                wx:for-item="sub_item"
+                wx:key="id"
+                class="preview"
+                data-item-id="{{item.id}}" data-url="{{sub_item}}"
+                bindtap="preview"
+                style="background-image: url('{{sub_item}}');">
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="flex-row footer">
+        <view class="ts">
+          {{item.created_at}}
+        </view>
+        <view class="btn-delete-container">
+          <view class="btn-delete" data-item-id="{{item.id}}"  bindtap="btnMenuClick">
+            <image src="/images/menu.png" class="btn-delete-img"></image>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
 </view>
+
+<mp-actionSheet bindactiontap="actionSheetItemClient" show="{{showActionsheet}}" actions="{{actionGroups}}" title="这是一个标题，可以为一行或者两行。">
+</mp-actionSheet>

@@ -7,3 +7,85 @@ view {
 .container {
   padding: 0 20rpx;
 }
+
+.preview {
+  width:32%;
+  margin: 0 15rpx 15rpx 0;
+  box-shadow: 0 0 5rpx #cdcdcd;
+  height: 160rpx;
+  background-size: cover;
+  background-position: center;
+}
+
+.preview:last-child {
+  margin-right: 0;
+}
+
+.preview-full {
+  box-shadow: 0 0 5rpx #cdcdcd;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 420rpx;
+}
+
+.preview-double {
+  box-shadow: 0 0 5rpx #cdcdcd;
+  background-size: cover;
+  background-position: center;
+  width: 50%;
+  height: 240rpx;
+  margin-right: 15rpx;
+}
+
+.preview-double:last-child {
+  margin-right: 0;
+}
+
+.imgs {
+  margin-top: 30rpx;
+}
+
+.btn-container {
+  margin-top: 40rpx;
+  text-align: right;
+}
+
+.btn-container button {
+  margin-left: 20rpx;
+}
+
+.card > .body > .footer {
+  font-size: 26rpx;
+  color: #cdcdcd;
+  margin-top: 30rpx;
+}
+
+.ts, .btn-delete-container {
+  width: 50%;
+}
+
+.ts {
+  text-align: left;
+}
+
+.btn-delete-container {
+  text-align: right;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.btn-delete {
+  width: 70rpx;
+  height: 32rpx;
+  background-color: #cdcdcd60;
+  text-align: center;
+  border-radius: 6rpx;
+  margin-left: auto;
+}
+
+.btn-delete-img {
+  width: 32rpx;
+  height: 32rpx;
+}

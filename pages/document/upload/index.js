@@ -142,6 +142,13 @@ Page({
       success: function() {
         wx.navigateBack({
           delta: 1,
+          success: function() {
+            let page = getCurrentPages().pop()
+            if(page == undefined || page == null){
+                return;
+            }
+            page.onLoad()
+          }
         })
       }
     })
