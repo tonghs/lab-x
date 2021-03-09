@@ -20,7 +20,7 @@
     </mp-cells>
     </view>
     <view class="btn-container">
-      <button type="primary" size="mini" class="btn" bindtap="save">保存</button>
+      <button type="primary" size="mini" class="btn" disabled="{{btnDisabled}}" bindtap="save">保存</button>
     </view>
   </view>
 </view>

@@ -11,11 +11,14 @@ Page({
   data: {
     docPackages: [],
     nextCursor: "",
-    apiUrl: "/chronic_condition/doc_package/",
     pageSize: 20,
     showActionsheet: false,
     actionGroups: [],
-    slogan: config.slogan
+    slogan: config.slogan,
+    apiUrl: {
+      getListUrl: "/chronic_condition/doc_packages/",
+      docPackagesUrl: '/chronic_condition/doc_package/'
+    }
   },
 
   /**
@@ -27,7 +30,7 @@ Page({
       nextCursor: null
     }, function () {
       req.request({
-        url: _self.data.apiUrl,
+        url: _self.data.apiUrl.getListUrl,
         data: {user_id: wx.getStorageSync('user_id'), cursor: this.data.nextCursor, size: this.data.pageSize},
         method: "GET",
         success: function(res) {
@@ -91,7 +94,7 @@ Page({
     var _self = this
     if (this.data.nextCursor !== "") {
       req.request({
-        url: _self.data.apiUrl,
+        url: _self.data.apiUrl.docPackagesUrl,
         data: {user_id: wx.getStorageSync('user_id'), cursor: this.data.nextCursor, size: this.data.pageSize},
         method: "GET",
         success: function(res) {
@@ -128,7 +131,7 @@ Page({
     this.setData({
       showActionsheet: true,
       actionGroups: [
-        { text: '编辑描述', value: packageId },
+        { text: '编辑', value: packageId },
         { text: '删除', type: 'warn', value: packageId }
       ]
     })
@@ -159,7 +162,9 @@ Page({
     var _self = this
     var packageId = parseInt(detail.value)
     if (detail.index === 0) {  // 编辑描述
-      console.log('编辑描述')
+      wx.navigateTo({
+        url: '/pages/document/edit/index?packageId=' + packageId,
+      })
       this.setData({
         showActionsheet: false
       })
@@ -169,9 +174,9 @@ Page({
         content: '确定要删除吗？',
         success: function (sm) {
           if (sm.confirm) {
-              // 用户点击了确定 可以调用删除方法了
+              // 用户点击了确定 调用删除方法
               req.request({
-                url: _self.data.apiUrl,
+                url: _self.data.apiUrl.docPackagesUrl,
                 data: {"package_id": packageId},
                 method: 'DELETE',
                 success: () => {
@@ -182,7 +187,6 @@ Page({
                   })
                 }
               })
-              
             } else if (sm.cancel) {
               // console.log('用户点击取消')
               _self.setData({

@@ -13,6 +13,7 @@ Page({
     uploadedFileUrls: [],
     uploadedKeys: [],
     desc: "",
+    btnDisabled: true,
     slogan: config.slogan
   },
 
@@ -98,14 +99,17 @@ Page({
       // 返回false可以阻止某次文件上传
   },
   uplaodFile(files) {
+      this.setData({
+        btnDisabled: true
+      })
       var _self = this
-      // console.log('upload files', files)
       // 文件上传的函数，返回一个promise
       return new Promise((resolve, reject) => {
         for (var i = 0; i < files.tempFilePaths.length; i++) {
           cos.uploadFile({
             path: files.tempFilePaths[i],
             success: (res) => {
+              console.log(res)
               _self.data.uploadedKeys.push(res.key)  // 存储 key
               _self.data.uploadedFileUrls.push({url: res.url + "?imageView2/q/85"})
               if (_self.data.uploadedFileUrls.length >= files.tempFilePaths.length) {
@@ -122,15 +126,13 @@ Page({
       })
   },
   uploadError(e) {
-      // console.log('upload error', e.detail)
+      console.log('upload error', e.detail)
       wx.showModal({title: '图片尺寸过大！', showCancel: false, });
   },
   uploadSuccess(e) {
-      // console.log('upload success', e.detail)
-      // wx.showModal({title: '上传成功', showCancel: false});
-    // console.log(this.data.uploadedKeys)
     this.setData({
-      files: this.data.uploadedFileUrls  // 替换 tmp 路径为线上 url
+      files: this.data.uploadedFileUrls,  // 替换 tmp 路径为线上 url
+      btnDisabled: false
     })
   },
   save: function() {

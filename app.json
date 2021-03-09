@@ -9,7 +9,8 @@
     "pages/logs/logs",
     "pages/rss/index",
     "pages/account/edit/index",
-    "pages/about/index"
+    "pages/about/index",
+    "pages/document/edit/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,7 +28,8 @@
         "iconPath": "images/_report.png",
         "selectedIconPath": "images/report.png",
         "text": "报告和单据"
-      }, {
+      },
+      {
         "pagePath": "pages/account/index",
         "iconPath": "images/_profile.png",
         "selectedIconPath": "images/profile.png",

@@ -1,0 +1,30 @@
+<!--pages/document/edit/index.wxml-->
+<view class="flex-column">
+  <view class="card">
+    <view class="title"></view>
+    <view class="body">
+      <textarea placeholder="在这里输入这些图片的备注。比如：中日友好医院干眼症处方。"
+        maxlength="140" model:value="{{docPackage.desc}}" bindinput="inputChage"></textarea>
+      <view class="line"></view>
+      <view class="flex-column">
+        <view class="img-list" wx:for="{{docPackage.ident_urls}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
+          <view class="btn-delete-container flex-row" wx:if="{{docPackage.ident_urls.length > 1}}">
+            <view class="btn-delete-view">
+              <image class="img-close" src="/images/close-light.png" bindtap="deleteImg" data-index="{{idx}}" data-value="{{item}}"></image>
+            </view>
+          </view>
+          <image class="doc-image" mode="widthFix" src="{{item}}"></image>
+        </view>
+      </view>
+      <view class="btn-container">
+        <button type="primary" size="mini" class="btn" bindtap="save">保存</button>
+      </view>
+    </view>
+    
+  </view>
+  
+</view>
+<view class="footer">
+    <view class="line"></view>
+    <text class="slogan">{{slogan}}</text>
+</view>
