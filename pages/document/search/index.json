@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet",
+    "navigation": "/components/nav/nav"
+  },
+  "navigationStyle": "custom"
+}

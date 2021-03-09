@@ -1,9 +1,7 @@
 <navigation>
   <view class="input-container flex-row">
-    <image class="btn-upload" src="/images/upload.png" bindtap="navToUploader"></image>
-    <view class="txt-search" bindtap="navToSearch" style="line-height: {{menuHeight}}px">
-      搜索
-    </view>
+    <image class="btn-upload" src="/images/back.png" bindtap="back"></image>
+    <input class="txt-search" focus="{{focus}}" placeholder="搜索" placeholder-class="txt-search-placeholer" bindconfirm="search"></input>
     <view style="width: {{menuWidth + menuRight * 3}}px"></view>
   </view>
 </navigation>
@@ -46,8 +44,9 @@
   </view>
 </view>
 <view class="placeholder-tips" wx:if="{{docPackages.length == 0}}">
-点击右上角"+"开始上传
+输入关键字并回车开始搜索
 </view>
+
 <mp-actionSheet bindactiontap="actionSheetItemClient" show="{{showActionsheet}}" actions="{{actionGroups}}" title="更多操作">
 </mp-actionSheet>
 

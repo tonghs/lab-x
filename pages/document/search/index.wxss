@@ -1,9 +1,8 @@
-/* pages/chart/index.wxss */
+/* pages/document/search/index.wxss */
 
 view {
   background-color: initial;
 }
-
 .container {
   padding: 0 20rpx;
 }
@@ -99,8 +98,12 @@ view {
 .txt-search {
   background-color: #cdcdcd60;
   border-radius: 30rpx;
-  padding: 0 20rpx;
+  padding: 10rpx 20rpx;
   flex: auto;
+  font-size: 26rpx;
+}
+
+.txt-search-placeholer {
   font-size: 26rpx;
   color: #cdcdcd;
 }

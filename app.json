@@ -10,7 +10,8 @@
     "pages/rss/index",
     "pages/account/edit/index",
     "pages/about/index",
-    "pages/document/edit/index"
+    "pages/document/edit/index",
+    "pages/document/search/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
