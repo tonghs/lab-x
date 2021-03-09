@@ -9,25 +9,7 @@
     <view class="body">
       <view>
         <view class="imgs">
-          <view wx:if="{{item.ident_urls && item.ident_urls[0] && item.ident_urls[0].length === 1}}" class="flex-column">
-            <view class="flex-row">
-              <view class="preview-full"
-                data-item-id="{{item.id}}" data-url="{{item.ident_urls[0][0]}}" bindtap="preview"
-                style="background-image: url('{{item.ident_urls[0][0]}}');"></view>
-            </view>
-          </view>
-          <view wx:if="{{item.ident_urls && item.ident_urls[0] && item.ident_urls[0].length === 2}}" class="flex-column">
-            <view class="flex-row">
-              <view class="preview-double"
-                data-item-id="{{item.id}}" data-url="{{item.ident_urls[0][0]}}" bindtap="preview"
-                style="background-image: url('{{item.ident_urls[0][0]}}');"></view>
-              <view class="preview-double"
-                data-item-id="{{item.id}}" data-url="{{item.ident_urls[0][1]}}" bindtap="preview"
-                style="background-image: url('{{item.ident_urls[0][1]}}');"></view>
-            </view>
-          </view>
           <view
-            wx:if="{{item.ident_urls && item.ident_urls[0] && item.ident_urls[0].length > 2}}"
             wx:for="{{item.ident_urls}}"
             wx:for-index="idx" wx:key="_id"
             wx:for-item="rows" class="flex-column">
@@ -36,7 +18,7 @@
                 wx:for="{{rows}}"
                 wx:for-item="sub_item"
                 wx:key="id"
-                class="preview"
+                class="{{rows.length > 2 ? 'preview' : (rows.length == 2 ? 'preview-double' : 'preview-full')}}"
                 data-item-id="{{item.id}}" data-url="{{sub_item}}"
                 bindtap="preview"
                 style="background-image: url('{{sub_item}}');">
