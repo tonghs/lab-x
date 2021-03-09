@@ -80,7 +80,7 @@ view {
 .btn-delete {
   width: 70rpx;
   height: 32rpx;
-  background-color: #cdcdcd60;
+  /* background-color: #cdcdcd60; */
   text-align: center;
   border-radius: 6rpx;
   margin-left: auto;

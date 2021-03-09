@@ -25,7 +25,7 @@
       {
         "pagePath": "pages/document/index",
         "iconPath": "images/_report.png",
-        "selectedIconPath": "images/_report.png",
+        "selectedIconPath": "images/report.png",
         "text": "报告和单据"
       }, {
         "pagePath": "pages/account/index",
