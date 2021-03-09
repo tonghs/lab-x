@@ -1,4 +1,6 @@
 /* pages/index/index.wxss */
+
+
 page {
   background-color: #fff;
 }
@@ -7,16 +9,12 @@ view.info {
   text-align: center;
 }
 
-text#logo {
-  display: block;
-  text-align: center;
-  font-size: 250rpx;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 600;
-  line-height: 200rpx;
+.logo {
+  width: 512rpx;
+  height: 512 rpx;
 }
 
-text#slogan {
+text.slogan {
   font-size: 30rpx;
   font-weight: 300;
 }

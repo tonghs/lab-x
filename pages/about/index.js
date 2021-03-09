@@ -1,11 +1,13 @@
 // pages/index/index.js
+const config = require("../../config")
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    slogan: config.slogan
   },
 
   /**

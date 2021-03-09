@@ -155,5 +155,11 @@ Page({
       }
     })
     
+  },
+  deletePic: function (e) {
+    var index = e.detail.index
+    this.data.files.splice(index, 1)
+    this.data.uploadedKeys.splice(index, 1)
+    this.data.uploadedFileUrls.splice(index, 1)
   }
 })

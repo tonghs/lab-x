@@ -13,6 +13,7 @@
               select="{{selectFile}}"
               upload="{{uplaodFile}}"
               files="{{files}}"
+              binddelete="deletePic"
               max-count="9" max-size="{{10 * 1024 * 1024}}"
               title="" tips=""></mp-uploader>
         </mp-cell>
