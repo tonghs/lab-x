@@ -1,6 +1,7 @@
 // pages/chart/index.js
 const cos = require("../../common/cos.js")
 const utils = require("../../common/utils.js")
+const app = getApp()
 
 Page({
 
@@ -8,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "previewImgs": []
+    "previewImgs": [],
+    navBarHeight: app.globalData.navBarHeight
   },
 
   /**
@@ -47,37 +49,14 @@ Page({
   },
 
   /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 
   },
-  uploadDoc: function() {
-    var _self = this
-    cos.uploadFile({
-      prefix: "document/",
-      preview: (res) => {
-        _self.setData({
-          previewImgs: utils.sliceArray(res.imgs, 3)
-        })
-      },
-      success: (res) => {
-        
-      }
-    })
+  add: function() {
+    // wx.navigateTo({
+    //   url: '/pages/document/upload/index',
+    // })
   }
 })

@@ -34,41 +34,31 @@ view {
   justify-content: space-between;
 }
 
-.preview {
-  width:32%;
-  margin: 0 15rpx 15rpx 0;
-  box-shadow: 0 0 5rpx #cdcdcd;
-  height: 160rpx;
-  background-size: cover;
-  background-position: center;
+.input-container {
+  background-color: #fff;
+  align-items: center;
 }
 
-.preview:last-child {
-  margin-right: 0;
+.btn-plus {
+  width: 100rpx;
+  height: 100rpx;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  background-color: rgba(0, 128, 0, 0.75);
+  color: #fff;
+  text-align: center;
+  align-items: center;
+  line-height: 85rpx;
+  float: right;
+  border-radius: 50rpx;
+  font-size: 80rpx;
+  bottom: 20rpx;
+  right: 20rpx;
+  box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.445);
 }
 
-.preview-full {
-  box-shadow: 0 0 5rpx #cdcdcd;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 420rpx;
-}
-
-.preview-double {
-  box-shadow: 0 0 5rpx #cdcdcd;
-  background-size: cover;
-  background-position: center;
-  width: 50%;
-  height: 240rpx;
-  margin-right: 15rpx;
-}
-
-.imgs {
-  margin-top: 30rpx;
-}
-
-.btn-container {
-  margin-top: 40rpx;
-  text-align: right;
+.btn-plus-hover {
+  scale: 1.05;
+  background-color: rgba(0, 128, 0, 0.85);
 }

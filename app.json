@@ -1,13 +1,12 @@
 {
   "pages": [
+    "pages/chart/index",
     "pages/document/index",
     "pages/document/upload/index",
     "pages/index/index",
-    "pages/chart/index",
     "pages/account/index",
     "pages/users/index",
     "pages/logs/logs",
-    "pages/rss/index",
     "pages/account/edit/index",
     "pages/about/index",
     "pages/document/edit/index",
@@ -24,6 +23,12 @@
     "color": "#cdcdcd",
     "selectedColor": "#515151",
     "list": [
+      {
+        "pagePath": "pages/chart/index",
+        "iconPath": "images/_chart.png",
+        "selectedIconPath": "images/chart.png",
+        "text": "指标"
+      },
       {
         "pagePath": "pages/document/index",
         "iconPath": "images/_report.png",

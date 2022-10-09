@@ -108,7 +108,6 @@ function request(options){
 
 function getSign(params) {
   var secret = config.apiSecret
-
   if (typeof params == "string") {
       return paramsStrSort(params, secret);
   } else if (typeof params == "object") {

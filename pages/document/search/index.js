@@ -20,9 +20,9 @@ Page({
     slogan: config.slogan,
 
     apiUrl: {
-      getListUrl: "/chronic_condition/doc_packages/",
-      docPackagesUrl: '/chronic_condition/doc_package/',
-      searchUrl: "/chronic_condition/doc_packages/search/"
+      getListUrl: "/chronic_disease/doc_packages/",
+      docPackagesUrl: '/chronic_disease/doc_package/',
+      searchUrl: "/chronic_disease/doc_packages/search/"
     },
 
     focus: true,

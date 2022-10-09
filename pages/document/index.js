@@ -19,8 +19,8 @@ Page({
     slogan: config.slogan,
 
     apiUrl: {
-      getListUrl: "/chronic_condition/doc_packages/",
-      docPackagesUrl: '/chronic_condition/doc_package/'
+      getListUrl: "/chronic_disease/doc_packages/",
+      docPackagesUrl: '/chronic_disease/doc_package/'
     },
 
     navBarHeight: app.globalData.navBarHeight,

@@ -109,7 +109,6 @@ Page({
           cos.uploadFile({
             path: files.tempFilePaths[i],
             success: (res) => {
-              console.log(res)
               _self.data.uploadedKeys.push(res.key)  // 存储 key
               _self.data.uploadedFileUrls.push({url: res.url + "?imageView2/q/85"})
               if (_self.data.uploadedFileUrls.length >= files.tempFilePaths.length) {
@@ -118,7 +117,7 @@ Page({
                 })
               }
             },
-            fail: () => {
+            fail: (res) => {
               reject(res)
             }
           })
@@ -126,8 +125,7 @@ Page({
       })
   },
   uploadError(e) {
-      console.log('upload error', e.detail)
-      wx.showModal({title: '图片尺寸过大！', showCancel: false, });
+      wx.showModal({title: e.detail.errMsg, showCancel: false, });
   },
   uploadSuccess(e) {
     this.setData({
@@ -137,7 +135,7 @@ Page({
   },
   save: function() {
     req.request({
-      url: "/chronic_condition/doc_package/",
+      url: "/chronic_disease/doc_package/",
       data: {
         idents: this.data.uploadedKeys,
         desc: this.data.desc

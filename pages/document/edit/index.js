@@ -23,7 +23,7 @@ Page({
       packageId: packageId
     }, function() {
       req.request({
-        url: "/chronic_condition/doc_package/",
+        url: "/chronic_disease/doc_package/",
         data: {
           package_id: packageId,
         },
@@ -102,7 +102,7 @@ Page({
 
   save: function() {
     req.request({
-      url: '/chronic_condition/update_doc_package/',
+      url: '/chronic_disease/update_doc_package/',
       method: 'POST',
       data: this.data.docPackage,
       success: function(res) {

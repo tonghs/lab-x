@@ -37,16 +37,22 @@ var uploadFile = function (options) {
             dataType: 'json',
             success: function (result) {
                 var data = result.data.content;
-                var credentials = data.credentials;
+                var credentials = data.credential;
                 if (credentials) {
                     stsCache = data
                 } else {
                     wx.showModal({title: '临时密钥获取失败', content: JSON.stringify(data), showCancel: false});
+                    wx.hideLoading({
+                      success: (res) => {},
+                    })
                 }
-                callback(stsCache && stsCache.credentials);
+                callback(stsCache && stsCache.credential);
             },
             error: function (err) {
                 wx.showModal({title: '临时密钥获取失败', content: JSON.stringify(err), showCancel: false});
+                wx.hideLoading({
+                  success: (res) => {},
+                })
             }
         });
     };
@@ -55,10 +61,10 @@ var uploadFile = function (options) {
     var getAuthorization = function (options, callback) {
         getCredentials(function (credentials) {
             callback({
-                XCosSecurityToken: credentials.sessionToken,
+                XCosSecurityToken: credentials.token,
                 Authorization: CosAuth({
-                    SecretId: credentials.tmpSecretId,
-                    SecretKey: credentials.tmpSecretKey,
+                    SecretId: credentials.secret_id,
+                    SecretKey: credentials.secret_key,
                     Method: options.Method,
                     Pathname: options.Pathname,
                 })
