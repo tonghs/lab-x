@@ -11,3 +11,11 @@
     </view>
   </view>
 </view>
+
+<view class="charts-box">
+  <qiun-wx-ucharts 
+    type="column"
+    opts="{{opts}}"
+    chartData="{{chartData}}"
+  />
+</view>
