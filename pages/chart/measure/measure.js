@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    value: 6.0,
+    value: "",
     date: null,
     time: null,
     btnDisabled: false,

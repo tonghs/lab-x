@@ -18,7 +18,9 @@ Page({
       v: 0
     },
 
-    chartData: {},
+    chartData: {
+      series: []
+    },
     //您可以通过修改 config-ucharts.js 文件中下标为 ['line'] 的节点来配置全局默认参数，如都是默认参数，此处可以不传 opts 。实际应用过程中 opts 只需传入与全局默认参数中不一致的【某一个属性】即可实现同类型的图表显示不同的样式，达到页面简洁的需求。
     opts: {
       padding: [15, 5, 0, 5],
@@ -137,13 +139,18 @@ Page({
             }
           ]
         };
+        let maxWidth = 35
+        let minWidth = 10
+        let maxDataLength = 15
+        let minDataLength = 1
+        let columnWidth = maxWidth - ((maxWidth - minWidth) / (maxDataLength - minDataLength)) * (dataLength - minDataLength)
         _self.setData({
           chartData: JSON.parse(JSON.stringify(chartData)),
           metricName: content.metric_text,
           unit: content.metric_unit,
           avgData: content.avg_data,
           ['opts.extra.markLine.data']: [{value: content.ref_value}],
-          ['opts.extra.column.width']: 25 - dataLength
+          ['opts.extra.column.width']: columnWidth
         });
         wx.stopPullDownRefresh()
       }
