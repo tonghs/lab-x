@@ -2,7 +2,39 @@
 
 <view class="flex-column" style="margin-top: {{navBarHeight}}px">
   <view class="card">
-    <view class="title">最近15次{{metricName}}结果</view>
+    <view class="title"></view>
+    <view class="body">
+      <view class="summary">
+        <view class="summary-item">
+          <view class="summary-item-content">
+            <span class="summary-item-value">{{avgData.avg15}}</span> {{unit}}
+          </view>
+          <view class="summary-item-name summary-item-content">
+            最近 15 次平均
+          </view>
+        </view>
+        <view class="summary-item">
+          <view class="summary-item-content">
+            <span class="summary-item-value">{{avgData.avg7}}</span> {{unit}}
+          </view>
+          <view class="summary-item-name summary-item-content">
+            最近 7 次平均
+          </view>
+        </view>
+
+        <view class="summary-item">
+          <view class="summary-item-content">
+            <span class="summary-item-value">{{avgData.v}}</span> {{unit}}
+          </view>
+          <view class="summary-item-name summary-item-content">
+            最近 1 次
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="card">
+    <view class="title">最近{{limit}}次{{metricName}}结果({{unit}})</view>
     <view class="body">
       <view class="charts-box">
         <qiun-wx-ucharts type="column" opts="{{opts}}" chartData="{{chartData}}" />
