@@ -6,13 +6,13 @@
     "pages/index/index",
     "pages/account/index",
     "pages/users/index",
-    "pages/logs/logs",
     "pages/account/edit/index",
     "pages/about/index",
     "pages/document/edit/index",
     "pages/document/search/index",
     "pages/chart/measure/measure"
   ],
+  "entryPagePath": "pages/chart/index",
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
