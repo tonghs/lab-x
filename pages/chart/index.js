@@ -1,6 +1,5 @@
 // pages/chart/index.js
-const cos = require("../../common/cos.js")
-const utils = require("../../common/utils.js")
+const req = require("../../common/request.js")
 const app = getApp()
 
 Page({
@@ -10,48 +9,45 @@ Page({
    */
   data: {
     navBarHeight: app.globalData.navBarHeight,
+    metricName: "",
 
     chartData: {},
     //您可以通过修改 config-ucharts.js 文件中下标为 ['line'] 的节点来配置全局默认参数，如都是默认参数，此处可以不传 opts 。实际应用过程中 opts 只需传入与全局默认参数中不一致的【某一个属性】即可实现同类型的图表显示不同的样式，达到页面简洁的需求。
     opts: {
-      color: ["#1890FF","#91CB74","#FAC858","#EE6666","#73C0DE","#3CA272","#FC8452","#9A60B4","#ea7ccc"],
-        padding: [15,5,0,5],
-        enableMarkLine: true,
-        legend: {},
-        xAxis: {
-          disableGrid: true
-        },
-        yAxis: {
-          data: [
-            {
-              min: 0
-            }
+      padding: [15, 5, 0, 5],
+      enableMarkLine: true,
+      legend: {},
+      xAxis: {
+        disableGrid: true,
+        rotateLabel: true,
+        rotateAngle: -45
+      },
+      yAxis: {
+        disabled: true
+      },
+      legend: {
+        show: false
+      },
+      extra: {
+        column: {
+          type: "group",
+          width: 20,
+          activeBgColor: "#000000",
+          activeBgOpacity: 0.08,
+          seriesGap: 5,
+          barBorderRadius: [
+            6,
+            6,
+            6,
+            6
           ]
         },
-        extra: {
-          column: {
-            type: "group",
-            width: 20,
-            activeBgColor: "#000000",
-            activeBgOpacity: 0.08,
-            seriesGap: 5,
-            barBorderRadius: [
-              6,
-              6,
-              6,
-              6
-            ]
-          },
-          markLine: {
-            data: [
-              {
-                value: 21,
-                showLabel: true
-              }
-            ]
-          }
+        markLine: {
+          type: 'dash',
+          data: []
         }
       }
+    }
   },
 
   /**
@@ -72,7 +68,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getServerData()
   },
 
   /**
@@ -90,30 +86,54 @@ Page({
   },
 
   /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    this.getServerData()
+  },
+
+  /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 
   },
-  add: function() {
+  add: function () {
     wx.navigateTo({
       url: '/pages/chart/measure/measure',
     })
   },
-  getServerData() {
-    //模拟从服务器获取数据时的延时
-    setTimeout(() => {
-      //模拟服务器返回数据，如果数据格式和标准格式不同，需自行按下面的格式拼接
-      let res = {
-        categories: ["2016","2017","2018","2019","2020","2021"],
-        series: [
-          {
-            name: "血糖",
-            data: [18,27,{"value":21,"color":"#EE6666"},24,6,28]
-          }
-        ]
-      };
-    this.setData({ chartData: JSON.parse(JSON.stringify(res)) });
-  }, 500);
+  getServerData: function () {
+    let _self = this
+    req.request({
+      url: "/chronic_disease/metric_measures/",
+      data: {
+        metric_id: 1
+      },
+      method: 'GET',
+      success: function (res) {
+        let content = res.data.content
+        let data = content.datas
+        var categories = new Array()
+        for (let i in data) {
+          categories.push(data[i].created_at)
+        }
+
+        let chartData = {
+          categories: categories,
+          series: [
+            {
+              name: content.metric_text,
+              data: data
+            }
+          ]
+        };
+        _self.setData({
+          chartData: JSON.parse(JSON.stringify(chartData)),
+          metricName: content.metric_text,
+          ['opts.extra.markLine.data']: [{value: content.ref_value}]
+        });
+      }
+    })
   }
 })

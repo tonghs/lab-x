@@ -154,7 +154,6 @@ Page({
         })
       }
     })
-    
   },
   deletePic: function (e) {
     var index = e.detail.index

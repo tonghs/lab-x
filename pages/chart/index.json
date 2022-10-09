@@ -5,6 +5,7 @@
     "qiun-wx-ucharts": "/components/qiun-wx-ucharts/index",
     "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet"
   },
+  "enablePullDownRefresh": true,
   "backgroundColor": "#fafafa",
   "backgroundTextStyle": "dark",
   "navigationStyle": "custom"

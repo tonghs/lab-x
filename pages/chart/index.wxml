@@ -1,21 +1,17 @@
 <!--pages/chart/index.wxml-->
 
-<view class="flex-column"  style="margin-top: {{navBarHeight}}px">
+<view class="flex-column" style="margin-top: {{navBarHeight}}px">
   <view class="card">
-    <view class="title">这里是标题</view>
-    <view class="body">这里是内容</view>
+    <view class="title">最近15次{{metricName}}结果</view>
+    <view class="body">
+      <view class="charts-box">
+        <qiun-wx-ucharts type="column" opts="{{opts}}" chartData="{{chartData}}" />
+      </view>
+    </view>
   </view>
   <view>
     <view class="btn-plus" bindtap="add" hover-class="btn-plus-hover">
       +
     </view>
   </view>
-</view>
-
-<view class="charts-box">
-  <qiun-wx-ucharts 
-    type="column"
-    opts="{{opts}}"
-    chartData="{{chartData}}"
-  />
 </view>
