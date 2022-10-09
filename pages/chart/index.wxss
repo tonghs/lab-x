@@ -55,7 +55,7 @@ view {
   font-size: 80rpx;
   bottom: 20rpx;
   right: 20rpx;
-  box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.445);
+  box-shadow: 3rpx 3rpx 10rpx rgba(0, 0, 0, 0.445);
 }
 
 .btn-plus-hover {

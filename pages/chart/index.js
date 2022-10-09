@@ -96,9 +96,9 @@ Page({
 
   },
   add: function() {
-    // wx.navigateTo({
-    //   url: '/pages/document/upload/index',
-    // })
+    wx.navigateTo({
+      url: '/pages/chart/measure/measure',
+    })
   },
   getServerData() {
     //模拟从服务器获取数据时的延时
