@@ -10,7 +10,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    is_logined: false,
+    isLogined: false,
     appUserInfo: {}
   },
 
@@ -29,10 +29,10 @@ Page({
       })
     }
 
-    var is_logined = wx.getStorageSync("is_logined")
-    if (is_logined) {
+    var isLogined = wx.getStorageSync("is_logined")
+    if (isLogined) {
       this.setData({
-        is_logined: is_logined
+        isLogined: isLogined
       })
     }
 
@@ -79,7 +79,7 @@ Page({
         _self.setData({
           userInfo: app.globalData.userInfo,
           hasUserInfo: true,
-          is_logined: true,
+          isLogined: true,
           appUserInfo: {
             user_id: res.user_id,
             user_name: res.user_name,
@@ -104,7 +104,7 @@ Page({
           appUserInfo: {},
           userInfo: {},
           hasUserInfo: false,
-          is_logined: false
+          isLogined: false
         })
         app.globalData.userInfo = {}
         app.globalData.hasUserInfo = false

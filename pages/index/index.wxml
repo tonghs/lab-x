@@ -1,7 +1,0 @@
-<!--pages/index/index.wxml-->
-<view class="container">
-  <view class="info">
-    <text id="logo">X</text>
-    <text id="slogan">探索未知实验室</text>
-  </view>
-</view>

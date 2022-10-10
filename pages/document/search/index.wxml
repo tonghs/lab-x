@@ -49,7 +49,3 @@
 
 <mp-actionSheet bindactiontap="actionSheetItemClient" show="{{showActionsheet}}" actions="{{actionGroups}}" title="更多操作">
 </mp-actionSheet>
-
-<view class="footer bottom-footer" wx:if="{{docPackages.length == 0}}">
-    <text class="slogan">{{slogan}}</text>
-</view>

@@ -41,7 +41,3 @@
     </view>
   </view>
 </view>
-<view class="footer bottom-footer">
-    <view class="line"></view>
-    <text class="slogan">{{slogan}}</text>
-</view>

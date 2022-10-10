@@ -3,7 +3,6 @@
     "pages/chart/index",
     "pages/document/index",
     "pages/document/upload/index",
-    "pages/index/index",
     "pages/account/index",
     "pages/users/index",
     "pages/account/edit/index",

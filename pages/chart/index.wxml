@@ -1,6 +1,10 @@
 <!--pages/chart/index.wxml-->
-
-<view class="flex-column" style="margin-top: {{navBarHeight}}px">
+<page-meta>
+  <navigation-bar
+    title="指标"
+  />
+</page-meta>
+<view class="flex-column">
   <view class="card">
     <view class="title"></view>
     <view class="body">

@@ -7,6 +7,5 @@
   },
   "enablePullDownRefresh": true,
   "backgroundColor": "#fafafa",
-  "backgroundTextStyle": "dark",
-  "navigationStyle": "custom"
+  "backgroundTextStyle": "dark"
 }

@@ -32,8 +32,4 @@
       </view>
     </scroll-view>
   </view>
-  <view class="footer">
-    <view class="line"></view>
-    <text class="slogan">探索未知实验室</text>
-  </view>
 </view>
