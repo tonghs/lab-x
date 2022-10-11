@@ -1,0 +1,8 @@
+<!--pages/chart/measures/measures.wxml-->
+<page-meta>
+  <navigation-bar title="指标" />
+</page-meta>
+<view class="container">
+  <text>pages/chart/measures/measures.wxml</text>
+</view>
+
