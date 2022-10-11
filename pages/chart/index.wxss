@@ -45,7 +45,7 @@ view {
   padding: 0;
   margin: 0;
   position: fixed;
-  background-color: rgba(0, 128, 0, 0.75);
+  background-color: #07c160;
   color: #fff;
   text-align: center;
   align-items: center;
@@ -55,7 +55,7 @@ view {
   font-size: 80rpx;
   bottom: 20rpx;
   right: 20rpx;
-  box-shadow: 3rpx 3rpx 10rpx rgba(0, 0, 0, 0.445);
+  box-shadow: 0rpx 0rpx 10rpx rgba(0, 0, 0, 0.445);
 }
 
 .btn-plus-hover {

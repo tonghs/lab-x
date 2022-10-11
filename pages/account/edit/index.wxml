@@ -1,17 +1,20 @@
 <!--pages/account/update/index.wxml-->
-<view class="flex-column full-width">
-  <views class="user-info flex-column">
-    <view class="flex-item flex-row">
-      <label>用户名</label>
-      <input value="{{userInfo.user_name}}" bindinput='getInputValue'/>
+<view class="flex-column">
+  <views class="user-info">
+    <view class="page-section">
+      <view class="weui-cells__title">用户名</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input class="weui-input" value="{{userInfo.user_name}}" auto-focus placeholder="请输入" bindinput="getInputValue" />
+        </view>
+      </view>
     </view>
   </views>
-  <view class="user-misc">
-    
-  </view>
-  <button size="mini" type="primary" bindtap="save">保存</button>
-  <view class="footer bottom-footer">
-    <view class="line"></view>
-    <text class="slogan">探索未知实验室</text>
+  <view class="page-section">
+    <view class="container">
+      <view class="btn-container">
+        <button type="primary" size="mini" class="btn" bindtap="save">保存</button>
+      </view>
+    </view>
   </view>
 </view>

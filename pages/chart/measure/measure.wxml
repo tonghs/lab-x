@@ -1,43 +1,41 @@
 <!--pages/chart/measure.wxml-->
 
 <view class="flex-column">
-  <view class="card">
-    <view class="body">
-      <view class="page-section">
-        <view class="weui-cells__title">日期</view>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-            <picker mode="date" value="{{date}}" start="2015-09-01" end="3017-09-01" bindchange="bindDateChange">
-            <view class="picker">{{date}}
-            </view>
-          </picker>
+  <view class="page-section">
+    <view class="weui-cells__title">日期</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <picker mode="date" value="{{date}}" start="2015-09-01" end="3017-09-01" bindchange="bindDateChange">
+          <view class="picker">{{date}}
           </view>
-        </view>
-      </view>
-      <view class="page-section">
-        <view class="weui-cells__title">时间</view>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-            <picker mode="time" value="{{time}}" bindchange="bindTimeChange">
-            <view class="picker">{{time}}
-            </view>
-          </picker>
-          </view>
-        </view>
-      </view>
-      <view class="page-section">
-        <view class="weui-cells__title">血糖值(mmol/L)</view>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-            <input class="weui-input" model:value="{{value}}" type="digit" auto-focus placeholder="请输入" bindinput="bindValueChange"/>
-          </view>
-        </view>
+        </picker>
       </view>
     </view>
-    <view class="page-section">
-      <view class="btn-container">
+  </view>
+  <view class="page-section">
+    <view class="weui-cells__title">时间</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <picker mode="time" value="{{time}}" bindchange="bindTimeChange">
+          <view class="picker">{{time}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view class="weui-cells__title">血糖值</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" model:value="{{value}}" type="digit" auto-focus placeholder="mmol/L" bindinput="bindValueChange" />
+      </view>
+    </view>
+  </view>
+</view>
+<view class="page-section">
+  <view class="container">
+    <view class="btn-container">
       <button type="primary" size="mini" class="btn" disabled="{{btnDisabled}}" bindtap="save">保存</button>
-    </view>
     </view>
   </view>
 </view>

@@ -1,6 +1,6 @@
 /* pages/account/update/index.wxss */
-page {
-  background-color: #fff;
+view {
+  background-color: initial;
 }
 
 label {
@@ -14,6 +14,13 @@ label {
   align-items: center;
 }
 
-button {
-  margin-top: 40rpx;
+.btn-container {
+  width: 100%;
+  margin-top: 30rpx;
+  text-align: right;
+}
+
+.btn-container .btn {
+  width: 200rpx;
+  margin: 0;
 }
