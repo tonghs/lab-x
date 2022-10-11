@@ -76,7 +76,7 @@ Page({
     this.setData({
       showActionSheet: true,
       actionGroups: [
-        {text: "删除", type: "warn", value: measureId}
+        { text: "删除", type: "warn", value: measureId }
       ]
     })
   },
@@ -85,18 +85,16 @@ Page({
     let id = e.detail.value
     let _self = this
     req.request({
-      url: "/chronic_disease/metric_measure/",
-      data: {
-        metric_measure_id: id,
-      },
+      url: "/chronic_disease/metric_measure/" + id,
+      data: {},
       method: "DELETE",
-      success: function(e) {
+      success: function (e) {
         _self.getMetricMeasure()
         _self.setData({
           showActionSheet: false
         })
         const eventChannel = _self.getOpenerEventChannel()
-        eventChannel.emit('backCallabck', {data: {needRefresh: true}});
+        eventChannel.emit('backCallabck', { data: { needRefresh: true } });
       }
     })
   },
@@ -111,7 +109,7 @@ Page({
         size: this.data.size
       },
       method: "GET",
-      success: function(res) {
+      success: function (res) {
         let content = res.data.content
 
         _self.setData({
