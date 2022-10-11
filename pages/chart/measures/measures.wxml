@@ -9,7 +9,7 @@
       <view>值(mmol/L)</view>
     </view>
     <view wx:for="{{data}}" wx:key="id">
-      <view class="list-item flex-row" data-value="{{item.id}}" bindlongpress="onLongTap">
+      <view class="list-item flex-row" data-rid="{{item.id}}" bindlongpress="onLongTap">
         <view class="date">{{item._created_at}}</view>
         <view class="value">{{item.value}}</view>
       </view>

@@ -72,7 +72,7 @@ Page({
   },
 
   onLongTap(e) {
-    let measureId = e.target.dataset.value
+    let measureId = e.currentTarget.dataset.rid
     this.setData({
       showActionSheet: true,
       actionGroups: [
