@@ -49,9 +49,7 @@
       还没有数据
     </view>
   </view>
-  <view>
-    <view class="btn-plus" bindtap="add" hover-class="btn-plus-hover">
-      +
-    </view>
+  <view class="btn-plus" bindtap="add" hover-class="btn-plus-hover">
+    <image src="/images/plus.png"></image>
   </view>
 </view>

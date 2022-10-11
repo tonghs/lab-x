@@ -5,22 +5,23 @@
 }
 
 .btn-plus {
-  width: 100rpx;
-  height: 100rpx;
-  padding: 0;
-  margin: 0;
   position: fixed;
-  background-color: #07c160;
   color: #fff;
-  text-align: center;
-  align-items: center;
-  line-height: 85rpx;
-  float: right;
-  border-radius: 50rpx;
-  font-size: 80rpx;
   bottom: 20rpx;
   right: 20rpx;
   box-shadow: 0rpx 0rpx 10rpx rgba(0, 0, 0, 0.445);
+  background-color: #07c160;
+  height: 100rpx;
+  width: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50rpx;
+}
+
+.btn-plus image {
+  height: 60rpx;
+  width: 60rpx;
 }
 
 .btn-plus-hover {
