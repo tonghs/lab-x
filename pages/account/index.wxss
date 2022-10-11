@@ -1,5 +1,6 @@
 /**index.wxss**/
 .userinfo {
+  background-color: #ffffff;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -41,6 +42,7 @@ view.account {
 .settings {
   margin: 0 0 20rpx;
   width: 100%;
+  background-color: #ffffff;
 }
 
 .settings-item:first-child {
@@ -81,5 +83,4 @@ view.account {
 .footer {
   position: absolute;
   bottom: 40rpx;
-  background-color: initial;
 }

@@ -1,7 +1,4 @@
 /* pages/account/update/index.wxss */
-view {
-  background-color: initial;
-}
 
 label {
   color: #51515160;

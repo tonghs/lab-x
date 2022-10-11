@@ -1,8 +1,6 @@
 <!--pages/users/index.wxml-->
 <page-meta>
-  <navigation-bar
-    title="用户管理"
-  />
+  <navigation-bar title="用户管理"/>
 </page-meta>
 <view class="list-container flex-column">
   <view class="header-title flex-column">

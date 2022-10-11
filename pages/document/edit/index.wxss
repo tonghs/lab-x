@@ -1,8 +1,4 @@
 /* pages/document/edit/index.wxss */
-view {
-  background-color: initial;
-}
-
 .container {
   padding: 0 20rpx;
 }

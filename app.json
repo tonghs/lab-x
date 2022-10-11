@@ -9,7 +9,8 @@
     "pages/about/index",
     "pages/document/edit/index",
     "pages/document/search/index",
-    "pages/chart/measure/measure"
+    "pages/chart/measure/measure",
+    "pages/chart/measures/measures"
   ],
   "entryPagePath": "pages/chart/index",
   "window": {

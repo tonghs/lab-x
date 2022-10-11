@@ -112,6 +112,12 @@ Page({
       url: '/pages/chart/measure/measure',
     })
   },
+  viewAll: function() {
+    wx.navigateTo({
+      url: '/pages/chart/measures/measures',
+    })
+  },
+
   getServerData: function () {
     let _self = this
     req.request({

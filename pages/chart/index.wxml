@@ -1,8 +1,6 @@
 <!--pages/chart/index.wxml-->
 <page-meta>
-  <navigation-bar
-    title="指标"
-  />
+  <navigation-bar title="指标" />
 </page-meta>
 <view class="flex-column">
   <view class="card">
@@ -38,14 +36,17 @@
     </view>
   </view>
   <view class="card">
-    <view class="title">最近{{limit}}次{{metricName}}结果({{unit}})</view>
+    <view class="title flex-row">
+      最近{{limit}}次{{metricName}}结果({{unit}})
+      <view class="linked linked-secondary" bindtap="viewAll">查看全部</view>
+    </view>
     <view class="body" wx:if="{{chartData.series.length > 0 && chartData.series[0].data.length > 0}}">
       <view class="charts-box">
         <qiun-wx-ucharts type="column" opts="{{opts}}" chartData="{{chartData}}" />
       </view>
     </view>
     <view class="body" wx:if="{{chartData.series.length == 0 || chartData.series[0].data.length == 0}}">
-        还没有数据
+      还没有数据
     </view>
   </view>
   <view>

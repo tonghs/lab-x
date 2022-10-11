@@ -1,9 +1,5 @@
 /* pages/chart/index.wxss */
 
-view {
-  background-color: initial;
-}
-
 .container {
   padding: 0 20rpx;
 }

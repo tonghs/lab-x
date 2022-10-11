@@ -1,39 +1,4 @@
 /* pages/chart/index.wxss */
-
-view {
-  background-color: initial;
-}
-
-.container {
-  padding: 0 20rpx;
-}
-
-.card:first-child {
-  margin-top: 0;
-}
-
-.card {
-  /* width: 100%; */
-  padding: 30rpx;
-  margin: 15rpx 0 15rpx;
-  /* box-shadow: 0 3rpx 5px 1px #cdcdcd60; */
-  /* border-radius: 20rpx; */
-  border: 1px solid #cdcdcd60;
-  background-color: #fff;
-  border-width: 1rpx 0;
-}
-
-.card .title {
-  font-size: 35rpx;
-}
-
-.card .body {
-  font-size: 30rpx;
-  font-weight: 300;
-  padding-top: 15rpx;
-  justify-content: space-between;
-}
-
 .input-container {
   background-color: #fff;
   align-items: center;

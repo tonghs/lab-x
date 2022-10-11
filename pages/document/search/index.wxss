@@ -1,8 +1,4 @@
 /* pages/document/search/index.wxss */
-
-view {
-  background-color: initial;
-}
 .container {
   padding: 0 20rpx;
 }
