@@ -1,11 +1,18 @@
 // pages/chart/measures/measures.js
+const req = require("../../../common/request")
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    showActionSheet: false,
+    actionGroups: [],
+    metricId: 1,
+    size: 15,
+    cursor: "",
+    data: []
   },
 
   /**
@@ -19,7 +26,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    this.getMetricMeasure()
   },
 
   /**
@@ -62,5 +69,56 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  onLongTap(e) {
+    let measureId = e.target.dataset.value
+    this.setData({
+      showActionSheet: true,
+      actionGroups: [
+        {text: "删除", type: "warn", value: measureId}
+      ]
+    })
+  },
+
+  actionSheetItemClick(e) {
+    let id = e.detail.value
+    let _self = this
+    req.request({
+      url: "/chronic_disease/metric_measure/",
+      data: {
+        metric_measure_id: id,
+      },
+      method: "DELETE",
+      success: function(e) {
+        _self.getMetricMeasure()
+        _self.setData({
+          showActionSheet: false
+        })
+        const eventChannel = _self.getOpenerEventChannel()
+        eventChannel.emit('backCallabck', {data: {needRefresh: true}});
+      }
+    })
+  },
+
+  getMetricMeasure() {
+    let _self = this
+    req.request({
+      url: "/chronic_disease/metric_measures/",
+      data: {
+        metric_id: this.data.metricId,
+        cursor: this.data.cursor,
+        size: this.data.size
+      },
+      method: "GET",
+      success: function(res) {
+        let content = res.data.content
+
+        _self.setData({
+          data: content.datas,
+          cursor: content.next_cursor
+        })
+      }
+    })
   }
 })

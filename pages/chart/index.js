@@ -10,13 +10,15 @@ Page({
   data: {
     navBarHeight: app.globalData.navBarHeight,
     metricName: "",
-    limit: 15,
+    metricId: 1,
+    size: 15,
     unit: "",
     avgData: {
       avg15: 0,
       avg7: 0,
       v: 0
     },
+    needRefresh: false,
 
     chartData: {
       series: []
@@ -77,7 +79,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getServerData()
+    if (this.data.needRefresh) {
+      this.getServerData()
+      this.data.needRefresh = false
+    }
   },
 
   /**
@@ -108,23 +113,40 @@ Page({
 
   },
   add: function () {
+    let _self = this
     wx.navigateTo({
       url: '/pages/chart/measure/measure',
+      events: {
+        backCallabck: (data) => {
+          _self.setData({
+            needRefresh: data.data.needRefresh
+          })
+        }
+      }
     })
   },
-  viewAll: function() {
+
+  viewAll: function () {
+    let _self = this
     wx.navigateTo({
       url: '/pages/chart/measures/measures',
+      events: {
+        backCallabck: (data) => {
+          _self.setData({
+            needRefresh: data.data.needRefresh
+          })
+        }
+      }
     })
   },
 
   getServerData: function () {
     let _self = this
     req.request({
-      url: "/chronic_disease/metric_measures/",
+      url: "/chronic_disease/metric_measures/recent",
       data: {
-        metric_id: 1,
-        limit: this.data.limit
+        metric_id: this.data.metricId,
+        limit: this.data.size
       },
       method: 'GET',
       success: function (res) {
@@ -155,7 +177,7 @@ Page({
           metricName: content.metric_text,
           unit: content.metric_unit,
           avgData: content.avg_data,
-          ['opts.extra.markLine.data']: [{value: content.ref_value}],
+          ['opts.extra.markLine.data']: [{ value: content.ref_value }],
           ['opts.extra.column.width']: columnWidth
         });
         wx.stopPullDownRefresh()

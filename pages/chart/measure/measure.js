@@ -98,6 +98,7 @@ Page({
   },
 
   save() {
+    let _self = this
     req.request({
       url: "/chronic_disease/metric_measure/",
       data: {
@@ -107,6 +108,9 @@ Page({
       },
       method: "POST",
       success: function() {
+        const eventChannel = _self.getOpenerEventChannel()
+        eventChannel.emit('backCallabck', {data: {needRefresh: true}});
+
         wx.navigateBack({
           delta: 1,
           success: function() {

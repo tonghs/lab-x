@@ -2,6 +2,20 @@
 <page-meta>
   <navigation-bar title="所有指标" />
 </page-meta>
-<view class="container">
+<view class="flex-column content scroll">
+  <scroll-view scroll-y="true" class="list-view" show-scrollbar="false" bindscrolltolower="lower">
+    <view class="list-item list-header flex-row">
+      <view>日期</view>
+      <view>值(mmol/L)</view>
+    </view>
+    <view wx:for="{{data}}" wx:key="id">
+      <view class="list-item flex-row" data-value="{{item.id}}" bindlongpress="onLongTap">
+        <view class="date">{{item._created_at}}</view>
+        <view class="value">{{item.value}}</view>
+      </view>
+    </view>
+  </scroll-view>
 </view>
 
+<mp-actionSheet bindactiontap="actionSheetItemClick" show="{{showActionSheet}}" actions="{{actionGroups}}" title="更多操作">
+</mp-actionSheet>

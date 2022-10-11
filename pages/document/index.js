@@ -172,7 +172,7 @@ Page({
     })
   },
 
-  actionSheetItemClient: function(e) {
+  actionSheetItemClick: function(e) {
     var detail = e.detail
     var _self = this
     var packageId = parseInt(detail.value)

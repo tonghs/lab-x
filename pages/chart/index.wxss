@@ -20,8 +20,8 @@
 }
 
 .btn-plus image {
-  height: 60rpx;
-  width: 60rpx;
+  height: 50rpx;
+  width: 50rpx;
 }
 
 .btn-plus-hover {

@@ -104,7 +104,6 @@ Page({
   },
   setOrClearAdmin: function (e) {
     var user_id = e.currentTarget.dataset.id
-    console.log(user_id)
   },
   lower: function() {
     this.getData()

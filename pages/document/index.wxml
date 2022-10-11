@@ -48,7 +48,7 @@
 <view class="placeholder-tips" wx:if="{{docPackages.length == 0}}">
 点击右上角"+"开始上传
 </view>
-<mp-actionSheet bindactiontap="actionSheetItemClient" show="{{showActionsheet}}" actions="{{actionGroups}}" title="更多操作">
+<mp-actionSheet bindactiontap="actionSheetItemClick" show="{{showActionsheet}}" actions="{{actionGroups}}" title="更多操作">
 </mp-actionSheet>
 
 <view class="footer bottom-footer" wx:if="{{docPackages.length == 0}}">

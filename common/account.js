@@ -7,9 +7,7 @@ module.exports = {
       title: '登录中',
     })
     wx.getUserInfo({
-      desc: '完善会员资料',
       success: res => {
-        console.log(res)
         app.globalData.userInfo = res.userInfo
         
         wx.login({

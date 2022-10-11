@@ -122,7 +122,7 @@ Page({
             }
           })
         }
-      })
+      }).catch((e) => { });
   },
   uploadError(e) {
       wx.showModal({title: e.detail.errMsg, showCancel: false, });
