@@ -80,7 +80,7 @@ page {
 .rounded {
   margin: 15rpx 20rpx 15rpx;
   border-radius: 20rpx;
-  box-shadow: 0 0 5rpx #cdcdcd60;
+  box-shadow: 0 0 5rpx #cdcdcd80;
   border-width: 0;
 }
 
