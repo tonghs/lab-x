@@ -6,9 +6,9 @@
 
 .list-item {
   padding: 20rpx 40rpx;
-  border: 1px solid #cdcdcd60;
+  border: 1rpx solid #cdcdcd60;
   background-color: #fff;
-  border-width: 1rpx 0;
+  border-width: 0 0 1rpx 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

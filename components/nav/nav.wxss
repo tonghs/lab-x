@@ -5,7 +5,7 @@
   left: 0;
   width: 100vw;
   background-color: #fff;
-  border: 1px solid #cdcdcd60;
+  /* border: 1px solid #cdcdcd60; */
   border-width: 0 0 1rpx 0;
 }
 .nav-main {

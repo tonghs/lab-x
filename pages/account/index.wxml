@@ -1,12 +1,12 @@
 <!--index.wxml-->
-<view class="userinfo flex-row"
+<view class="rounded userinfo flex-row"
   data-url="/pages/account/edit/index?user_id={{appUserInfo.user_id}}"
   data-isSelf="1" catchtap="navTo" wx:if="{{isLogined}}">
-  <view class="flex-view-item avatar" wx:if="{{hasUserInfo && canIUse}}" >
+  <view class="avatar" wx:if="{{hasUserInfo && canIUse}}" >
     <image class="userinfo-avatar"  src="{{userInfo.avatarUrl}}" mode="cover"></image>
     <!-- <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
   </view>
-  <view class="flex-view-item nickname">
+  <view class="nickname">
     <text class="userinfo-nickname" wx:if="{{isLogined}}">{{appUserInfo.user_name}}</text>
   </view>
 </view>
@@ -22,7 +22,7 @@
     <text class="setting-icon-txt">指标管理</text>
   </view> -->
 </view>
-<view class="flex-column settings">
+<view class="flex-column settings rounded">
   <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/users/index" wx:if="{{isLogined && appUserInfo.is_admin}}">
     <image class="setting-icon" src="/images/settings/user_manage.png" mode="cover"></image>
     <text class="setting-icon-txt">用户管理</text>

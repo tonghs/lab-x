@@ -9,7 +9,7 @@
 </navigation>
 
 <view class="flex-column" style="margin-top: {{navBarHeight}}px">
-  <view class="card" wx:for="{{docPackages}}" wx:key="id" wx:for-item="item">
+  <view class="rounded card" wx:for="{{docPackages}}" wx:key="id" wx:for-item="item">
     <view class="title">{{item.desc}}</view>
     <view class="body">
       <view>

@@ -65,12 +65,23 @@ page {
   margin-top: 0;
 }
 
+.rounded:first-child {
+  margin-top: 20rpx;
+}
+
 .card {
   padding: 30rpx;
   margin: 15rpx 0 15rpx;
   border: 1px solid #cdcdcd60;
   background-color: #fff;
   border-width: 1rpx 0;
+}
+
+.rounded {
+  margin: 15rpx 20rpx 15rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 0 5rpx #cdcdcd60;
+  border-width: 0;
 }
 
 .card .title {

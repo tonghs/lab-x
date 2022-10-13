@@ -3,7 +3,7 @@
   <navigation-bar title="指标" />
 </page-meta>
 <view class="flex-column">
-  <view class="card">
+  <view class="rounded card">
     <view class="title"></view>
     <view class="body">
       <view class="summary">
@@ -35,7 +35,7 @@
       </view>
     </view>
   </view>
-  <view class="card">
+  <view class="rounded card">
     <view class="title flex-row">
       最近{{limit}}次{{metricName}}结果({{unit}})
       <view class="linked linked-secondary" bindtap="viewAll">查看全部</view>

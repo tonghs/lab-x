@@ -1,4 +1,8 @@
 /* pages/chart/index.wxss */
+page {
+  border: 1rpx 0 0 0;
+}
+
 .input-container {
   background-color: #fff;
   align-items: center;
