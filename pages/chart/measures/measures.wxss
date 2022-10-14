@@ -2,9 +2,11 @@
 
 .list-header {
   font-weight: bold;
+  font-size: 27rpx;
 }
 
 .list-item {
+  font-size: 25rpx;
   padding: 20rpx 40rpx;
   border: 1rpx solid #cdcdcd60;
   background-color: #fff;

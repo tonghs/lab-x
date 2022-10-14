@@ -12,7 +12,9 @@ page {
 }
 
 .header-title {
-  margin-bottom: 10rpx;
+  background-color: #fff;
+  font-size: 27rpx;
+  font-weight: bold;
 }
 
 .flex-item {
@@ -20,10 +22,11 @@ page {
 }
 
 .flex-item.users {
-  font-size: 27rpx;
+  font-size: 25rpx;
   border-style: solid;
   border-color: #cdcdcd60;
-  border-width: 1rpx 0;
+  background-color: #fff;
+  border-width: 0 0 1rpx 0;
   align-items: center;
   display: flex;
 }

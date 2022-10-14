@@ -39,7 +39,7 @@
 }
 
 .imgs {
-  margin-top: 30rpx;
+  margin-top: 15rpx;
 }
 
 .btn-container {
@@ -52,13 +52,13 @@
 }
 
 
-.card > .body > .footer {
+.card .footer {
   font-size: 26rpx;
   color: #cdcdcd;
-  margin-top: 30rpx;
+  margin-top: 15rpx;
 }
 
-.ts, .btn-delete-container {
+.ts, .btn-menu-container {
   width: 50%;
 }
 
@@ -66,23 +66,22 @@
   text-align: left;
 }
 
-.btn-delete-container {
+.btn-menu-container {
   text-align: right;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.btn-delete {
+.btn-menu {
   width: 70rpx;
   height: 32rpx;
-  /* background-color: #cdcdcd60; */
-  text-align: center;
+  text-align: right;
   border-radius: 6rpx;
   margin-left: auto;
 }
 
-.btn-delete-img {
+.btn-menu-img {
   width: 32rpx;
   height: 32rpx;
 }

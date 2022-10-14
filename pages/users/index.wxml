@@ -13,7 +13,6 @@
       </view>
     </view>
   </view>
-  <view class="line"></view>
   <view wx:if="{{users.length > 0}}" class="flex-column content scroll">
     <scroll-view scroll-y="true" class="list-view" show-scrollbar="false" bindscrolltolower="lower">
       <view wx:for="{{users}}" wx:key="id" wx:for-index="idx" wx:for-item="item">

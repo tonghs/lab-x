@@ -13,6 +13,7 @@ Page({
     metricId: 1,
     size: 15,
     unit: "",
+    refValue: 0,
     avgData: {
       avg15: 0,
       avg7: 0,
@@ -25,16 +26,19 @@ Page({
     },
     //您可以通过修改 config-ucharts.js 文件中下标为 ['line'] 的节点来配置全局默认参数，如都是默认参数，此处可以不传 opts 。实际应用过程中 opts 只需传入与全局默认参数中不一致的【某一个属性】即可实现同类型的图表显示不同的样式，达到页面简洁的需求。
     opts: {
-      padding: [15, 5, 0, 5],
+      padding: [20, 0, 0, 0],
       enableMarkLine: true,
       legend: {},
       xAxis: {
         disableGrid: true,
         rotateLabel: true,
-        rotateAngle: -45
+        rotateAngle: -45,
+        fontSize: 10,
+        fontColor: "#cdcdcd"
       },
       yAxis: {
-        disabled: true
+        disabled: true,
+        disableGrid: true
       },
       legend: {
         show: false
@@ -177,6 +181,7 @@ Page({
           metricName: content.metric_text,
           unit: content.metric_unit,
           avgData: content.avg_data,
+          refValue: content.ref_value,
           ['opts.extra.markLine.data']: [{ value: content.ref_value }],
           ['opts.extra.column.width']: columnWidth
         });

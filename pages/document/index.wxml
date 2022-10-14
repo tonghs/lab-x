@@ -12,45 +12,33 @@
   <view class="rounded card" wx:for="{{docPackages}}" wx:key="id" wx:for-item="item">
     <view class="title">{{item.desc}}</view>
     <view class="body">
-      <view>
-        <view class="imgs">
-          <view
-            wx:for="{{item.ident_urls}}"
-            wx:for-index="idx" wx:key="_id"
-            wx:for-item="rows" class="flex-column">
-            <view class="flex-row">
-              <view
-                wx:for="{{rows}}"
-                wx:for-item="sub_item"
-                wx:key="id"
-                class="{{rows.length > 2 ? 'preview' : (rows.length == 2 ? 'preview-double' : 'preview-full')}}"
-                data-item-id="{{item.id}}" data-url="{{sub_item}}"
-                bindtap="preview"
-                style="background-image: url('{{sub_item}}');">
-              </view>
+      <view class="imgs">
+        <view wx:for="{{item.ident_urls}}" wx:for-index="idx" wx:key="_id" wx:for-item="rows" class="flex-column">
+          <view class="flex-row">
+            <view wx:for="{{rows}}" wx:for-item="sub_item" wx:key="id" class="{{rows.length > 2 ? 'preview' : (rows.length == 2 ? 'preview-double' : 'preview-full')}}" data-item-id="{{item.id}}" data-url="{{sub_item}}" bindtap="preview" style="background-image: url('{{sub_item}}');">
             </view>
           </view>
         </view>
       </view>
-      <view class="flex-row footer">
-        <view class="ts">
-          {{item.created_at}}
-        </view>
-        <view class="btn-delete-container">
-          <view class="btn-delete" data-item-id="{{item.id}}"  bindtap="btnMenuClick">
-            <image src="/images/menu.png" class="btn-delete-img"></image>
-          </view>
+    </view>
+    <view class="flex-row footer">
+      <view class="ts">
+        {{item.created_at}}
+      </view>
+      <view class="btn-menu-container">
+        <view class="btn-menu" data-item-id="{{item.id}}" bindtap="btnMenuClick">
+          <image src="/images/menu.png" class="btn-menu-img"></image>
         </view>
       </view>
     </view>
   </view>
 </view>
 <view class="placeholder-tips" wx:if="{{docPackages.length == 0}}">
-点击右上角"+"开始上传
+  点击右上角"+"开始上传
 </view>
 <mp-actionSheet bindactiontap="actionSheetItemClick" show="{{showActionsheet}}" actions="{{actionGroups}}" title="更多操作">
 </mp-actionSheet>
 
 <view class="footer bottom-footer" wx:if="{{docPackages.length == 0}}">
-    <text class="slogan">{{slogan}}</text>
+  <text class="slogan">{{slogan}}</text>
 </view>
