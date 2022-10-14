@@ -10,3 +10,32 @@
   width: 200rpx;
   margin: 0;
 }
+
+.label-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0rpx;
+  background-color: #fff;
+}
+
+.label-container .label {
+  margin: auto;
+  text-align: center;
+  border-radius: 10rpx;
+  width: 100%;
+  padding: 8rpx 0;
+  margin: 0 20rpx;
+  box-shadow: 0 0 5rpx #00000050;
+  font-size: 30rpx;
+}
+
+.disabled {
+  background-color: #cdcdcd40;
+  color: #00000080;
+}
+
+.active {
+  background-color: #cdcdcd80;
+  color: #000000;
+}

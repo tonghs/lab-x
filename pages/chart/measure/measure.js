@@ -12,7 +12,8 @@ Page({
     date: null,
     time: null,
     btnDisabled: false,
-    slogan: config.slogan
+    labels: [],
+    activedLabel: ""
   },
 
   /**
@@ -31,6 +32,7 @@ Page({
       date: now.slice(0, 10),
       time: now.slice(11, 16)
     })
+    this.getMetricLabels()
   },
 
   /**
@@ -97,6 +99,27 @@ Page({
     }
   },
 
+  getMetricLabels() {
+    let _self = this
+    req.request({
+      url: "/chronic_disease/metric/1/labels/",
+      method: "GET",
+      success: function(res) {
+        _self.setData({
+          labels: res.data.content.metric_labels,
+          activedLabel: res.data.content.metric_labels[0].name
+        })
+      }
+    })
+  },
+
+  changeLabel(e) {
+    let labelName = e.currentTarget.dataset.label_name
+    this.setData({
+      activedLabel: labelName
+    })
+  },
+
   save() {
     let _self = this
     req.request({
@@ -104,6 +127,7 @@ Page({
       data: {
         metric_id: 1,
         value: this.data.value,
+        metric_label: this.data.activedLabel,
         created_at: this.data.date + " " + this.data.time
       },
       method: "POST",

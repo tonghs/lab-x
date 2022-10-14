@@ -10,7 +10,7 @@
     </view>
     <view wx:for="{{data}}" wx:key="id">
       <view class="list-item flex-row" data-rid="{{item.id}}" bindlongpress="onLongTap">
-        <view class="date">{{item._created_at}}</view>
+        <view class="date">{{item._created_at}}<span class="secondary"> • {{item.metric_label}}</span></view>
         <view class="value">{{item.value}}</view>
       </view>
     </view>

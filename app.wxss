@@ -151,3 +151,7 @@ page {
   padding: 1rpx;
   border-radius: 10rpx;
 }
+
+.secondary {
+  color: #cdcdcd;
+}

@@ -31,6 +31,13 @@
       </view>
     </view>
   </view>
+  <view class="page-section">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="label-container">
+        <view wx:for="{{labels}}" wx:key="name" data-label_name="{{item.name}}" class="label {{activedLabel == item.name ? 'active' : 'disabled'}}" bindtap="changeLabel">{{item.text}}</view>
+      </view>
+    </view>
+  </view>
 </view>
 <view class="page-section">
   <view class="container">
