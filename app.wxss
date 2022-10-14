@@ -104,7 +104,7 @@ page {
 .card .body {
   font-size: 30rpx;
   font-weight: 300;
-  padding-top: 5rpx;
+  padding-top: 10rpx;
   align-items:flex-start;
   justify-content: space-between;
 }
