@@ -103,8 +103,12 @@ Page({
 
   },
   setOrClearAdmin: function (e) {
+    wx.vibrateShort({
+      type: 'light',
+    })
     var user_id = e.currentTarget.dataset.id
   },
+
   lower: function() {
     this.getData()
   }
