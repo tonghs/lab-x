@@ -72,6 +72,9 @@ Page({
   },
 
   onLongTap(e) {
+    wx.vibrateShort({
+      type: 'light',
+    })
     let measureId = e.currentTarget.dataset.rid
     this.setData({
       showActionSheet: true,

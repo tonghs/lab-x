@@ -185,6 +185,9 @@ Page({
           ['opts.extra.markLine.data']: [{ value: content.ref_value }],
           ['opts.extra.column.width']: columnWidth
         });
+        wx.vibrateShort({
+          type: 'light',
+        })
         wx.stopPullDownRefresh()
       }
     })
