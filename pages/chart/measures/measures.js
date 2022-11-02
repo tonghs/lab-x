@@ -12,15 +12,7 @@ Page({
     metricId: 1,
     size: 15,
     cursor: "",
-    chartTypes: [
-      {
-        name: "line",
-        text: "折线"
-      }, {
-        name: "column",
-        text: "柱状"
-      }
-    ],
+    chartTypes: [],
     activedType: "line",
     data: []
   },
@@ -37,6 +29,7 @@ Page({
    */
   onReady() {
     this.getMetricMeasure()
+    this.getChartTypes()
   },
 
   /**
@@ -82,9 +75,21 @@ Page({
   },
 
   changeType(e) {
+    let _self = this
     let typeName = e.currentTarget.dataset.type_name
     this.setData({
       activedType: typeName
+    })
+    req.request({
+      url: "/chronic_disease/metric/" + this.data.metricId + "/chart_types/",
+      method: "POST",
+      data: {
+        chart_type: typeName
+      },
+      success: function (res) {
+        const eventChannel = _self.getOpenerEventChannel()
+        eventChannel.emit('backCallabck', { data: { needRefresh: true } });
+      }
     })
   },
 
@@ -131,8 +136,26 @@ Page({
 
         _self.setData({
           data: content.datas,
+          activedType: content.chart_type,
           cursor: content.next_cursor
         })
+      }
+    })
+  },
+
+  getChartTypes(opts) {
+    let _self = this
+    req.request({
+      url: "/chronic_disease/metric/" + this.data.metricId + "/chart_types/",
+      method: "GET",
+      success: function (res) {
+        let content = res.data.content
+        _self.setData({
+          chartTypes: content.chart_types
+        });
+        if (typeof(opts) != "undefined" && 'success' in opts) {
+          opts.success()
+        }
       }
     })
   }

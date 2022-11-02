@@ -187,6 +187,7 @@ Page({
           unit: content.metric_unit,
           avgData: content.avg_data,
           refValue: content.ref_value,
+          chartType: content.chart_type,
           ['opts.extra.markLine.data']: [{ value: content.ref_value }],
           ['opts.extra.column.width']: columnWidth
         });
