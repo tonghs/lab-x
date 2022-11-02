@@ -40,6 +40,9 @@
       <!-- 最近 {{size}} 次{{metricName}}结果（{{unit}}） -->
       <view class="tips">
         <view class="item">
+          <view class="metric-name">{{metricName}}</view>
+        </view>
+        <view class="item">
           <view class="dot warn-bg-color"></view>
           <view class="label">偏高</view>
         </view>
@@ -52,8 +55,12 @@
     </view>
 
     <view class="body" wx:if="{{chartData.series.length > 0 && chartData.series[0].data.length > 0}}">
-      <view class="charts-box">
+      <view class="charts-box" wx:if="{{chartType == 'column'}}">
         <qiun-wx-ucharts type="column" opts="{{opts}}" chartData="{{chartData}}" />
+      </view>
+
+      <view class="charts-box" wx:if="{{chartType == 'line'}}">
+        <qiun-wx-ucharts type="line" opts="{{opts}}" chartData="{{chartData}}" />
       </view>
     </view>
     <view class="body" wx:if="{{chartData.series.length == 0 || chartData.series[0].data.length == 0}}">

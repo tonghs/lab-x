@@ -12,6 +12,16 @@ Page({
     metricId: 1,
     size: 15,
     cursor: "",
+    chartTypes: [
+      {
+        name: "line",
+        text: "折线"
+      }, {
+        name: "column",
+        text: "柱状"
+      }
+    ],
+    activedType: "line",
     data: []
   },
 
@@ -71,10 +81,14 @@ Page({
 
   },
 
-  onLongTap(e) {
-    wx.vibrateShort({
-      type: 'light',
+  changeType(e) {
+    let typeName = e.currentTarget.dataset.type_name
+    this.setData({
+      activedType: typeName
     })
+  },
+
+  onItemLongTap(e) {
     let measureId = e.currentTarget.dataset.rid
     this.setData({
       showActionSheet: true,

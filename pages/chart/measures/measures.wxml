@@ -3,13 +3,18 @@
   <navigation-bar title="所有指标" />
 </page-meta>
 <view class="flex-column content scroll">
+  <view class="settings">
+    <view class="label-container">
+      <view wx:for="{{chartTypes}}" wx:key="name" data-type_name="{{item.name}}" class="label {{activedType == item.name ? 'active' : 'disabled'}}" bindtap="changeType">{{item.text}}</view>
+    </view>
+  </view>
   <scroll-view scroll-y="true" class="list-view" show-scrollbar="false" bindscrolltolower="lower">
     <view class="list-item list-header flex-row">
       <view>日期</view>
       <view>值(mmol/L)</view>
     </view>
     <view wx:for="{{data}}" wx:key="id">
-      <view class="list-item flex-row" data-rid="{{item.id}}" bindlongpress="onLongTap">
+      <view class="list-item flex-row" data-rid="{{item.id}}" bindlongpress="onItemLongTap">
         <view class="date">{{item._created_at}}<span class="secondary"> • {{item.metric_label}}</span></view>
         <view class="value">{{item.value}}</view>
       </view>

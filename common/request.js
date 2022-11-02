@@ -109,12 +109,14 @@ function request(options){
 function getSign(params) {
   var secret = config.apiSecret
   if (typeof params == "string") {
+      console.log("type string " + params + " " + secret)
       return paramsStrSort(params, secret);
   } else if (typeof params == "object") {
       var arr = [];
       for (var i in params) {
           arr.push((i + "=" + params[i]));
       }
+      console.log("type object " + arr.join(("&")) + " " + secret)
       return paramsStrSort(arr.join(("&")), secret);
   }
 }

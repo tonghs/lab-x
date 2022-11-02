@@ -19,6 +19,7 @@ Page({
       avg7: 0,
       v: 0
     },
+    chartType: "column",
     needRefresh: false,
 
     chartData: {
@@ -26,6 +27,7 @@ Page({
     },
     //您可以通过修改 config-ucharts.js 文件中下标为 ['line'] 的节点来配置全局默认参数，如都是默认参数，此处可以不传 opts 。实际应用过程中 opts 只需传入与全局默认参数中不一致的【某一个属性】即可实现同类型的图表显示不同的样式，达到页面简洁的需求。
     opts: {
+      color: ["#1890FF"],
       padding: [20, 0, 0, 0],
       enableMarkLine: true,
       legend: {},
@@ -116,6 +118,7 @@ Page({
   onShareAppMessage: function () {
 
   },
+
   add: function () {
     let _self = this
     wx.navigateTo({
@@ -150,7 +153,7 @@ Page({
       url: "/chronic_disease/metric_measures/recent",
       data: {
         metric_id: this.data.metricId,
-        limit: this.data.size
+        size: this.data.size
       },
       method: 'GET',
       success: function (res) {
@@ -167,10 +170,12 @@ Page({
           series: [
             {
               name: content.metric_text,
-              data: data
+              data: data,
+              color: data[data.length - 1].color
             }
           ]
         };
+
         let maxWidth = 35
         let minWidth = 10
         let maxDataLength = 15
