@@ -21,6 +21,7 @@ page {
   align-items: center;
   justify-content: center;
   border-radius: 50rpx;
+  z-index: 100000;
 }
 
 .btn-plus image {

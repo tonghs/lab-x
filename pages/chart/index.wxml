@@ -68,10 +68,10 @@
 
       <view class="body" wx:if="{{data[item.metric_id].series.length > 0 && data[item.metric_id].series[0].data.length > 0}}">
         <view class="charts-box" wx:if="{{metricExtra[item.metric_id].chartType == 'column'}}">
-          <qiun-wx-ucharts type="column" opts="{{metricExtra[item.metric_id].opts}}" chartData="{{data[item.metric_id]}}" />
+          <qiun-wx-ucharts canvas2d="true" type="column" opts="{{metricExtra[item.metric_id].opts}}" chartData="{{data[item.metric_id]}}" />
         </view>
         <view class="charts-box" wx:if="{{metricExtra[item.metric_id].chartType == 'line'}}">
-          <qiun-wx-ucharts type="line" opts="{{metricExtra[item.metric_id].opts}}" chartData="{{data[item.metric_id]}}" />
+          <qiun-wx-ucharts canvas2d="true" type="line" opts="{{metricExtra[item.metric_id].opts}}" chartData="{{data[item.metric_id]}}" />
         </view>
       </view>
       <view class="body" wx:if="{{userMetrics.length == 0 || data.length == 0}}">
