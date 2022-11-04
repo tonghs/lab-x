@@ -79,7 +79,10 @@
       </view>
     </view>
   </view>
-  <view class="btn-plus" bindtap="add" hover-class="btn-plus-hover">
+  <view class="btn-plus" bindtap="add" bindlongpress="addMore" hover-class="btn-plus-hover">
     <image src="/images/plus.png"></image>
   </view>
 </view>
+
+<mp-actionSheet bindactiontap="actionSheetItemClick" show="{{showActionSheet}}" actions="{{actionGroups}}" title="添加更多数值">
+</mp-actionSheet>

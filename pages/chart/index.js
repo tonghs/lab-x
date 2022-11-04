@@ -15,6 +15,7 @@ Page({
     needRefresh: false,
     userMetrics: [],
     defaultMetricId: 0,
+    actionGroups: [],
     //您可以通过修改 config-ucharts.js 文件中下标为 ['line'] 的节点来配置全局默认参数，如都是默认参数，此处可以不传 opts 。实际应用过程中 opts 只需传入与全局默认参数中不一致的【某一个属性】即可实现同类型的图表显示不同的样式，达到页面简洁的需求。
     opts: {
       color: ["#1890FF"],
@@ -123,6 +124,39 @@ Page({
     })
   },
 
+  addMore() {
+      var arr = new Array()
+      for (var i = 0; i < this.data.userMetrics.length; i++) {
+        arr.push({
+          text: this.data.userMetrics[i].metric_text,
+          type: "info",
+          value: this.data.userMetrics[i].metric_id
+        })
+      };
+      this.setData({
+        showActionSheet: true,
+        actionGroups: arr
+      })
+  },
+
+  actionSheetItemClick(e) {
+    let metricId = e.detail.value
+    this.setData({
+      showActionSheet: false,
+    })
+    let _self = this
+    wx.navigateTo({
+      url: '/pages/chart/measure/measure?metricId=' + metricId,
+      events: {
+        backCallabck: (data) => {
+          _self.setData({
+            needRefresh: data.data.needRefresh
+          })
+        }
+      }
+    })
+  },
+
   toSetting(e) {
     let _self = this
     var metricId = e.currentTarget.dataset.metric_id;
@@ -156,7 +190,7 @@ Page({
   getServerData() {
     const _self = this;
     this.getUserMetrics({
-      success: function(res) {
+      success: function (res) {
         var userMetrics = res;
         for (var i = 0; i < userMetrics.length; i++) {
           _self.getMeasureData(userMetrics[i].metric_id)
@@ -221,13 +255,13 @@ Page({
             opts: opts,
             avgData: content.avg_data
           }
-          
+
         });
         wx.stopPullDownRefresh()
       }
     })
   },
-  
+
   getUserMetrics(opts) {
     const _self = this
     req.request({
@@ -236,7 +270,7 @@ Page({
       success(res) {
         var userMetrics = res.data.content.user_metrics;
         let defaultMetricId;
-        for (var i = 0; i < userMetrics.length; i++ ) {
+        for (var i = 0; i < userMetrics.length; i++) {
           if (userMetrics[i].default_selected == 1) {
             defaultMetricId = userMetrics[i].metric_id;
           }
@@ -246,7 +280,7 @@ Page({
           defaultMetricId: defaultMetricId
         });
 
-        if (typeof(opts) != "undefined" && 'success' in opts) {
+        if (typeof (opts) != "undefined" && 'success' in opts) {
           opts.success(userMetrics)
         }
       }
