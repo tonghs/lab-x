@@ -12,8 +12,6 @@ Page({
     metricId: 1,
     size: 15,
     cursor: "",
-    chartTypes: [],
-    activedType: "line",
     data: []
   },
 
@@ -76,28 +74,6 @@ Page({
 
   },
 
-  changeType(e) {
-    let _self = this
-    let typeName = e.currentTarget.dataset.type_name
-    this.setData({
-      activedType: typeName
-    })
-    req.request({
-      url: "/chronic_disease/metric/" + this.data.metricId + "/chart_types/",
-      method: "POST",
-      data: {
-        chart_type: typeName
-      },
-      success: function (res) {
-        wx.vibrateShort({
-          type: 'light',
-        })
-        const eventChannel = _self.getOpenerEventChannel()
-        eventChannel.emit('backCallabck', { data: { needRefresh: true } });
-      }
-    })
-  },
-
   onItemLongTap(e) {
     let measureId = e.currentTarget.dataset.rid
     this.setData({
@@ -141,26 +117,8 @@ Page({
 
         _self.setData({
           data: content.datas,
-          activedType: content.chart_type,
           cursor: content.next_cursor
         })
-      }
-    })
-  },
-
-  getChartTypes(opts) {
-    let _self = this
-    req.request({
-      url: "/chronic_disease/metric/" + this.data.metricId + "/chart_types/",
-      method: "GET",
-      success: function (res) {
-        let content = res.data.content
-        _self.setData({
-          chartTypes: content.chart_types
-        });
-        if (typeof(opts) != "undefined" && 'success' in opts) {
-          opts.success()
-        }
       }
     })
   }

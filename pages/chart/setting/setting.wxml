@@ -1,0 +1,31 @@
+<!--pages/metric/settting/setting.wxml-->
+<view class="flex-column content">
+  <view class="settings">
+    <view class="page-section">
+      <view class="weui-cells__title">默认指标</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <radio-group bindchange="changeDefaultSelected">
+          <radio checked="{{defaultSelected}}" value="1"></radio>   默认指标
+          </radio-group>
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="weui-cells__title">参考值</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input class="weui-input" model:value="{{refValue}}" type="digit" auto-focus placeholder="{{unit}}" bindinput="bindValueChange" />
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="weui-cells__title">显示方式</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="label-container">
+          <view wx:for="{{chartTypes}}" wx:key="name" data-type_name="{{item.name}}" class="label {{activedType == item.name ? 'active' : 'disabled'}}" bindtap="changeType">{{item.text}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

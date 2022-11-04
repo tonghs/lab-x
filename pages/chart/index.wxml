@@ -47,7 +47,7 @@
         </view>
       </view>
     </view>
-    <view class="rounded card">
+    <view class="rounded card" data-metric_id="{{item.metric_id}}" bindlongpress="toSetting">
       <view class="title flex-row">
         <!-- 最近 {{size}} 次{{metricName}}结果（{{unit}}） -->
         <view class="tips">

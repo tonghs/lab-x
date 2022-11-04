@@ -11,7 +11,8 @@
     "pages/document/search/index",
     "pages/chart/measure/measure",
     "pages/chart/measures/measures",
-    "pages/metric/metric"
+    "pages/metric/metric",
+    "pages/chart/setting/setting"
   ],
   "entryPagePath": "pages/chart/index",
   "window": {

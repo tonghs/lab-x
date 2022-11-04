@@ -122,6 +122,22 @@ Page({
     })
   },
 
+  toSetting(e) {
+    let _self = this
+    var metricId = e.currentTarget.dataset.metric_id;
+    console.log(metricId);
+    wx.navigateTo({
+      url: '/pages/chart/setting/setting?metricId=' + metricId,
+      events: {
+        backCallabck: (data) => {
+          _self.setData({
+            needRefresh: data.data.needRefresh
+          })
+        }
+      }
+    })
+  },
+
   viewAll(e) {
     const metric_id = e.currentTarget.dataset.metric_id;
     let _self = this

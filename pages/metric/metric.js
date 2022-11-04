@@ -66,6 +66,7 @@ Page({
 
   },
 
+
   selectOrClear(e) {
     const metricId = e.currentTarget.dataset.metric_id;
     const value = e.detail.value;
