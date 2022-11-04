@@ -144,6 +144,10 @@ page {
   color: #EE6666;
 }
 
+.default-color {
+  color: #000000;
+}
+
 .dot {
   display: block;
   width: 10rpx;

@@ -3,40 +3,50 @@
   <navigation-bar title="指标" />
 </page-meta>
 <view class="flex-column">
-  <view class="rounded card">
-    <view class="title"></view>
-    <view class="body">
-      <view class="summary">
-        <view class="summary-item">
-          <view class="summary-item-content">
-            <span class="summary-item-value {{metricExtra[1].avgData.avg15 > metricExtra[1].refValue ? 'warn-color' : 'normal-color'}}">{{metricExtra[1].avgData.avg15}}</span>
+  <view wx:for="{{userMetrics}}" wx:key="metric_id">
+    <view class="rounded card">
+      <view class="title"></view>
+      <view class="body">
+        <view class="summary">
+          <view class="summary-item">
+            <view class="summary-item-content" wx:if="{{metricExtra[item.metric_id].refValue != null}}">
+              <span class="summary-item-value {{metricExtra[item.metric_id].avgData.avg15 > metricExtra[item.metric_id].refValue ? 'warn-color' : 'normal-color'}}">
+              {{metricExtra[item.metric_id].avgData.avg15}}
+              </span>
+            </view>
+            <view class="summary-item-content" wx:if="{{metricExtra[item.metric_id].refValue == null}}">
+              <span class="summary-item-value 'default-color'">{{metricExtra[item.metric_id].avgData.avg15}}</span>
+            </view>
+            <view class="summary-item-name summary-item-content">
+              最近 15 次平均
+            </view>
           </view>
-          <view class="summary-item-name summary-item-content">
-            最近 15 次平均
+          <view class="summary-item">
+            <view class="summary-item-content" wx:if="{{metricExtra[item.metric_id].refValue != null}}">
+              <span class="summary-item-value {{metricExtra[item.metric_id].avgData.avg7 > metricExtra[item.metric_id].refValue ? 'warn-color' : 'normal-color'}}">{{metricExtra[item.metric_id].avgData.avg7}}</span>
+            </view>
+            <view class="summary-item-content" wx:if="{{metricExtra[item.metric_id].refValue == null}}">
+              <span class="summary-item-value default-color">{{metricExtra[item.metric_id].avgData.avg7}}</span>
+            </view>
+            <view class="summary-item-content">
+              最近 7 次平均
+            </view>
           </view>
-        </view>
-        <view class="summary-item">
-          <view class="summary-item-content">
-            <span class="summary-item-value {{metricExtra[1].avgData.avg7 > metricExtra[1].refValue ? 'warn-color' : 'normal-color'}}">{{metricExtra[1].avgData.avg7}}</span>
-          </view>
-          <view class="summary-item-content">
-            最近 7 次平均
-          </view>
-        </view>
 
-        <view class="summary-item">
-          <view class="summary-item-content">
-            <span class="summary-item-value {{metricExtra[1].avgData.v > metricExtra[1].refValue ? 'warn-color' : 'normal-color'}}">{{metricExtra[1].avgData.v}}</span>
-          </view>
-          <view class="summary-item-name summary-item-content">
-            最近 1 次
+          <view class="summary-item">
+            <view class="summary-item-content" wx:if="{{metricExtra[item.metric_id].refValue != null}}">
+              <span class="summary-item-value {{metricExtra[item.metric_id].avgData.v > metricExtra[item.metric_id].refValue ? 'warn-color' : 'normal-color'}}">{{metricExtra[item.metric_id].avgData.v}}</span>
+            </view>
+            <view class="summary-item-content" wx:if="{{metricExtra[item.metric_id].refValue == null}}">
+              <span class="summary-item-value default-color">{{metricExtra[item.metric_id].avgData.v}}</span>
+            </view>
+            <view class="summary-item-name summary-item-content">
+              最近 1 次
+            </view>
           </view>
         </view>
       </view>
     </view>
-  </view>
-  <view wx:for="{{userMetrics}}" wx:key="metric_id">
-
     <view class="rounded card">
       <view class="title flex-row">
         <!-- 最近 {{size}} 次{{metricName}}结果（{{unit}}） -->
@@ -50,10 +60,10 @@
           </view>
           <view class="item" wx:if="{{metricExtra[item.metric_id].refValue}}">
             <view class="dot normal-bg-color"></view>
-            <view class="label">正常</view>
+            <view class="label">正常({{metricExtra[item.metric_id].refValue}}{{metricExtra[item.metric_id].unit}})</view>
           </view>
         </view>
-        <view class="linked linked-secondary" bindtap="viewAll">查看全部</view>
+        <view class="linked linked-secondary" bindtap="viewAll" data-metric_id="{{item.metric_id}}">查看全部</view>
       </view>
 
       <view class="body" wx:if="{{data[item.metric_id].series.length > 0 && data[item.metric_id].series[0].data.length > 0}}">

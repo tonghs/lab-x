@@ -18,7 +18,7 @@ Page({
     opts: {
       color: ["#1890FF"],
       padding: [20, 0, 0, 0],
-      enableMarkLine: true,
+      enableMarkLine: false,
       legend: {},
       xAxis: {
         disableGrid: true,
@@ -122,10 +122,11 @@ Page({
     })
   },
 
-  viewAll() {
+  viewAll(e) {
+    const metric_id = e.currentTarget.dataset.metric_id;
     let _self = this
     wx.navigateTo({
-      url: '/pages/chart/measures/measures',
+      url: '/pages/chart/measures/measures?metricId=' + metric_id,
       events: {
         backCallabck: (data) => {
           _self.setData({
@@ -182,11 +183,14 @@ Page({
         let maxDataLength = 15
         let minDataLength = 1
         let columnWidth = maxWidth - ((maxWidth - minWidth) / (maxDataLength - minDataLength)) * (dataLength - minDataLength)
-        var opts = _self.data.opts
+        var opts = JSON.parse(JSON.stringify(_self.data.opts))
         opts.extra.column.width = columnWidth
         if (content.ref_value != null) {
-          opts.extra.markLine.data = [{ value: content.ref_value }]
+          opts.extra.markLine.data = [{ value: content.ref_value }];
+          opts.enableMarkLine = true;
         }
+        console.log(opts)
+        console.log(content.metric_text)
 
         _self.setData({
           ['data.' + metricId]: JSON.parse(JSON.stringify(chartData)),
