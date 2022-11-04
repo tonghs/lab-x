@@ -86,6 +86,9 @@ Page({
   changeRefValue(e) {
     const _self = this
     var refValue = e.detail.value;
+    if (!refValue) {
+      return;
+    };
     req.request({
       url: "/chronic_disease/user_metric/" + this.data.metricId + "/ref_value/",
       method: "POST",

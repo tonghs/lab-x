@@ -14,6 +14,7 @@ Page({
     size: 15,
     needRefresh: false,
     userMetrics: [],
+    defaultMetricId: 0,
     //您可以通过修改 config-ucharts.js 文件中下标为 ['line'] 的节点来配置全局默认参数，如都是默认参数，此处可以不传 opts 。实际应用过程中 opts 只需传入与全局默认参数中不一致的【某一个属性】即可实现同类型的图表显示不同的样式，达到页面简洁的需求。
     opts: {
       color: ["#1890FF"],
@@ -111,7 +112,7 @@ Page({
   add() {
     let _self = this
     wx.navigateTo({
-      url: '/pages/chart/measure/measure',
+      url: '/pages/chart/measure/measure?metricId=' + this.data.defaultMetricId,
       events: {
         backCallabck: (data) => {
           _self.setData({
@@ -125,7 +126,6 @@ Page({
   toSetting(e) {
     let _self = this
     var metricId = e.currentTarget.dataset.metric_id;
-    console.log(metricId);
     wx.navigateTo({
       url: '/pages/chart/setting/setting?metricId=' + metricId,
       events: {
@@ -235,8 +235,15 @@ Page({
       method: "GET",
       success(res) {
         var userMetrics = res.data.content.user_metrics;
+        let defaultMetricId;
+        for (var i = 0; i < userMetrics.length; i++ ) {
+          if (userMetrics[i].default_selected == 1) {
+            defaultMetricId = userMetrics[i].metric_id;
+          }
+        }
         _self.setData({
-          userMetrics: userMetrics
+          userMetrics: userMetrics,
+          defaultMetricId: defaultMetricId
         });
 
         if (typeof(opts) != "undefined" && 'success' in opts) {

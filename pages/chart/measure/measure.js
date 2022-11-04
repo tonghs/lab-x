@@ -11,16 +11,22 @@ Page({
     value: "",
     date: null,
     time: null,
+    metricId: 0,
     btnDisabled: false,
     labels: [],
-    activedLabel: ""
+    activedLabel: "",
+    unit: "",
+    name: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    var metricId = options.metricId;
+    this.setData({
+      metricId: metricId
+    })
   },
 
   /**
@@ -32,7 +38,7 @@ Page({
       date: now.slice(0, 10),
       time: now.slice(11, 16)
     })
-    this.getMetricLabels()
+    this.getUserMetric()
   },
 
   /**
@@ -99,20 +105,6 @@ Page({
     }
   },
 
-  getMetricLabels() {
-    let _self = this
-    req.request({
-      url: "/chronic_disease/metric/1/labels/",
-      method: "GET",
-      success: function(res) {
-        _self.setData({
-          labels: res.data.content.metric_labels,
-          activedLabel: res.data.content.metric_labels[0].name
-        })
-      }
-    })
-  },
-
   changeLabel(e) {
     let labelName = e.currentTarget.dataset.label_name
     this.setData({
@@ -125,7 +117,7 @@ Page({
     req.request({
       url: "/chronic_disease/metric_measure/",
       data: {
-        metric_id: 1,
+        metric_id: this.data.metricId,
         value: this.data.value,
         metric_label: this.data.activedLabel,
         created_at: this.data.date + " " + this.data.time
@@ -147,5 +139,26 @@ Page({
         })
       }
     })
-  }
+  },
+
+  getUserMetric() {
+    const _self = this
+    req.request({
+      url: "/chronic_disease/user_metric/" + this.data.metricId + "/",
+      method: "GET",
+      success: function(res) {
+        var userMetric = res.data.content.user_metric;
+        _self.setData({
+          unit: userMetric.metric_unit,
+          name: userMetric.metric_text,
+        })
+        if (userMetric.labels.length > 0) {
+          _self.setData({
+            labels: userMetric.labels,
+            activedLabel: userMetric.labels[0].name
+          })
+        }
+      }
+    })
+  },
 })

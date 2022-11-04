@@ -24,14 +24,14 @@
     </view>
   </view>
   <view class="page-section">
-    <view class="weui-cells__title">血糖值</view>
+    <view class="weui-cells__title">{{name}}值</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <input class="weui-input" model:value="{{value}}" type="digit" auto-focus placeholder="mmol/L" bindinput="bindValueChange" />
+        <input class="weui-input" model:value="{{value}}" type="digit" auto-focus placeholder="{{unit}}" bindinput="bindValueChange" />
       </view>
     </view>
   </view>
-  <view class="page-section">
+  <view class="page-section" wx:if="{{labels.length > 0}}">
     <view class="weui-cells weui-cells_after-title">
       <view class="label-container">
         <view wx:for="{{labels}}" wx:key="name" data-label_name="{{item.name}}" class="label {{activedLabel == item.name ? 'active' : 'disabled'}}" bindtap="changeLabel">{{item.text}}</view>

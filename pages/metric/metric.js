@@ -70,7 +70,6 @@ Page({
   selectOrClear(e) {
     const metricId = e.currentTarget.dataset.metric_id;
     const value = e.detail.value;
-    console.log(metricId, value);
     const method = value ? "POST" : "DELETE"
     req.request({
       url: "/chronic_disease/user_metric/" + metricId + "/",
