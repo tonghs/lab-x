@@ -160,7 +160,11 @@ Page({
         var userMetrics = res;
         for (var i = 0; i < userMetrics.length; i++) {
           _self.getMeasureData(userMetrics[i].metric_id)
-        }
+        };
+
+        wx.vibrateShort({
+          type: 'light',
+        })
       }
     });
   },
@@ -219,9 +223,6 @@ Page({
           }
           
         });
-        wx.vibrateShort({
-          type: 'light',
-        })
         wx.stopPullDownRefresh()
       }
     })

@@ -1,21 +1,24 @@
 <!--pages/metric/settting/setting.wxml-->
+<page-meta>
+  <navigation-bar title="{{name}}" />
+</page-meta>
 <view class="flex-column content">
   <view class="settings">
     <view class="page-section">
-      <view class="weui-cells__title">默认指标</view>
       <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
+        <view class="weui-cell">
           <radio-group bindchange="changeDefaultSelected">
-          <radio checked="{{defaultSelected}}" value="1"></radio>   默认指标
+          <radio checked="{{defaultSelected}}" value="1"></radio>
           </radio-group>
+          <span>首页快速添加{{name}}值</span>
         </view>
       </view>
     </view>
     <view class="page-section">
-      <view class="weui-cells__title">参考值</view>
+      <view class="weui-cells__title">参考值({{unit}})</view>
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
-          <input class="weui-input" model:value="{{refValue}}" type="digit" auto-focus placeholder="{{unit}}" bindinput="bindValueChange" />
+          <input class="weui-input" model:value="{{refValue}}" type="digit" auto-focus placeholder="{{unit}}" bindblur="changeRefValue" />
         </view>
       </view>
     </view>

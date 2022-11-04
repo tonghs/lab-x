@@ -83,16 +83,35 @@ Page({
 
   },
 
+  changeRefValue(e) {
+    const _self = this
+    var refValue = e.detail.value;
+    req.request({
+      url: "/chronic_disease/user_metric/" + this.data.metricId + "/ref_value/",
+      method: "POST",
+      data: {
+        ref_value: refValue
+      },
+      success: function (res) {
+        wx.vibrateShort({
+          type: 'light',
+        })
+        const eventChannel = _self.getOpenerEventChannel()
+        eventChannel.emit('backCallabck', { data: { needRefresh: true } });
+      }
+    })
+  },
+
   changeDefaultSelected(e) {
+    const _self = this
     if (e.detail.value == "1") {
       req.request({
-        url: "/chronic_disease/user_metric/" + this.data.metricId + "/deafult_selected/",
+        url: "/chronic_disease/user_metric/" + this.data.metricId + "/default_selected/",
         method: "POST",
         success: function (res) {
           wx.vibrateShort({
             type: 'light',
           })
-          this.loadData();
           const eventChannel = _self.getOpenerEventChannel()
           eventChannel.emit('backCallabck', { data: { needRefresh: true } });
         }
