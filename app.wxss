@@ -185,3 +185,19 @@ page {
   background-color: #cdcdcd80;
   color: #000000;
 }
+
+/* switch */
+.wx-switch-input{
+  width: 82rpx!important;
+  height: 40rpx!important;
+}
+/*关闭状态*/
+.wx-switch-input::before{
+  width: 80rpx!important;
+  height: 32rpx!important;
+}
+/*开启状态*/
+.wx-switch-input::after{
+  width: 38rpx!important;
+  height: 32rpx!important;
+}

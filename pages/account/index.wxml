@@ -27,6 +27,10 @@
     <image class="setting-icon" src="/images/settings/user_manage.png" mode="cover"></image>
     <text class="setting-icon-txt">用户管理</text>
   </view>
+  <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/metric/metric">
+    <image class="setting-icon" src="/images/chart.png" mode="cover"></image>
+    <text class="setting-icon-txt">指标管理</text>
+  </view>
   <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/about/index">
     <image class="setting-icon" src="/images/settings/about.png" mode="cover"></image>
     <text class="setting-icon-txt">关于</text>
