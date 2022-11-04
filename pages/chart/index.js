@@ -8,23 +8,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    data: {},
+    metricExtra: {},
     navBarHeight: app.globalData.navBarHeight,
-    metricName: "",
-    metricId: 1,
     size: 15,
-    unit: "",
-    refValue: 0,
-    avgData: {
-      avg15: 0,
-      avg7: 0,
-      v: 0
-    },
-    chartType: "column",
     needRefresh: false,
-
-    chartData: {
-      series: []
-    },
+    userMetrics: [],
     //您可以通过修改 config-ucharts.js 文件中下标为 ['line'] 的节点来配置全局默认参数，如都是默认参数，此处可以不传 opts 。实际应用过程中 opts 只需传入与全局默认参数中不一致的【某一个属性】即可实现同类型的图表显示不同的样式，达到页面简洁的需求。
     opts: {
       color: ["#1890FF"],
@@ -119,7 +108,7 @@ Page({
 
   },
 
-  add: function () {
+  add() {
     let _self = this
     wx.navigateTo({
       url: '/pages/chart/measure/measure',
@@ -133,7 +122,7 @@ Page({
     })
   },
 
-  viewAll: function () {
+  viewAll() {
     let _self = this
     wx.navigateTo({
       url: '/pages/chart/measures/measures',
@@ -147,12 +136,24 @@ Page({
     })
   },
 
-  getServerData: function () {
+  getServerData() {
+    const _self = this;
+    this.getUserMetrics({
+      success: function(res) {
+        var userMetrics = res;
+        for (var i = 0; i < userMetrics.length; i++) {
+          _self.getMeasureData(userMetrics[i].metric_id)
+        }
+      }
+    });
+  },
+
+  getMeasureData(metricId) {
     let _self = this
     req.request({
       url: "/chronic_disease/metric_measures/recent",
       data: {
-        metric_id: this.data.metricId,
+        metric_id: metricId,
         size: this.data.size
       },
       method: 'GET',
@@ -181,20 +182,47 @@ Page({
         let maxDataLength = 15
         let minDataLength = 1
         let columnWidth = maxWidth - ((maxWidth - minWidth) / (maxDataLength - minDataLength)) * (dataLength - minDataLength)
+        var opts = _self.data.opts
+        opts.extra.column.width = columnWidth
+        if (content.ref_value != null) {
+          opts.extra.markLine.data = [{ value: content.ref_value }]
+        }
+
         _self.setData({
-          chartData: JSON.parse(JSON.stringify(chartData)),
-          metricName: content.metric_text,
-          unit: content.metric_unit,
-          avgData: content.avg_data,
-          refValue: content.ref_value,
-          chartType: content.chart_type,
-          ['opts.extra.markLine.data']: [{ value: content.ref_value }],
-          ['opts.extra.column.width']: columnWidth
+          ['data.' + metricId]: JSON.parse(JSON.stringify(chartData)),
+          ['chartType.' + metricId]: content.chart_type,
+          ['metricExtra.' + metricId]: {
+            chartType: content.chart_type,
+            metricText: content.metric_text,
+            unit: content.metric_unit,
+            refValue: content.ref_value,
+            opts: opts,
+            avgData: content.avg_data
+          }
+          
         });
         wx.vibrateShort({
           type: 'light',
         })
         wx.stopPullDownRefresh()
+      }
+    })
+  },
+  
+  getUserMetrics(opts) {
+    const _self = this
+    req.request({
+      url: "/chronic_disease/user_metrics/",
+      method: "GET",
+      success(res) {
+        var userMetrics = res.data.content.user_metrics;
+        _self.setData({
+          userMetrics: userMetrics
+        });
+
+        if (typeof(opts) != "undefined" && 'success' in opts) {
+          opts.success(userMetrics)
+        }
       }
     })
   }

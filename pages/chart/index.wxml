@@ -9,7 +9,7 @@
       <view class="summary">
         <view class="summary-item">
           <view class="summary-item-content">
-            <span class="summary-item-value {{avgData.avg15 > refValue ? 'warn-color' : 'normal-color'}}">{{avgData.avg15}}</span>
+            <span class="summary-item-value {{metricExtra[1].avgData.avg15 > metricExtra[1].refValue ? 'warn-color' : 'normal-color'}}">{{metricExtra[1].avgData.avg15}}</span>
           </view>
           <view class="summary-item-name summary-item-content">
             最近 15 次平均
@@ -17,7 +17,7 @@
         </view>
         <view class="summary-item">
           <view class="summary-item-content">
-            <span class="summary-item-value {{avgData.avg7 > refValue ? 'warn-color' : 'normal-color'}}">{{avgData.avg7}}</span>
+            <span class="summary-item-value {{metricExtra[1].avgData.avg7 > metricExtra[1].refValue ? 'warn-color' : 'normal-color'}}">{{metricExtra[1].avgData.avg7}}</span>
           </view>
           <view class="summary-item-content">
             最近 7 次平均
@@ -26,7 +26,7 @@
 
         <view class="summary-item">
           <view class="summary-item-content">
-            <span class="summary-item-value {{avgData.v > refValue ? 'warn-color' : 'normal-color'}}">{{avgData.v}}</span>
+            <span class="summary-item-value {{metricExtra[1].avgData.v > metricExtra[1].refValue ? 'warn-color' : 'normal-color'}}">{{metricExtra[1].avgData.v}}</span>
           </view>
           <view class="summary-item-name summary-item-content">
             最近 1 次
@@ -35,36 +35,38 @@
       </view>
     </view>
   </view>
-  <view class="rounded card">
-    <view class="title flex-row">
-      <!-- 最近 {{size}} 次{{metricName}}结果（{{unit}}） -->
-      <view class="tips">
-        <view class="item">
-          <view class="metric-name">{{metricName}}</view>
-        </view>
-        <view class="item">
-          <view class="dot warn-bg-color"></view>
-          <view class="label">偏高</view>
-        </view>
-        <view class="item">
-          <view class="dot normal-bg-color"></view>
-          <view class="label">正常</view>
-        </view>
-      </view>
-      <view class="linked linked-secondary" bindtap="viewAll">查看全部</view>
-    </view>
+  <view wx:for="{{userMetrics}}" wx:key="metric_id">
 
-    <view class="body" wx:if="{{chartData.series.length > 0 && chartData.series[0].data.length > 0}}">
-      <view class="charts-box" wx:if="{{chartType == 'column'}}">
-        <qiun-wx-ucharts type="column" opts="{{opts}}" chartData="{{chartData}}" />
+    <view class="rounded card">
+      <view class="title flex-row">
+        <!-- 最近 {{size}} 次{{metricName}}结果（{{unit}}） -->
+        <view class="tips">
+          <view class="item">
+            <view class="metric-name">{{metricExtra[item.metric_id].metricText}}</view>
+          </view>
+          <view class="item" wx:if="{{metricExtra[item.metric_id].refValue}}">
+            <view class="dot warn-bg-color"></view>
+            <view class="label">偏高</view>
+          </view>
+          <view class="item" wx:if="{{metricExtra[item.metric_id].refValue}}">
+            <view class="dot normal-bg-color"></view>
+            <view class="label">正常</view>
+          </view>
+        </view>
+        <view class="linked linked-secondary" bindtap="viewAll">查看全部</view>
       </view>
 
-      <view class="charts-box" wx:if="{{chartType == 'line'}}">
-        <qiun-wx-ucharts type="line" opts="{{opts}}" chartData="{{chartData}}" />
+      <view class="body" wx:if="{{data[item.metric_id].series.length > 0 && data[item.metric_id].series[0].data.length > 0}}">
+        <view class="charts-box" wx:if="{{metricExtra[item.metric_id].chartType == 'column'}}">
+          <qiun-wx-ucharts type="column" opts="{{metricExtra[item.metric_id].opts}}" chartData="{{data[item.metric_id]}}" />
+        </view>
+        <view class="charts-box" wx:if="{{metricExtra[item.metric_id].chartType == 'line'}}">
+          <qiun-wx-ucharts type="line" opts="{{metricExtra[item.metric_id].opts}}" chartData="{{data[item.metric_id]}}" />
+        </view>
       </view>
-    </view>
-    <view class="body" wx:if="{{chartData.series.length == 0 || chartData.series[0].data.length == 0}}">
-      还没有数据
+      <view class="body" wx:if="{{userMetrics.length == 0 || data.length == 0}}">
+        还没有数据
+      </view>
     </view>
   </view>
   <view class="btn-plus" bindtap="add" hover-class="btn-plus-hover">
