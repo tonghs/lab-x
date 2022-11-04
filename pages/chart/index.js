@@ -205,8 +205,6 @@ Page({
           opts.extra.markLine.data = [{ value: content.ref_value }];
           opts.enableMarkLine = true;
         }
-        console.log(opts)
-        console.log(content.metric_text)
 
         _self.setData({
           ['data.' + metricId]: JSON.parse(JSON.stringify(chartData)),
