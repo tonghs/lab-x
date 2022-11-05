@@ -1,12 +1,12 @@
 <!--pages/chart/measures/measures.wxml-->
 <page-meta>
-  <navigation-bar title="所有指标" />
+  <navigation-bar title="所有{{name}}指标" />
 </page-meta>
 <view class="flex-column content scroll">
   <scroll-view scroll-y="true" class="list-view" show-scrollbar="false" bindscrolltolower="lower">
     <view class="list-item list-header flex-row">
       <view>日期</view>
-      <view>值(mmol/L)</view>
+      <view>值({{unit}})</view>
     </view>
     <view wx:for="{{data}}" wx:key="id">
       <view class="list-item flex-row" data-rid="{{item.id}}" bindlongpress="onItemLongTap">

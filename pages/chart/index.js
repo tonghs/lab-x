@@ -111,6 +111,20 @@ Page({
 
   },
 
+  navToMetricsPage() {
+    let _self = this
+    wx.navigateTo({
+      url: '/pages/metric/metric',
+      events: {
+        backCallabck: (data) => {
+          _self.setData({
+            needRefresh: data.data.needRefresh
+          })
+        }
+      }
+    })
+  },
+
   add() {
     let _self = this
     wx.navigateTo({
@@ -161,6 +175,9 @@ Page({
   toSetting(e) {
     let _self = this
     var metricId = e.currentTarget.dataset.metric_id;
+    wx.vibrateShort({
+      type: 'light',
+    });
     wx.navigateTo({
       url: '/pages/chart/setting/setting?metricId=' + metricId,
       events: {
@@ -222,13 +239,14 @@ Page({
           categories.push(data[i].created_at)
         }
 
+
         let chartData = {
           categories: categories,
           series: [
             {
               name: content.metric_text,
               data: data,
-              color: data[data.length - 1].color
+              color: data.length > 0 ? data[data.length - 1].color : ""
             }
           ]
         };
@@ -256,7 +274,6 @@ Page({
             opts: opts,
             avgData: content.avg_data
           }
-
         });
         wx.stopPullDownRefresh()
       }

@@ -109,6 +109,11 @@ page {
   justify-content: space-between;
 }
 
+.card .empty-body {
+  text-align: center;
+  margin-top: 20rpx;
+}
+
 .tips {
   display: flex;
   justify-content: left;

@@ -12,7 +12,9 @@ Page({
     metricId: 1,
     size: 15,
     cursor: "",
-    data: []
+    data: [],
+    unit: "",
+    name: ""
   },
 
   /**
@@ -117,7 +119,9 @@ Page({
 
         _self.setData({
           data: content.datas,
-          cursor: content.next_cursor
+          cursor: content.next_cursor,
+          name: content.metric_text,
+          unit: content.metric_unit
         })
       }
     })

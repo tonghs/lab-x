@@ -1,6 +1,23 @@
 /* pages/chart/index.wxss */
 page {
   border: 1rpx 0 0 0;
+  height: 100%;
+}
+
+
+.empty-tips {
+  display: flex;
+  color: #00000080;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100vh;
+  margin-top: -40rpx;
+}
+
+.empty-tips button {
+  margin-top: 30rpx;
 }
 
 .input-container {
@@ -44,6 +61,7 @@ page {
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
+  margin-top: 10rpx;
 }
 
 .summary-item-value {

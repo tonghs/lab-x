@@ -68,6 +68,7 @@ Page({
 
 
   selectOrClear(e) {
+    const _self = this
     const metricId = e.currentTarget.dataset.metric_id;
     const value = e.detail.value;
     const method = value ? "POST" : "DELETE"
@@ -78,6 +79,8 @@ Page({
         wx.vibrateShort({
           type: 'light',
         })
+        const eventChannel = _self.getOpenerEventChannel()
+        eventChannel.emit("backCallabck", {data: {needRefresh: true}})
       }
     })
   },
