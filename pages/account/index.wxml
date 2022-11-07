@@ -12,22 +12,17 @@
 </view>
 <view class="flex-column" wx:if="{{!isLogined}}">
   <view class="account">
-    <button type="primary" class="login" size="mini" open-type="getUserInfo" bindgetuserinfo="login">登录</button>
+    <button type="primary" class="login" size="mini" open-type="getUserInfo" bindtap="login">登录</button>
   </view>
 </view>
-
-<view class="flex-column settings">
-  <!-- <view class="flex-view-item settings-item" wx:if="{{appUserInfo.is_admin}}">
-    <image class="setting-icon" src="/images/settings/metric.png" mode="cover"></image>
-    <text class="setting-icon-txt">指标管理</text>
-  </view> -->
+<view class="flex-column settings rounded">
 </view>
 <view class="flex-column settings rounded">
   <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/users/index" wx:if="{{isLogined && appUserInfo.is_admin}}">
     <image class="setting-icon" src="/images/settings/user_manage.png" mode="cover"></image>
     <text class="setting-icon-txt">用户管理</text>
   </view>
-  <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/metric/metric">
+  <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/metric/metric" wx:if="{{isLogined}}">
     <image class="setting-icon" src="/images/chart.png" mode="cover"></image>
     <text class="setting-icon-txt">指标管理</text>
   </view>

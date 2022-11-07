@@ -3,20 +3,26 @@ var app = getApp()
 
 module.exports = {
   login(options) {
-    wx.showLoading({
-      title: '登录中',
-    })
-    wx.getUserInfo({
+    wx.getUserProfile({
+      desc: '完善用户信息',
+      fail: function (err) {
+        wx.showModal({
+          title: '登录失败',
+          content: err
+        })
+      },
       success: res => {
         app.globalData.userInfo = res.userInfo
-        
+        wx.showLoading({
+          title: '登录中',
+        });
         wx.login({
-          success (res) {
+          success(res) {
             var data = {
               code: res.code,
               user_name: app.globalData.userInfo.nickName
             }
-            data.sign = req.getSign(data)            
+            data.sign = req.getSign(data)
             if (res.code) {
               //发起网络请求
               wx.request({
@@ -26,16 +32,16 @@ module.exports = {
                   'content-type': 'application/json'
                 },
                 data: data,
-                success (res) {
+                success(res) {
                   if (res.statusCode != 200) {
                     var msg = ""
-                    if (res.data.msg !== undefined ) {
+                    if (res.data.msg !== undefined) {
                       msg = res.data.msg
                     } else {
                       msg = '错误代码：' + res.statusCode
                     }
                     wx.hideLoading({
-                      success: (res) => {},
+                      success: (res) => { },
                     })
                     wx.showModal({
                       title: '登录失败',
@@ -51,7 +57,7 @@ module.exports = {
                     var user_id = ret.user_id
                     var user_name = ret.user_name
                     var is_admin = ret.is_admin
-                        
+
                     wx.setStorageSync('access_token', access_token)
                     wx.setStorageSync('refresh_token', refresh_token)
                     wx.setStorageSync('user_id', user_id)
@@ -62,18 +68,18 @@ module.exports = {
                     if (options.success !== undefined) {
                       options.success(ret)
                     }
-    
+
                     wx.hideLoading({
-                      success: (res) => {},
+                      success: (res) => { },
                     })
                   }
                 },
-                fail (res) {
+                fail(res) {
                   wx.showToast({
                     title: '登录失败',
                   })
                   wx.hideLoading({
-                    success: (res) => {},
+                    success: (res) => { },
                   })
                 }
               })
@@ -82,15 +88,16 @@ module.exports = {
                 title: '登录失败！' + res.errMsg,
               })
               wx.hideLoading({
-                success: (res) => {},
+                success: (res) => { },
               })
             }
           }
         })
-        
+
       }
     })
   },
+
   logout(options) {
     wx.clearStorage({
       success: (res) => {
@@ -99,8 +106,5 @@ module.exports = {
         }
       },
     })
-  },
-  getUserInfo() {
-
   }
 }
