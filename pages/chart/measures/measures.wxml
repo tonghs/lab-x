@@ -3,16 +3,16 @@
   <navigation-bar title="所有{{name}}指标" />
 </page-meta>
 <view class="flex-column content scroll">
-  <scroll-view scroll-y="true" class="list-view" show-scrollbar="false" bindscrolltolower="lower">
+  <scroll-view scroll-y="true" class="list-view" show-scrollbar="false" enable-back-to-top="true" bindscrolltolower="getNextPageData">
     <view class="list-item list-header flex-row">
       <view>日期</view>
       <view>值({{unit}})</view>
     </view>
-    <view wx:for="{{data}}" wx:key="id">
-      <view class="list-item flex-row" data-rid="{{item.id}}" bindlongpress="onItemLongTap">
-        <view class="date">{{item._created_at}}<span class="secondary"> • {{item.metric_label}}</span></view>
-        <view class="value">{{item.value}}</view>
-      </view>
+    <view wx:for="{{data}}" wx:key="id" class="list-item flex-row" data-rid="{{item.id}}" bindlongpress="onItemLongTap">
+      <view class="date">{{item._created_at}}<span class="secondary"> • {{item.metric_label}}</span></view>
+      <view class="value">{{item.value}}</view>
+    </view>
+    <view style="display: block; height: 40rpx;">
     </view>
   </scroll-view>
 </view>

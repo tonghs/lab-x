@@ -15,3 +15,8 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+
+scroll-view {
+  height: 100vh;
+}

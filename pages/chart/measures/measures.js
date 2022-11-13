@@ -10,7 +10,7 @@ Page({
     showActionSheet: false,
     actionGroups: [],
     metricId: 1,
-    size: 15,
+    size: 20,
     cursor: "",
     data: [],
     unit: "",
@@ -31,7 +31,6 @@ Page({
    */
   onReady() {
     this.getMetricMeasure()
-    this.getChartTypes()
   },
 
   /**
@@ -104,6 +103,13 @@ Page({
     })
   },
 
+  getNextPageData(e) {
+    if (this.data.cursor != "") {
+      this.getMetricMeasure()
+    }
+  },
+
+
   getMetricMeasure() {
     let _self = this
     req.request({
@@ -116,9 +122,12 @@ Page({
       method: "GET",
       success: function (res) {
         let content = res.data.content
-
+        var data = _self.data.data
+        for (var i = 0; i < content.datas.length; i ++) {
+          data.push(content.datas[i])
+        }
         _self.setData({
-          data: content.datas,
+          data: data,
           cursor: content.next_cursor,
           name: content.metric_text,
           unit: content.metric_unit
