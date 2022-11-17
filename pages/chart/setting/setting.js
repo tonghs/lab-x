@@ -13,7 +13,8 @@ Page({
     refValue: 0,
     unit: "",
     name: "",
-    defaultSelected: false
+    defaultSelected: false,
+    oldRevValue: 0
   },
 
   /**
@@ -86,18 +87,18 @@ Page({
   changeRefValue(e) {
     const _self = this
     var refValue = e.detail.value;
-    if (!refValue) {
+    if (!refValue || refValue == this.data.oldRevValue) {
       return;
     };
     req.request({
       url: "/chronic_disease/user_metric/" + this.data.metricId + "/ref_value/",
       method: "POST",
       data: {
-        ref_value: refValue
+        ref_value: refValue,
       },
       success: function (res) {
-        wx.vibrateShort({
-          type: 'light',
+        _self.setData({
+          oldRefValue: refValue,
         })
         const eventChannel = _self.getOpenerEventChannel()
         eventChannel.emit('backCallabck', { data: { needRefresh: true } });
@@ -153,6 +154,7 @@ Page({
         let content = res.data.content
         _self.setData({
           refValue: content.user_metric.ref_value,
+          oldRevValue: content.user_metric.ref_value,
           activedType: content.user_metric.chart_type,
           unit: content.user_metric.metric_unit,
           name: content.user_metric.metric_text,

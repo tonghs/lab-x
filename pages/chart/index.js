@@ -23,6 +23,7 @@ Page({
       padding: [20, 0, 0, 0],
       enableMarkLine: false,
       legend: {},
+      update:true,
       xAxis: {
         disableGrid: true,
         rotateLabel: true,

@@ -99,6 +99,7 @@ page {
   line-height: 30rpx;
   color: #cdcdcd;
   padding-right: 30rpx;
+  padding: 15rpx 30rpx 15rpx;
 }
 
 .card .body {
