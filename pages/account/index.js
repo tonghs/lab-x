@@ -1,8 +1,8 @@
 // index.js
 // 获取应用实例
-const req = require('../../common/request.js')
 const accountUtils = require('../../common/account.js')
-const account = require('../../common/account.js')
+const config = require("../../config")
+
 const app = getApp()
 
 Page({
@@ -11,25 +11,27 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     isLogined: false,
-    appUserInfo: {}
+    appUserInfo: {},
+
+    slogan: config.slogan,
   },
 
   onLoad(e) {
-    var user_id = wx.getStorageSync("user_id")
-    var user_name = wx.getStorageSync("user_name")
-    var is_admin = wx.getStorageSync("is_admin")
+    const userId = wx.getStorageSync("userId")
+    const userName = wx.getStorageSync("userName")
+    const isAdmin = wx.getStorageSync("isAdmin")
 
-    if (user_id !== "" && user_name !== "") {
+    if (userId !== "" && userName !== "") {
       this.setData({
           appUserInfo: {
-            user_id: user_id,
-            user_name: user_name,
-            is_admin: is_admin
+            userId: userId,
+            userName: userName,
+            isAdmin: isAdmin
           }
       })
     }
 
-    var isLogined = wx.getStorageSync("is_logined")
+    var isLogined = wx.getStorageSync("isLogined")
     if (isLogined) {
       this.setData({
         isLogined: isLogined
@@ -81,9 +83,9 @@ Page({
           hasUserInfo: true,
           isLogined: true,
           appUserInfo: {
-            user_id: res.user_id,
-            user_name: res.user_name,
-            is_admin: res.is_admin
+            userId: res.user_id,
+            userName: res.user_name,
+            isAdmin: res.is_admin
           }
         }, function() {
           wx.switchTab({

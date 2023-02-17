@@ -39,7 +39,7 @@ Page({
     }, function () {
       req.request({
         url: _self.data.apiUrl.getListUrl,
-        data: {user_id: wx.getStorageSync('user_id'), cursor: this.data.nextCursor, size: this.data.pageSize},
+        data: {user_id: wx.getStorageSync('userId'), cursor: this.data.nextCursor, size: this.data.pageSize},
         method: "GET",
         success: function(res) {
           var docPackages = res.data.content.doc_packages
@@ -103,7 +103,7 @@ Page({
     if (this.data.nextCursor !== "") {
       req.request({
         url: _self.data.apiUrl.docPackagesUrl,
-        data: {user_id: wx.getStorageSync('user_id'), cursor: this.data.nextCursor, size: this.data.pageSize},
+        data: {user_id: wx.getStorageSync('userId'), cursor: this.data.nextCursor, size: this.data.pageSize},
         method: "GET",
         success: function(res) {
           var docPackages = res.data.content.doc_packages

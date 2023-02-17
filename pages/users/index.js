@@ -49,7 +49,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      loginedUserId: wx.getStorageSync('user_id')
+      loginedUserId: wx.getStorageSync('userId')
     })
     this.getData()
   },
@@ -106,7 +106,6 @@ Page({
     wx.vibrateShort({
       type: 'light',
     })
-    var user_id = e.currentTarget.dataset.id
   },
 
   lower: function() {

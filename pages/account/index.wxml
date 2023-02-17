@@ -1,13 +1,13 @@
 <!--index.wxml-->
 <view class="rounded userinfo flex-row"
-  data-url="/pages/account/edit/index?user_id={{appUserInfo.user_id}}"
+  data-url="/pages/account/edit/index?userId={{appUserInfo.userId}}"
   data-isSelf="1" catchtap="navTo" wx:if="{{isLogined}}">
   <view class="avatar" wx:if="{{hasUserInfo && canIUse}}" >
     <image class="userinfo-avatar"  src="{{userInfo.avatarUrl}}" mode="cover"></image>
     <!-- <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
   </view>
   <view class="nickname">
-    <text class="userinfo-nickname" wx:if="{{isLogined}}">{{appUserInfo.user_name}}</text>
+    <text class="userinfo-nickname" wx:if="{{isLogined}}">{{appUserInfo.userName}}</text>
   </view>
 </view>
 <view class="flex-column" wx:if="{{!isLogined}}">
@@ -18,7 +18,7 @@
 <view class="flex-column settings rounded">
 </view>
 <view class="flex-column settings rounded">
-  <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/users/index" wx:if="{{isLogined && appUserInfo.is_admin}}">
+  <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/users/index" wx:if="{{isLogined && appUserInfo.isAdmin}}">
     <image class="setting-icon" src="/images/settings/user_manage.png" mode="cover"></image>
     <text class="setting-icon-txt">用户管理</text>
   </view>
@@ -35,6 +35,7 @@
 <view class="logout" bindtap="logout" wx:if="{{isLogined}}">
   <text>退出登录</text>
 </view>
-<view class="footer">
-  <text class="slogan">探索未知实验室</text>
+
+<view class="footer bottom-footer">
+  <text class="slogan">{{slogan}}</text>
 </view>

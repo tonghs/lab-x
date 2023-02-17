@@ -97,3 +97,8 @@
 
 <mp-actionSheet bindactiontap="actionSheetItemClick" show="{{showActionSheet}}" actions="{{actionGroups}}" title="添加更多数值">
 </mp-actionSheet>
+
+
+<view class="footer bottom-footer" wx:if="{{userMetrics.length == 0}}">
+  <text class="slogan">{{slogan}}</text>
+</view>

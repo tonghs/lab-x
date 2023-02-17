@@ -8,38 +8,36 @@ function getUrl(route) {
 }
 
 function refrehToken(options) {
-  var refresh_token = wx.getStorageSync('refresh_token')
-  var data = {
-    refresh_token: refresh_token
-  }
   data.sign = getSign(data)
   wx.request({
     url: getUrl('/account/refresh_token/'),
     method: 'POST',
-    data: data,
+    data: {
+      refresh_token: wx.getStorageSync('refreshToken')
+    },
     success(res) {
       if (res.statusCode === 200) {
         var ret = res.data.content
-        var access_token = ret.access_token
-        var refresh_token = ret.refresh_token
-        var user_id = ret.user_id
-        var user_name = ret.user_name
+        var accessToken = ret.access_token
+        var refreshToken = ret.refresh_token
+        var userId = ret.user_id
+        var userName = ret.user_name
 
         wx.setStorage({
-          data: access_token,
-          key: 'access_token',
+          data: accessToken,
+          key: 'accessToken',
         })
         wx.setStorage({
-          data: refresh_token,
-          key: 'refresh_token',
+          data: refreshToken,
+          key: 'refreshToken',
         })
         wx.setStorage({
-          data: user_id,
-          key: 'user_id',
+          data: userId,
+          key: 'userId',
         })
         wx.setStorage({
-          data: user_name,
-          key: 'user_name',
+          data: userName,
+          key: 'userName',
         })
         options.success()
       } else {
@@ -69,9 +67,8 @@ function request(options) {
     options.url = this.getUrl(options.url)
   }
 
-  var access_token = wx.getStorageSync('access_token')
   options.header = options.header || {}
-  options.header.Auth = access_token
+  options.header.Auth = wx.getStorageSync('accessToken')
   options.header["content-type"] = "application/json"
   wx.request({
     ...options,

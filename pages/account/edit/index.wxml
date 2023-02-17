@@ -1,11 +1,17 @@
 <!--pages/account/update/index.wxml-->
 <view class="flex-column">
+  <view class="weui-cells__title"></view>
   <views class="user-info">
+    <view class="page-section">
+      <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+        <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+      </button> 
+    </view>
     <view class="page-section">
       <view class="weui-cells__title">用户名</view>
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
-          <input class="weui-input" value="{{userInfo.user_name}}" auto-focus placeholder="请输入" bindinput="getInputValue" />
+          <input class="weui-input" value="{{userInfo.userName}}" auto-focus placeholder="请输入" bindinput="getInputValue" />
         </view>
       </view>
     </view>

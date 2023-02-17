@@ -18,7 +18,7 @@ module.exports = {
         });
         wx.login({
           success(res) {
-            var data = {
+            let data = {
               code: res.code,
               user_name: app.globalData.userInfo.nickName
             }
@@ -52,18 +52,18 @@ module.exports = {
                     wx.showToast({
                       title: '登录成功',
                     })
-                    var access_token = ret.access_token
-                    var refresh_token = ret.refresh_token
-                    var user_id = ret.user_id
-                    var user_name = ret.user_name
-                    var is_admin = ret.is_admin
+                    const accessToken = ret.access_token
+                    const refreshToken = ret.refresh_token
+                    const userId = ret.user_id
+                    const userName = ret.user_name
+                    const isAdmin = ret.is_admin
 
-                    wx.setStorageSync('access_token', access_token)
-                    wx.setStorageSync('refresh_token', refresh_token)
-                    wx.setStorageSync('user_id', user_id)
-                    wx.setStorageSync('user_name', user_name)
-                    wx.setStorageSync('is_admin', is_admin)
-                    wx.setStorageSync('is_logined', true)
+                    wx.setStorageSync('accessToken', accessToken)
+                    wx.setStorageSync('refreshToken', refreshToken)
+                    wx.setStorageSync('userId', userId)
+                    wx.setStorageSync('userName', userName)
+                    wx.setStorageSync('isAdmin', isAdmin)
+                    wx.setStorageSync('isLogined', true)
 
                     if (options.success !== undefined) {
                       options.success(ret)

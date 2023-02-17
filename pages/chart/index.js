@@ -1,5 +1,7 @@
 // pages/chart/index.js
 const req = require("../../common/request.js")
+const config = require("../../config")
+
 const app = getApp()
 
 Page({
@@ -9,6 +11,7 @@ Page({
    */
   data: {
     data: {},
+    slogan: config.slogan,
     metricExtra: {},
     navBarHeight: app.globalData.navBarHeight,
     size: 15,

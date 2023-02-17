@@ -77,8 +77,3 @@ view.account {
   padding: 25rpx 0;
   margin: 20rpx 0 0;
 }
-
-.footer {
-  position: absolute;
-  bottom: 40rpx;
-}
