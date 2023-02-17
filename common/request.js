@@ -8,13 +8,14 @@ function getUrl(route) {
 }
 
 function refrehToken(options) {
+  var data = {
+    refresh_token: wx.getStorageSync('refreshToken')
+  }
   data.sign = getSign(data)
   wx.request({
     url: getUrl('/account/refresh_token/'),
     method: 'POST',
-    data: {
-      refresh_token: wx.getStorageSync('refreshToken')
-    },
+    data: data,
     success(res) {
       if (res.statusCode === 200) {
         var ret = res.data.content

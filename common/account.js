@@ -13,6 +13,8 @@ module.exports = {
       },
       success: res => {
         app.globalData.userInfo = res.userInfo
+        console.log(res)
+
         wx.showLoading({
           title: '登录中',
         });
@@ -52,17 +54,13 @@ module.exports = {
                     wx.showToast({
                       title: '登录成功',
                     })
-                    const accessToken = ret.access_token
-                    const refreshToken = ret.refresh_token
-                    const userId = ret.user_id
-                    const userName = ret.user_name
-                    const isAdmin = ret.is_admin
 
-                    wx.setStorageSync('accessToken', accessToken)
-                    wx.setStorageSync('refreshToken', refreshToken)
-                    wx.setStorageSync('userId', userId)
-                    wx.setStorageSync('userName', userName)
-                    wx.setStorageSync('isAdmin', isAdmin)
+                    wx.setStorageSync('accessToken', ret.access_token)
+                    wx.setStorageSync('refreshToken', ret.refresh_token)
+                    wx.setStorageSync('userId', ret.user_id)
+                    wx.setStorageSync('userName', ret.user_name)
+                    wx.setStorageSync('isAdmin', ret.is_admin)
+                    wx.setStorageSync('avatarUrl', ret.avatar_url)
                     wx.setStorageSync('isLogined', true)
 
                     if (options.success !== undefined) {

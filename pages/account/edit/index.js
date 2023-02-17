@@ -11,6 +11,7 @@ Page({
     queryUserId: 0,
     isMe: false,
     canEdit: false,
+    avatarEditState: false,
     userInfo: {}
   },
 
@@ -22,12 +23,16 @@ Page({
         user_id: this.data.queryUserId
       },
       success(res) {
+        var avatarUrl = res.data.content.avatar_url
+        if (!avatarUrl) {
+          avatarUrl = "https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0"
+        }
         _self.setData({
           userInfo: {
             userId: res.data.content.user_id,
             userName: res.data.content.user_name,
             isAmin: res.data.content.is_admin,
-            avatarUrl: "https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0",
+            avatarUrl: avatarUrl,
             avatarIdent: ""
           }
         })
@@ -106,21 +111,18 @@ Page({
   },
   getInputValue (e) {
     this.setData({
-      userInfo: {
-        userId: this.data.userInfo.userId,
-        userName: e.detail.value
-      }
+      "userInfo.userName": e.detail.value
     })
   },
   onChooseAvatar: function(e) {
     const { avatarUrl } = e.detail 
     this.setData({
-      "userInfo.avatarUrl": avatarUrl
+      "userInfo.avatarUrl": avatarUrl,
+      avatarEditState: true,
     });
   },
   uploadFile: function(options) {
     var _self = this
-
     cos.uploadFile({
       path: _self.data.userInfo.avatarUrl,
       success: (res) => {
@@ -134,8 +136,6 @@ Page({
         })
       },
       fail: (res) => {
-        console.log(res);
-        wx.showModal({title: '上传失败', content: "头像上传失败，请稍候重试", showCancel: false});
         wx.hideLoading({
           success: (res) => {},
         });
@@ -145,37 +145,43 @@ Page({
   
   save: function(){
     var _self = this
-    this.uploadFile({
-      success: function() {
-        var userId = _self.data.queryUserId
-        var userName = _self.data.userInfo.userName
-        var userIdent = _self.data.userInfo.avatarIdent
-        req.request({
-          url: "/update_user/",
-          method: "POST",
-          data: {
-            user_id: userId,
-            user_name: userName,
-            user_ident: userIdent
-          },
-          success() {
-            wx.setStorageSync('userName', userName)
-            wx.showToast({
-              title: '修改成功',
-            });
-            wx.navigateBack({
-              delta: 1,
-              success: function() {
-                let page = getCurrentPages().pop()
-                if(page == undefined || page == null){
-                    return;
-                }
-                page.onLoad()
+    var fn = function() {
+      var userId = _self.data.queryUserId
+      var userName = _self.data.userInfo.userName
+      var userIdent = _self.data.userInfo.avatarIdent
+      req.request({
+        url: "/update_user/",
+        method: "POST",
+        data: {
+          user_id: userId,
+          user_name: userName,
+          user_ident: userIdent
+        },
+        success(ret) {
+          wx.setStorageSync('userName', ret.data.content.user_name)
+          wx.setStorageSync('avatarUrl', ret.data.content.avatar_url)
+          wx.showToast({
+            title: '修改成功',
+          });
+          wx.navigateBack({
+            delta: 1,
+            success: function() {
+              let page = getCurrentPages().pop()
+              if(page == undefined || page == null){
+                  return;
               }
-            });
-          }
-        })
-      }
-    })
+              page.onLoad()
+            }
+          });
+        }
+      })
+    }
+    if (this.data.avatarEditState) {
+      this.uploadFile({
+        success: fn
+      })
+    } else {
+      fn()
+    }
   }
 })

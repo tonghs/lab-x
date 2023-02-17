@@ -1,10 +1,13 @@
 <!--index.wxml-->
 <view class="rounded userinfo flex-row"
-  data-url="/pages/account/edit/index?userId={{appUserInfo.userId}}"
+  data-url="/pages/account/edit/index?userId={{appUserInfo.userId}}" 
   data-isSelf="1" catchtap="navTo" wx:if="{{isLogined}}">
-  <view class="avatar" wx:if="{{hasUserInfo && canIUse}}" >
-    <image class="userinfo-avatar"  src="{{userInfo.avatarUrl}}" mode="cover"></image>
-    <!-- <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
+  
+  <view class="avatar" wx:if="{{appUserInfo.avatarUrl}}" >
+    <image class="userinfo-avatar"  src="{{appUserInfo.avatarUrl}}" mode="cover"></image>
+  </view>
+  <view class="avatar" wx:if="{{!appUserInfo.avatarUrl}}" >
+    <image class="userinfo-avatar"  src="https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0" mode="cover"></image>
   </view>
   <view class="nickname">
     <text class="userinfo-nickname" wx:if="{{isLogined}}">{{appUserInfo.userName}}</text>
