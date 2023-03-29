@@ -114,33 +114,42 @@ Page({
   uploadError(e) {
       wx.showModal({title: e.detail.errMsg, showCancel: false, });
   },
+
   uploadSuccess(e) {
     this.setData({
       files: this.data.uploadedFileUrls,  // 替换 tmp 路径为线上 url
       btnDisabled: false
     })
   },
+
+  bindInput(e) {
+    this.setData({
+      desc: e.detail.value
+    });
+  },
+
   save: function() {
-    req.request({
-      url: "/chronic_disease/doc_package/",
-      data: {
-        idents: this.data.uploadedKeys,
-        desc: this.data.desc
-      },
-      method: 'POST',
-      success: function() {
-        wx.navigateBack({
-          delta: 1,
-          success: function() {
-            let page = getCurrentPages().pop()
-            if(page == undefined || page == null){
-                return;
-            }
-            page.onLoad()
-          }
-        })
-      }
-    })
+    console.log(this.data.desc)
+    // req.request({
+    //   url: "/chronic_disease/doc_package/",
+    //   data: {
+    //     idents: this.data.uploadedKeys,
+    //     desc: this.data.desc
+    //   },
+    //   method: 'POST',
+    //   success: function() {
+    //     wx.navigateBack({
+    //       delta: 1,
+    //       success: function() {
+    //         let page = getCurrentPages().pop()
+    //         if(page == undefined || page == null){
+    //             return;
+    //         }
+    //         page.onLoad()
+    //       }
+    //     })
+    //   }
+    // })
   },
   deletePic: function (e) {
     var index = e.detail.index

@@ -48,12 +48,27 @@
       </view>
     </view>
     <view class="rounded card" data-metric_id="{{item.metric_id}}" bindlongpress="toSetting">
-      <view class="title flex-row">
+      <view class="title flex-row" bindtap="viewAll" data-metric_id="{{item.metric_id}}">
         <!-- 最近 {{size}} 次{{metricName}}结果（{{unit}}） -->
         <view class="tips">
           <view class="item">
             <view class="metric-name">{{metricExtra[item.metric_id].metricText}}({{metricExtra[item.metric_id].unit}})</view>
           </view>
+        </view>
+        <view class="linked linked-secondary" bindtap="viewAll" data-metric_id="{{item.metric_id}}">查看全部</view>
+      </view>
+      <view class="body" wx:if="{{data[item.metric_id].series.length > 0 && data[item.metric_id].series[0].data.length > 0}}">
+        <view class="charts-box" wx:if="{{metricExtra[item.metric_id].chartType == 'column'}}">
+          <qiun-wx-ucharts
+           canvas2d="true"
+           type="column"
+           opts="{{metricExtra[item.metric_id].opts}}"
+           chartData="{{data[item.metric_id]}}" />
+        </view>
+        <view class="charts-box" wx:if="{{metricExtra[item.metric_id].chartType == 'line'}}">
+          <qiun-wx-ucharts canvas2d="true" type="line" opts="{{metricExtra[item.metric_id].opts}}" chartData="{{data[item.metric_id]}}" />
+        </view>
+        <view class="tips footer">
           <view class="item" wx:if="{{metricExtra[item.metric_id].refValue}}">
             <view class="dot warn-bg-color"></view>
             <view class="label">偏高</view>
@@ -62,15 +77,6 @@
             <view class="dot normal-bg-color"></view>
             <view class="label">正常({{metricExtra[item.metric_id].refValue}})</view>
           </view>
-        </view>
-        <view class="linked linked-secondary" bindtap="viewAll" data-metric_id="{{item.metric_id}}">查看全部</view>
-      </view>
-      <view class="body" wx:if="{{data[item.metric_id].series.length > 0 && data[item.metric_id].series[0].data.length > 0}}">
-        <view class="charts-box" wx:if="{{metricExtra[item.metric_id].chartType == 'column'}}">
-          <qiun-wx-ucharts canvas2d="true" type="column" opts="{{metricExtra[item.metric_id].opts}}" chartData="{{data[item.metric_id]}}" />
-        </view>
-        <view class="charts-box" wx:if="{{metricExtra[item.metric_id].chartType == 'line'}}">
-          <qiun-wx-ucharts canvas2d="true" type="line" opts="{{metricExtra[item.metric_id].opts}}" chartData="{{data[item.metric_id]}}" />
         </view>
       </view>
       <view class="body empty-body" wx:if="{{data[item.metric_id].series.length == 0 || data[item.metric_id].series[0].data.length == 0}}">

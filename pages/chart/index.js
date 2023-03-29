@@ -23,10 +23,12 @@ Page({
     opts: {
       color: ["#1890FF"],
       canvas2d: true,
+      animation: false,
+      duration: 500,
       padding: [20, 0, 0, 0],
       enableMarkLine: false,
       legend: {},
-      update:true,
+      update:true, 
       xAxis: {
         disableGrid: true,
         rotateLabel: true,

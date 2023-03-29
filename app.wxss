@@ -71,9 +71,9 @@ page {
 }
 
 .card {
-  padding: 20rpx 25rpx 25rpx;
+  padding: 30rpx 30rpx 30rpx;
   margin: 15rpx 0 15rpx;
-  border: 1px solid #cdcdcd60;
+  /* border: 1px solid #cdcdcd60; */
   background-color: #fff;
   border-width: 1rpx 0;
 }
@@ -81,7 +81,7 @@ page {
 .rounded {
   margin: 15rpx 20rpx 15rpx;
   border-radius: 20rpx;
-  box-shadow: 0 0 5rpx #cdcdcd80;
+  box-shadow: 0 0 3rpx #cdcdcd60;
   border-width: 0;
 }
 
@@ -113,6 +113,10 @@ page {
 .card .empty-body {
   text-align: center;
   margin-top: 20rpx;
+}
+
+.card .footer {
+  margin-top: 25rpx;
 }
 
 .tips {
