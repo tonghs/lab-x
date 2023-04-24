@@ -10,7 +10,7 @@ Page({
     showActionSheet: false,
     actionGroups: [],
     metricId: 1,
-    size: 20,
+    size: 100,
     cursor: "",
     data: [],
     unit: "",
