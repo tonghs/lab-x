@@ -130,26 +130,26 @@ Page({
 
   save: function() {
     console.log(this.data.desc)
-    // req.request({
-    //   url: "/chronic_disease/doc_package/",
-    //   data: {
-    //     idents: this.data.uploadedKeys,
-    //     desc: this.data.desc
-    //   },
-    //   method: 'POST',
-    //   success: function() {
-    //     wx.navigateBack({
-    //       delta: 1,
-    //       success: function() {
-    //         let page = getCurrentPages().pop()
-    //         if(page == undefined || page == null){
-    //             return;
-    //         }
-    //         page.onLoad()
-    //       }
-    //     })
-    //   }
-    // })
+    req.request({
+      url: "/chronic_disease/doc_package/",
+      data: {
+        idents: this.data.uploadedKeys,
+        desc: this.data.desc
+      },
+      method: 'POST',
+      success: function() {
+        wx.navigateBack({
+          delta: 1,
+          success: function() {
+            let page = getCurrentPages().pop()
+            if(page == undefined || page == null){
+                return;
+            }
+            page.onLoad()
+          }
+        })
+      }
+    })
   },
   deletePic: function (e) {
     var index = e.detail.index

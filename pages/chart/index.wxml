@@ -55,7 +55,7 @@
             <view class="metric-name">{{metricExtra[item.metric_id].metricText}}({{metricExtra[item.metric_id].unit}})</view>
           </view>
         </view>
-        <view class="linked linked-secondary" bindtap="viewAll" data-metric_id="{{item.metric_id}}">查看全部</view>
+        <view class="linked linked-secondary">查看全部</view>
       </view>
       <view class="body" wx:if="{{data[item.metric_id].series.length > 0 && data[item.metric_id].series[0].data.length > 0}}">
         <view class="charts-box" wx:if="{{metricExtra[item.metric_id].chartType == 'column'}}">
