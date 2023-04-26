@@ -94,6 +94,12 @@ Page({
     })
   },
 
+  navToLoginByPhone() {
+    wx.navigateTo({
+      url: '/pages/account/phone/phone',
+    })
+  },
+
   onShow() {
     this.onLoad()
   }

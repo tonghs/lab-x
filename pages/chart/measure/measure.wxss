@@ -1,12 +1,4 @@
 /* pages/chart/measure.wxss */
-
-.btn-container {
-  width: 100%;
-  margin-top: 30rpx;
-  text-align: right;
-}
-
-.btn-container .btn {
-  width: 200rpx;
-  margin: 0;
+.code {
+  display: flex
 }

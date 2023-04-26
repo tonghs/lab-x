@@ -13,7 +13,6 @@ module.exports = {
       },
       success: res => {
         app.globalData.userInfo = res.userInfo
-        console.log(res)
 
         wx.showLoading({
           title: '登录中',

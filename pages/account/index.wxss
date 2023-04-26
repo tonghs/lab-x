@@ -77,3 +77,22 @@ view.account {
   padding: 25rpx 0;
   margin: 20rpx 0 0;
 }
+
+.login-area {
+  padding-top: 30rpx;
+}
+
+.login {
+  font-weight: 400;
+  margin-top: 70rpx;
+}
+
+.login-by-phone {
+  background-color: #cdcdcd;
+  color: #000000;
+  width: 100%;
+}
+
+.login-by-phone-hover {
+  background-color: #aaaaaa;
+}

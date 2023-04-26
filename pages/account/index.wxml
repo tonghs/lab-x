@@ -13,9 +13,10 @@
     <text class="userinfo-nickname" wx:if="{{isLogined}}">{{appUserInfo.userName}}</text>
   </view>
 </view>
-<view class="flex-column" wx:if="{{!isLogined}}">
+<view class="flex-column login-area" wx:if="{{!isLogined}}">
   <view class="account">
-    <button type="primary" class="login" size="mini" open-type="getUserInfo" bindtap="login">登录</button>
+    <button type="primary" class="login" open-type="getUserInfo" bindtap="login">微信登录</button>
+    <button class="login login-by-phone" hover-class="login-by-phone-hover" bindtap="navToLoginByPhone">手机登录</button>
   </view>
 </view>
 <view class="flex-column settings rounded">

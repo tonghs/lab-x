@@ -89,12 +89,17 @@ function request(options) {
             msg = '错误代码：' + res.statusCode
           }
           wx.hideLoading({
-            success: (res) => { },
+            success: (res) => {
+                wx.showModal({
+                title: '请求失败',
+                content: msg
+              })
+              // if (options.fail !== undefined) {
+              //   options.fail(res)
+              // }
+            },
           })
-          wx.showModal({
-            title: '请求失败',
-            content: msg
-          })
+          
         }
       } else {
         if (options.success !== undefined) {

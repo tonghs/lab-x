@@ -12,7 +12,8 @@
     "pages/chart/measure/measure",
     "pages/chart/measures/measures",
     "pages/metric/metric",
-    "pages/chart/setting/setting"
+    "pages/chart/setting/setting",
+    "pages/account/phone/phone"
   ],
   "entryPagePath": "pages/chart/index",
   "window": {
