@@ -112,7 +112,6 @@ Page({
         app.globalData.loginRedirectUrl = null
         wx.hideLoading({
           success: (res) => {
-
             if (loginRedirectUrl !== null) {
               wx.switchTab({
                 url: loginRedirectUrl,
@@ -139,7 +138,7 @@ Page({
       success(res) {
         wx.showModal({
           title: '短信发送成功',
-          content: err
+          content: "请注意查收"
         })
         wx.hideLoading({
           success: (res) => {},
