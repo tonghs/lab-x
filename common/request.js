@@ -91,9 +91,9 @@ function request(options) {
           wx.hideLoading({
             success: (res) => {
                 wx.showModal({
-                title: '请求失败',
-                content: msg
-              })
+                  title: '请求失败',
+                  content: msg
+                })
               // if (options.fail !== undefined) {
               //   options.fail(res)
               // }

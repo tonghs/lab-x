@@ -39,6 +39,15 @@ view.account {
   padding: 50rpx 0;
 }
 
+.account image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.login-btn-container {
+  margin-top: 100rpx;
+}
+
 .settings {
   background-color: #ffffff;
 }
@@ -88,11 +97,11 @@ view.account {
 }
 
 .login-by-phone {
-  background-color: #cdcdcd;
+  background-color: #ebebeb;
   color: #000000;
   width: 100%;
 }
 
 .login-by-phone-hover {
-  background-color: #aaaaaa;
+  background-color: #cdcdcd;
 }

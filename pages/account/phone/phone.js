@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    action: "login",
     btnGetCodeDisabled: true,
     btnLoginDisabled: true,
     phoneNumber: "",
@@ -19,7 +20,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    const action = options.action
+    if (action != undefined) {
+      this.setData({
+        action: action
+      });
+    }
+    console.log(action)
+    if (action == "bind") {
+      wx.setNavigationBarTitle({
+        title: '绑定手机号',
+      })
+    } else {
+      wx.setNavigationBarTitle({
+        title: '使用手机登录',
+      })
+    }
   },
 
   /**
@@ -121,13 +137,31 @@ Page({
                 delta: 0,
               })
             }
-            
           },
         })
       }
     })
   },
 
+  bindPhone() {
+    req.request({
+      url: "/account/bind_phone/",
+      method: "POST",
+      data: {
+        phone: this.data.phoneNumber,
+        auth_code: this.data.code
+      },
+      success(res) {
+        wx.hideLoading({
+          success: (res) => {
+            wx.navigateBack({
+              delta: 0,
+            })
+          }
+        })
+      }
+    })
+  },
   getCode() {
     req.request({
       url: "/auth/sms_auth_code/",

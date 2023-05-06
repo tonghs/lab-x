@@ -14,7 +14,8 @@
   </view>
 </view>
 <view class="flex-column login-area" wx:if="{{!isLogined}}">
-  <view class="account">
+  <view class="account login-btn-container">
+    <image src="/images/_profile.png"></image>
     <button type="primary" class="login" open-type="getUserInfo" bindtap="login">微信登录</button>
     <button class="login login-by-phone" hover-class="login-by-phone-hover" bindtap="navToLoginByPhone">手机登录</button>
   </view>
@@ -30,7 +31,11 @@
     <image class="setting-icon" src="/images/chart.png" mode="cover"></image>
     <text class="setting-icon-txt">指标管理</text>
   </view>
-  <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/about/index">
+  <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/account/phone/phone?action=bind" wx:if="{{isLogined}}">
+    <image class="setting-icon" src="/images/settings/telephone.png" mode="cover"></image>
+    <text class="setting-icon-txt">绑定手机号</text>
+  </view>
+  <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/about/index" wx:if="{{isLogined}}">
     <image class="setting-icon" src="/images/settings/about.png" mode="cover"></image>
     <text class="setting-icon-txt">关于</text>
   </view>

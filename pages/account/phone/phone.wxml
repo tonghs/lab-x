@@ -1,7 +1,5 @@
 <!--pages/account/phone.wxml-->
-<page-meta>
-  <navigation-bar title="使用手机登录"/>
-</page-meta>
+
 <view class="flex-column">
   <view class="weui-cells__title"></view>
   <view class="page-section">
@@ -9,7 +7,7 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
         <input class="weui-input" auto-focus placeholder="请输入手机号" bindinput="getPhoneNumberValue"  maxlength="11"/>
-        <button type="default" class="btn-code" bindtap="getCode" disabled="{{btnGetCodeDisabled}}">获取验证码</button>
+        
       </view>
     </view>
   </view>
@@ -20,6 +18,7 @@
         <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell weui-cell_input">
             <input class="weui-input" auto-focus placeholder="请输入验证码" bindinput="getCodeValue"/>
+            <button type="default" class="btn-code" bindtap="getCode" disabled="{{btnGetCodeDisabled}}">获取验证码</button>
           </view>
         </view>
       </view>
@@ -30,7 +29,8 @@
   <view class="page-section">
     <view class="container">
       <view class="btn-container">
-        <button type="primary" size="mini" class="btn" bindtap="login" disabled="{{btnLoginDisabled}}">登录</button>
+        <button type="primary" size="mini" class="btn" bindtap="login" disabled="{{btnLoginDisabled}}" wx:if='{{action=="login"}}'>登录</button>
+        <button type="primary" size="mini" class="btn" bindtap="bindPhone" disabled="{{btnLoginDisabled}}" wx:if='{{action=="bind"}}'>绑定</button>
       </view>
     </view>
   </view>

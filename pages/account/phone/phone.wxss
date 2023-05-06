@@ -2,4 +2,5 @@
 .btn-code {
   font-weight: 400;
   font-size: 24rpx;
+  margin: 0rpx;
 }
