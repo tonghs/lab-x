@@ -26,7 +26,6 @@ Page({
         action: action
       });
     }
-    console.log(action)
     if (action == "bind") {
       wx.setNavigationBarTitle({
         title: '绑定手机号',

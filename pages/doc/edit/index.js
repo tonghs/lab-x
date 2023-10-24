@@ -106,10 +106,10 @@ Page({
       method: 'POST',
       data: this.data.docPackage,
       success: function(res) {
+        let page = getCurrentPages()[0]
         wx.navigateBack({
           delta: 1,
           success: function() {
-            let page = getCurrentPages().pop()
             if(page == undefined || page == null){
                 return;
             }

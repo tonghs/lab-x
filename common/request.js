@@ -44,7 +44,7 @@ function refrehToken(options) {
       } else {
         app.globalData.loginRedirectUrl = "/" + getCurrentPages()[0].route;
 
-        var page = getCurrentPages().pop();
+        var page = getCurrentPages()[0];
         if (page != undefined || page != null) {
           page.setData({
             needRefresh: true

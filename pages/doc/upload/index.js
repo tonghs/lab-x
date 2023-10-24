@@ -129,7 +129,6 @@ Page({
   },
 
   save: function() {
-    console.log(this.data.desc)
     req.request({
       url: "/chronic_disease/doc_package/",
       data: {
@@ -138,10 +137,10 @@ Page({
       },
       method: 'POST',
       success: function() {
+        let page = getCurrentPages()[0]
         wx.navigateBack({
           delta: 1,
           success: function() {
-            let page = getCurrentPages().pop()
             if(page == undefined || page == null){
                 return;
             }

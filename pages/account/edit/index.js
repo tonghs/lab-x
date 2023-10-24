@@ -163,10 +163,10 @@ Page({
           wx.showToast({
             title: '修改成功',
           });
+          let page = getCurrentPages()[0]
           wx.navigateBack({
             delta: 1,
             success: function() {
-              let page = getCurrentPages().pop()
               if(page == undefined || page == null){
                   return;
               }
