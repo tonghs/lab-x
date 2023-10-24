@@ -54,8 +54,8 @@
 
 .card .footer {
   font-size: 26rpx;
-  color: #cdcdcd;
-  margin-top: 15rpx;
+  color: #00000080;
+  margin-top: 25rpx;
 }
 
 .ts, .btn-menu-container {
@@ -64,6 +64,7 @@
 
 .ts {
   text-align: left;
+  font-weight: normal;
 }
 
 .btn-menu-container {
@@ -77,13 +78,12 @@
   width: 70rpx;
   height: 32rpx;
   text-align: right;
-  border-radius: 6rpx;
   margin-left: auto;
 }
 
 .btn-menu-img {
-  width: 32rpx;
-  height: 32rpx;
+  width: 36rpx;
+  height: 36rpx;
 }
 
 .input-container {

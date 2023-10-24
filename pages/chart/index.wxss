@@ -40,15 +40,17 @@ page {
 }
 
 .summary-item-value {
-  font-size: 45rpx;
+  font-size: 50rpx;
+  font-weight: bold;
 }
 
 .summary-item-content {
   text-align: center;
   padding: 0 25rpx;
-  font-size: 25rpx;
+  font-size: 30rpx;
 }
 
 .metric-name {
-  color: #00000090;
+  color: #000000;
+  font-size: 30rpx;
 }

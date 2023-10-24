@@ -25,19 +25,19 @@
 <view class="flex-column settings rounded">
   <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/users/index" wx:if="{{isLogined && appUserInfo.isAdmin}}">
     <image class="setting-icon" src="/images/settings/user_manage.png" mode="cover"></image>
-    <text class="setting-icon-txt">用户管理</text>
+    <view><text class="setting-icon-txt">用户管理</text></view>
   </view>
   <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/metric/metric" wx:if="{{isLogined}}">
     <image class="setting-icon" src="/images/chart.png" mode="cover"></image>
-    <text class="setting-icon-txt">指标管理</text>
+    <view><text class="setting-icon-txt">指标管理</text></view>
   </view>
   <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/account/phone/phone?action=bind" wx:if="{{isLogined}}">
     <image class="setting-icon" src="/images/settings/smartphone.png" mode="cover"></image>
-    <text class="setting-icon-txt">绑定手机号</text>
+    <view><text class="setting-icon-txt">绑定手机号</text></view>
   </view>
   <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/about/index" wx:if="{{isLogined}}">
     <image class="setting-icon" src="/images/settings/about.png" mode="cover"></image>
-    <text class="setting-icon-txt">关于</text>
+    <view><text class="setting-icon-txt">关于</text></view>
   </view>
 </view>
 

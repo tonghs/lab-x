@@ -87,12 +87,13 @@ page {
 
 .card .title {
   flex-direction: row;
-  font-size: 25rpx;
+  font-size: 30rpx;
   justify-content: space-between;
+  padding-bottom: 10rpx;
 }
 
 .card .linked-secondary {
-  font-size: 25rpx;
+  font-size: 30rpx;
   background-size: 30rpx;
   display: flex;
   align-items: center;
@@ -133,7 +134,7 @@ page {
 
 .tips .item .label{
   margin-left: 10rpx;
-  font-size: 25rpx;
+  font-size: 30rpx;
   color: #00000080;
 }
 
