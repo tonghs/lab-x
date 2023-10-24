@@ -1,4 +1,4 @@
-/* pages/document/edit/index.wxss */
+/* pages/doc/edit/index.wxss */
 .container {
   padding: 0 20rpx;
 }

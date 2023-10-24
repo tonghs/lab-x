@@ -1,8 +1,8 @@
-// pages/chart/index.js
-const utils = require("../../common/utils.js")
-const req = require("../../common/request")
-const config = require("../../config")
+// pages/doc/search/index.js
 const app = getApp()
+const utils = require("../../../common/utils.js")
+const req = require("../../../common/request")
+const config = require("../../../config")
 
 Page({
 
@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    q: "",
     docPackages: [],
     nextCursor: "",
     pageSize: 20,
@@ -20,39 +21,23 @@ Page({
 
     apiUrl: {
       getListUrl: "/chronic_disease/doc_packages/",
-      docPackagesUrl: '/chronic_disease/doc_package/'
+      docPackagesUrl: '/chronic_disease/doc_package/',
+      searchUrl: "/chronic_disease/doc_packages/search/"
     },
 
+    focus: true,
     navBarHeight: app.globalData.navBarHeight,
     menuWidth: app.globalData.menuWidth,
-    menuRight: app.globalData.menuRight,
-    menuHeight: app.globalData.menuHeight
+    menuRight: app.globalData.menuRight
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _self = this
-    this.setData({
-      nextCursor: null
-    }, function () {
-      req.request({
-        url: _self.data.apiUrl.getListUrl,
-        data: {user_id: wx.getStorageSync('userId'), cursor: this.data.nextCursor, size: this.data.pageSize},
-        method: "GET",
-        success: function(res) {
-          var docPackages = res.data.content.doc_packages
-          for (var i = 0; i < docPackages.length; i++){
-            docPackages[i].ident_urls = utils.sliceArray(docPackages[i].ident_urls, 3)
-          }
-          _self.setData({
-            docPackages: docPackages,
-            nextCursor: res.data.content.next_cursor
-          })
-        }
-      })
-    })
+    if (this.data.q !== ""){
+      this.search()
+    }
   },
 
   /**
@@ -66,9 +51,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (this.data.docPackages.length == 0) {
-      this.onLoad()
-    }
+
   },
 
   /**
@@ -89,35 +72,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.onLoad()
-    wx.stopPullDownRefresh({
-      success: (res) => {},
-    })
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    var _self = this
-    if (this.data.nextCursor !== "") {
-      req.request({
-        url: _self.data.apiUrl.docPackagesUrl,
-        data: {user_id: wx.getStorageSync('userId'), cursor: this.data.nextCursor, size: this.data.pageSize},
-        method: "GET",
-        success: function(res) {
-          var docPackages = res.data.content.doc_packages
-          for (var i = 0; i < docPackages.length; i++){
-            docPackages[i].ident_urls = utils.sliceArray(docPackages[i].ident_urls, 3)
-            _self.data.docPackages.push(docPackages[i])
-          }
-          _self.setData({
-            docPackages: _self.data.docPackages,
-            nextCursor: res.data.content.next_cursor
-          })
-        }
-      })
-    }
+
   },
 
   /**
@@ -127,19 +89,48 @@ Page({
 
   },
 
-  navToUploader: function() {
-    wx.navigateTo({
-      url: '/pages/document/upload/index',
+  back: function() {
+    wx.navigateBack({
+      delta: 1,
+      success: function() {
+        let page = getCurrentPages().pop()
+        if(page == undefined || page == null){
+            return;
+        }
+        page.onLoad()
+      }
     })
   },
 
+  search: function(e) {
+    var q = (e && e.detail && e.detail.value) || this.data.q
+    if (q === "" || q === undefined) {
+      return
+    }
+    this.setData({
+      q: q
+    })
 
-  navToSearch: function() {
-    wx.navigateTo({
-      url: '/pages/document/search/index',
+    var _self = this
+    req.request({
+      url: this.data.apiUrl.searchUrl,
+      data: {
+        q: q,
+        cursor: this.data.nextCursor,
+        size: this.data.pageSize},
+      method: "GET",
+      success: function(res) {
+        var docPackages = res.data.content.doc_packages
+        for (var i = 0; i < docPackages.length; i++){
+          docPackages[i].ident_urls = utils.sliceArray(docPackages[i].ident_urls, 3)
+        }
+        _self.setData({
+          docPackages: docPackages,
+          nextCursor: res.data.content.next_cursor
+        })
+      }
     })
   },
-
   btnMenuClick: function (e) {
     var packageId = e.currentTarget.dataset.itemId
 
@@ -172,13 +163,13 @@ Page({
     })
   },
 
-  actionSheetItemClick: function(e) {
+  actionSheetItemClient: function(e) {
     var detail = e.detail
     var _self = this
     var packageId = parseInt(detail.value)
     if (detail.index === 0) {  // 编辑描述
       wx.navigateTo({
-        url: '/pages/document/edit/index?packageId=' + packageId,
+        url: '/pages/doc/edit/index?packageId=' + packageId,
       })
       this.setData({
         showActionsheet: false

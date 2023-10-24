@@ -104,7 +104,6 @@ page {
 
 .card .body {
   font-size: 30rpx;
-  font-weight: 300;
   padding-top: 10rpx;
   align-items:flex-start;
   justify-content: space-between;
@@ -225,4 +224,37 @@ page {
 .btn-container .btn {
   width: 200rpx;
   margin: 0;
+}
+
+.search-container {
+  padding: 20rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+
+.btn-plus {
+  position: fixed;
+  color: #fff;
+  bottom: 20rpx;
+  right: 20rpx;
+  box-shadow: 0rpx 0rpx 10rpx rgba(0, 0, 0, 0.445);
+  background-color: #07c160;
+  height: 100rpx;
+  width: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50rpx;
+  z-index: 100000;
+}
+
+.btn-plus image {
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.btn-plus-hover {
+  scale: 1.05;
+  background-color: rgba(0, 128, 0, 0.85);
 }

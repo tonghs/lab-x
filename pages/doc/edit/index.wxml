@@ -1,4 +1,4 @@
-<!--pages/document/edit/index.wxml-->
+<!--pages/doc/edit/index.wxml-->
 <view class="flex-column">
   <view class="card">
     <view class="title"></view>

@@ -1,14 +1,14 @@
 {
   "pages": [
     "pages/chart/index",
-    "pages/document/index",
-    "pages/document/upload/index",
+    "pages/doc/index",
+    "pages/doc/upload/index",
     "pages/account/index",
     "pages/users/index",
     "pages/account/edit/index",
     "pages/about/index",
-    "pages/document/edit/index",
-    "pages/document/search/index",
+    "pages/doc/edit/index",
+    "pages/doc/search/index",
     "pages/chart/measure/measure",
     "pages/chart/measures/measures",
     "pages/metric/metric",
@@ -34,7 +34,7 @@
         "text": "指标"
       },
       {
-        "pagePath": "pages/document/index",
+        "pagePath": "pages/doc/index",
         "iconPath": "images/_report.png",
         "selectedIconPath": "images/report.png",
         "text": "报告和单据"
@@ -52,5 +52,6 @@
   "useExtendedLib": {
     "weui": true
   },
-  "darkmode": false
+  "darkmode": false,
+  "lazyCodeLoading": "requiredComponents"
 }

@@ -1,12 +1,17 @@
-<navigation>
+<!-- <navigation>
   <view class="input-container flex-row">
     <image class="btn-upload" src="/images/back.png" bindtap="back"></image>
     <input class="txt-search" focus="{{focus}}" placeholder="搜索" placeholder-class="txt-search-placeholer" bindconfirm="search"></input>
     <view style="width: {{menuWidth + menuRight * 3}}px"></view>
   </view>
-</navigation>
-
-<view class="flex-column" style="margin-top: {{navBarHeight}}px">
+</navigation> -->
+<page-meta>
+  <navigation-bar title="报告和单据" />
+</page-meta>
+<view class="flex-column">
+  <view class="search-container">
+    <input class="txt-search" focus="{{focus}}" placeholder="搜索" placeholder-class="txt-search-placeholer" bindconfirm="search"></input>
+  </view>
   <view class="card" wx:for="{{docPackages}}" wx:key="id" wx:for-item="item">
     <view class="title">{{item.desc}}</view>
     <view class="body">

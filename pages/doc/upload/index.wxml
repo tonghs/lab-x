@@ -4,7 +4,7 @@
     <view class="title"></view>
     <view class="body">
       <textarea placeholder="在这里输入这些图片的备注。比如：中日友好医院干眼症处方。"
-        maxlength="140" bindinput="bindInput"></textarea>
+        maxlength="140" bindinput="bindInput" auto-focus></textarea>
       <mp-cells>
         <mp-cell>
             <mp-uploader

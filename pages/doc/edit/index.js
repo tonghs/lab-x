@@ -1,4 +1,4 @@
-// pages/document/edit/index.js
+// pages/doc/edit/index.js
 const req = require('../../../common/request')
 const config = require('../../../config')
 

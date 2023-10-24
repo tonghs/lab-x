@@ -6,6 +6,6 @@
     "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet"
   },
   "enablePullDownRefresh": true,
-  "backgroundColor": "#fafafa",
+  "backgroundColor": "#ffffff",
   "backgroundTextStyle": "dark"
 }

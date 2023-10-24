@@ -32,7 +32,7 @@
     <text class="setting-icon-txt">指标管理</text>
   </view>
   <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/account/phone/phone?action=bind" wx:if="{{isLogined}}">
-    <image class="setting-icon" src="/images/settings/telephone.png" mode="cover"></image>
+    <image class="setting-icon" src="/images/settings/smartphone.png" mode="cover"></image>
     <text class="setting-icon-txt">绑定手机号</text>
   </view>
   <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/about/index" wx:if="{{isLogined}}">

@@ -3,11 +3,9 @@
     "mp-uploader": "weui-miniprogram/uploader/uploader",
     "mp-cells": "weui-miniprogram/cells/cells",
     "mp-cell": "weui-miniprogram/cell/cell",
-    "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet",
-    "navigation": "/components/nav/nav"
+    "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet"
   },
   "enablePullDownRefresh": true,
-  "backgroundColor": "#fafafa",
-  "backgroundTextStyle": "dark",
-  "navigationStyle": "custom"
+  "backgroundColor": "#ffffff",
+  "backgroundTextStyle": "dark"
 }

@@ -1,4 +1,4 @@
-<navigation>
+<!-- <navigation>
   <view class="input-container flex-row">
     <image class="btn-upload" src="/images/upload.png" bindtap="navToUploader"></image>
     <view class="txt-search" bindtap="navToSearch" style="line-height: {{menuHeight}}px">
@@ -6,8 +6,10 @@
     </view>
     <view style="width: {{menuWidth + menuRight * 3}}px"></view>
   </view>
-</navigation>
-
+</navigation> -->
+<page-meta>
+  <navigation-bar title="报告和单据" />
+</page-meta>
 <wxs module="util">
   function getThumbnail(url, rowLen) {
     var fixWidth = rowLen == 1 ? 320 : 160;
@@ -17,7 +19,10 @@
   module.exports.getThumbnail = getThumbnail;
 </wxs>
 
-<view class="flex-column" style="margin-top: {{navBarHeight}}px">
+<view class="flex-column">
+  <view class="search-container">
+    <view class="txt-search" bindtap="navToSearch">搜索</view>
+  </view>
   <view class="rounded card" wx:for="{{docPackages}}" wx:key="id" wx:for-item="item">
     <view class="title">{{item.desc}}</view>
     <view class="body">
@@ -41,9 +46,12 @@
       </view>
     </view>
   </view>
+  <view class="btn-plus" bindtap="navToUploader">
+    <image src="/images/plus.png"></image>
+</view>
 </view>
 <view class="placeholder-tips" wx:if="{{docPackages.length == 0}}">
-  点击右上角"+"开始上传
+  点击"+"开始上传
 </view>
 <mp-actionSheet bindactiontap="actionSheetItemClick" show="{{showActionsheet}}" actions="{{actionGroups}}" title="更多操作">
 </mp-actionSheet>
