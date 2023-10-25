@@ -1,5 +1,6 @@
 const config = require('../config.js')
 const sha1 = require('./crypto.js');
+const logout = require('./logout.js');
 
 const app = getApp()
 
@@ -42,16 +43,19 @@ function refrehToken(options) {
         })
         options.success()
       } else {
-        app.globalData.loginRedirectUrl = "/" + getCurrentPages()[0].route;
-
-        var page = getCurrentPages()[0];
-        if (page != undefined || page != null) {
-          page.setData({
-            needRefresh: true
-          });
-        }
-        wx.switchTab({
-          url: '/pages/account/index'
+        // var page = getCurrentPages()[0];
+        // app.globalData.loginRedirectUrl = "/" + page.route;
+        // if (page != undefined || page != null) {
+        //   page.setData({
+        //     needRefresh: true
+        //   });
+        // }
+        logout.logout({
+          success(res) {
+            wx.switchTab({
+              url: '/pages/account/index'
+            })
+          }
         })
       }
     }

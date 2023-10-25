@@ -132,8 +132,8 @@ Page({
                 url: loginRedirectUrl,
               })
             } else {
-              wx.navigateBack({
-                delta: 0,
+              wx.switchTab({
+                url: '/pages/account/index',
               })
             }
           },
