@@ -89,11 +89,11 @@
     <image src="/images/plus.png"></image>
   </view>
   <view class="container" wx:if="{{userMetrics.length == 0}}">
-    <view class="empty-tips">
+    <view class="empty-tips text-tips">
       <view>
         <view>还没有选择要记录的指标</view>
         <view>
-          <button type="primary" size="mini" bindtap="navToMetricsPage">去选择</button>
+          <button type="primary" bindtap="navToMetricsPage">去选择</button>
         </view>
       </view>
 

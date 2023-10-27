@@ -97,7 +97,7 @@ Page({
             path: files.tempFilePaths[i],
             success: (res) => {
               _self.data.uploadedKeys.push(res.key)  // 存储 key
-              _self.data.uploadedFileUrls.push({url: res.url + "?imageView2/2/w/1024/q/85"})
+              _self.data.uploadedFileUrls.push({url: res.url + "?imageView2/2/w/256/q/85"})
               if (_self.data.uploadedFileUrls.length >= files.tempFilePaths.length) {
                 resolve({
                   urls: files.tempFilePaths

@@ -46,7 +46,7 @@
       </view>
     </view>
   </view>
-  <view class="btn-plus" bindtap="navToUploader">
+  <view class="btn-plus" bindtap="navToUploader" hover-class="btn-plus-hover">
     <image src="/images/plus.png"></image>
 </view>
 </view>

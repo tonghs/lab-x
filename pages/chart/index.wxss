@@ -7,7 +7,6 @@ page {
 
 .empty-tips {
   display: flex;
-  color: #00000080;
   text-align: center;
   align-items: center;
   justify-content: space-around;
@@ -24,7 +23,6 @@ page {
   background-color: #fff;
   align-items: center;
 }
-
 
 .charts-box {
   width: 100%;

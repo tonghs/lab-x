@@ -8,17 +8,6 @@ textarea {
   height: 200rpx;
 }
 
-.btn-container {
-  width: 100%;
-  margin-top: 30rpx;
-  text-align: right;
-}
-
-.btn-container .btn {
-  width: 200rpx;
-  margin: 0;
-}
-
 .doc-image {
   width: 100%;
   box-shadow: 0 0 5rpx #cdcdcd;

@@ -42,16 +42,6 @@
   margin-top: 15rpx;
 }
 
-.btn-container {
-  margin-top: 40rpx;
-  text-align: right;
-}
-
-.btn-container button {
-  margin-left: 20rpx;
-}
-
-
 .card .footer {
   margin-top: 25rpx;
 }

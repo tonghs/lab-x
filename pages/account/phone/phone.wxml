@@ -6,7 +6,7 @@
     <view class="weui-cells__title">手机号</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <input class="weui-input" auto-focus placeholder="请输入手机号" bindinput="getPhoneNumberValue"  maxlength="11"/>
+        <input class="weui-input" focus="true" placeholder="请输入手机号" bindinput="getPhoneNumberValue" placeholder-class="text-third"  maxlength="11"/>
         
       </view>
     </view>
@@ -17,7 +17,7 @@
         <view class="weui-cells__title">验证码</view>
         <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell weui-cell_input">
-            <input class="weui-input" auto-focus placeholder="请输入验证码" bindinput="getCodeValue"/>
+            <input class="weui-input" focus="true" placeholder="请输入验证码" placeholder-class="text-third" bindinput="getCodeValue"/>
             <button type="default" class="btn-code" bindtap="getCode" disabled="{{btnGetCodeDisabled}}">获取验证码</button>
           </view>
         </view>

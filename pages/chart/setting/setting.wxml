@@ -18,7 +18,7 @@
       <view class="weui-cells__title">参考值({{unit}})</view>
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
-          <input class="weui-input" model:value="{{refValue}}" type="digit" auto-focus placeholder="{{unit}}" bindblur="changeRefValue" />
+          <input class="weui-input" model:value="{{refValue}}" type="digit" focus="true"  placeholder="{{unit}}" bindblur="changeRefValue" />
         </view>
       </view>
     </view>

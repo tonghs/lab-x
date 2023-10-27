@@ -41,15 +41,6 @@
   margin-top: 30rpx;
 }
 
-.btn-container {
-  margin-top: 40rpx;
-  text-align: right;
-}
-
-.btn-container button {
-  margin-left: 20rpx;
-}
-
 
 .card > .body > .footer {
   font-size: 26rpx;

@@ -27,7 +27,7 @@
     <view class="weui-cells__title">{{name}}值</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <input class="weui-input" model:value="{{value}}" type="digit" auto-focus placeholder="{{unit}}" bindinput="bindValueChange" />
+        <input class="weui-input" model:value="{{value}}" type="digit" focus="true" placeholder="{{unit}}" bindinput="bindValueChange" />
       </view>
     </view>
   </view>
