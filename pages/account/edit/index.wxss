@@ -6,9 +6,9 @@ label {
 }
 
 image.avatar, avatar-wrapper {
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 60rpx;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 80rpx;
 }
 
 .flex-item {
