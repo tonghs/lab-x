@@ -2,31 +2,28 @@
 <page-meta>
   <navigation-bar title="用户管理"/>
 </page-meta>
-<view class="list-container flex-column">
-  <view class="header-title flex-column">
-    <view class="flex-row flex-item">
-      <view class="flex-item-left title">
-        用户
-      </view>
-      <view class="flex-item-right title">
-        管理员
-      </view>
+<view class="flex-column">
+  <view class="list-item list-header flex-row">
+    <view class="text-title">
+      用户
+    </view>
+    <view class="text-title">
+      管理员
     </view>
   </view>
   <view wx:if="{{users.length > 0}}" class="flex-column content scroll">
     <scroll-view scroll-y="true" class="list-view" show-scrollbar="false" bindscrolltolower="lower">
       <view wx:for="{{users}}" wx:key="id" wx:for-index="idx" wx:for-item="item">
-        <view class="flex-row flex-item users">
-          <view class="flex-item-left">
+        <view class="list-item flex-row">
+          <view>
             <text>{{item.user_id}} - {{item.user_name}}</text><text wx:if="{{loginedUserId === item.user_id}}" class="self-indicator"> •</text>
           </view>
-          <view class="flex-item-right">
-            <view class="flex-column switch-ops">
-              <switch checked="{{item.is_admin}}" data-id="{{item.user_id}}" bindchange="setOrClearAdmin"/>
-            </view>
+          <view>
+            <switch checked="{{item.is_admin}}" data-id="{{item.user_id}}" bindchange="setOrClearAdmin"/>
           </view>
         </view>
       </view>
+      <view class="scroll-view-bottom"></view>
     </scroll-view>
   </view>
 </view>

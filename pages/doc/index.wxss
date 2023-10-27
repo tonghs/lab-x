@@ -53,8 +53,6 @@
 
 
 .card .footer {
-  font-size: 26rpx;
-  color: #00000080;
   margin-top: 25rpx;
 }
 
@@ -64,7 +62,6 @@
 
 .ts {
   text-align: left;
-  font-weight: normal;
 }
 
 .btn-menu-container {
@@ -96,18 +93,10 @@
   background-color: #cdcdcd60;
   border-radius: 30rpx;
   padding: 10rpx 20rpx;
-  font-size: 26rpx;
-  color: #cdcdcd;
 }
 
 .btn-upload {
   width: 48rpx;
   height: 48rpx;
   margin-right: 10rpx;
-}
-
-.placeholder-tips {
-  color: #cdcdcd;
-  text-align: center;
-  padding-top: 50rpx;
 }

@@ -21,10 +21,10 @@
 
 <view class="flex-column">
   <view class="search-container">
-    <view class="txt-search" bindtap="navToSearch">搜索</view>
+    <view class="txt-search text-third" bindtap="navToSearch">搜索</view>
   </view>
   <view class="rounded card" wx:for="{{docPackages}}" wx:key="id" wx:for-item="item">
-    <view class="title">{{item.desc}}</view>
+    <view class="title text-body">{{item.desc}}</view>
     <view class="body">
       <view class="imgs">
         <view wx:for="{{item.ident_urls}}" wx:for-index="idx" wx:key="_id" wx:for-item="rows" class="flex-column">
@@ -35,7 +35,7 @@
         </view>
       </view>
     </view>
-    <view class="flex-row footer">
+    <view class="flex-row footer text-tips">
       <view class="ts">
         {{item.created_at}}
       </view>
@@ -50,7 +50,7 @@
     <image src="/images/plus.png"></image>
 </view>
 </view>
-<view class="placeholder-tips" wx:if="{{docPackages.length == 0}}">
+<view class="text-tips page-tips" wx:if="{{docPackages.length == 0}}">
   点击"+"开始上传
 </view>
 <mp-actionSheet bindactiontap="actionSheetItemClick" show="{{showActionsheet}}" actions="{{actionGroups}}" title="更多操作">

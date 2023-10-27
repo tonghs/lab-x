@@ -1,20 +1,4 @@
 /* pages/chart/measures/measures.wxss */
-
-.list-header {
-  font-weight: bold;
-}
-
-.list-item {
-  padding: 20rpx 40rpx;
-  border: 1rpx solid #cdcdcd60;
-  background-color: #fff;
-  border-width: 0 0 1rpx 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-
 scroll-view {
   height: 100vh;
 }

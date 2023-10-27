@@ -10,7 +10,7 @@
     <image class="userinfo-avatar"  src="https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0" mode="cover"></image>
   </view>
   <view class="nickname">
-    <text class="userinfo-nickname" wx:if="{{isLogined}}">{{appUserInfo.userName}}</text>
+    <text class="text-large" wx:if="{{isLogined}}">{{appUserInfo.userName}}</text>
   </view>
 </view>
 <view class="flex-column login-area" wx:if="{{!isLogined}}">
@@ -25,23 +25,23 @@
 <view class="flex-column settings rounded">
   <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/users/index" wx:if="{{isLogined && appUserInfo.isAdmin}}">
     <image class="setting-icon" src="/images/settings/user_manage.png" mode="cover"></image>
-    <view><text class="setting-icon-txt">用户管理</text></view>
+    <view><text class="setting-icon-txt text-secondary">用户管理</text></view>
   </view>
   <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/metric/metric" wx:if="{{isLogined}}">
     <image class="setting-icon" src="/images/chart.png" mode="cover"></image>
-    <view><text class="setting-icon-txt">指标管理</text></view>
+    <view><text class="setting-icon-txt text-secondary">指标管理</text></view>
   </view>
   <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/account/phone/phone?action=bind" wx:if="{{isLogined}}">
     <image class="setting-icon" src="/images/settings/smartphone.png" mode="cover"></image>
-    <view><text class="setting-icon-txt">绑定手机号</text></view>
+    <view><text class="setting-icon-txt text-secondary">绑定手机号</text></view>
   </view>
   <view class="flex-view-item settings-item" bindtap="navTo" data-url="/pages/about/index" wx:if="{{isLogined}}">
     <image class="setting-icon" src="/images/settings/about.png" mode="cover"></image>
-    <view><text class="setting-icon-txt">关于</text></view>
+    <view><text class="setting-icon-txt text-secondary">关于</text></view>
   </view>
 </view>
 
-<view class="logout" bindtap="logout" wx:if="{{isLogined}}">
+<view class="logout text-secondary" bindtap="logout" wx:if="{{isLogined}}">
   <text>退出登录</text>
 </view>
 

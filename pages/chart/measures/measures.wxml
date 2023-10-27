@@ -12,8 +12,7 @@
       <view class="date">{{item._created_at}}<span class="text-third"> • {{item.metric_label}}</span></view>
       <view class="value {{item.value > refValue ? 'warn-color' : 'normal-color'}}">{{item.value}}</view>
     </view>
-    <view style="display: block; height: 40rpx;">
-    </view>
+    <view class="scroll-view-bottom"></view>
   </scroll-view>
 </view>
 

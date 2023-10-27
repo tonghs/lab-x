@@ -12,8 +12,5 @@ view.info {
 .logo {
   width: 512rpx;
   height: 512 rpx;
-}
-
-text.slogan {
-  font-size: 30rpx;
+  margin-bottom: 20rpx;
 }

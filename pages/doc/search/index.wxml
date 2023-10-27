@@ -10,7 +10,7 @@
 </page-meta>
 <view class="flex-column">
   <view class="search-container">
-    <input class="txt-search" focus="{{focus}}" placeholder="搜索" placeholder-class="txt-search-placeholer" bindconfirm="search"></input>
+    <input class="txt-search text-third" focus="{{focus}}" placeholder="搜索" placeholder-class="text-third" bindconfirm="search"></input>
   </view>
   <view class="card" wx:for="{{docPackages}}" wx:key="id" wx:for-item="item">
     <view class="title">{{item.desc}}</view>
@@ -48,7 +48,7 @@
     </view>
   </view>
 </view>
-<view class="placeholder-tips" wx:if="{{docPackages.length == 0}}">
+<view class="text-tips page-tips" wx:if="{{docPackages.length == 0}}">
 输入关键字并回车开始搜索
 </view>
 

@@ -5,7 +5,7 @@
       <image class="logo" src="/images/logo.png"></image>
     </view>
     <view>
-      <text class="slogan">{{slogan}}</text>
+      <text class="slogan text-large">{{slogan}}</text>
     </view>
   </view>
 </view>

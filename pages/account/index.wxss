@@ -29,10 +29,6 @@
   border-radius: 50%;
 }
 
-.userinfo-nickname {
-  font-size: 35rpx;
-}
-
 view.account {
   width: 100%;
   text-align: center;
@@ -75,12 +71,10 @@ view.account {
 }
 
 .setting-icon-txt {
-  font-size: 30rpx;
   padding-top: 5rpx;
 }
 
 .logout {
-  font-size: 30rpx;
   width: 100%;
   text-align: center;
   padding: 25rpx 0;
