@@ -82,9 +82,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (this.data.needRefresh) {
-      this.getServerData()
-      this.data.needRefresh = false
+    var isLogined = wx.getStorageSync("isLogined")
+    if (isLogined) {
+      if (this.data.needRefresh) {
+        this.getServerData()
+        this.data.needRefresh = false
+      }
+    } else {
+      req.refrehToken()
+      this.data.needRefresh = true
     }
   },
 
@@ -180,9 +186,6 @@ Page({
   toSetting(e) {
     let _self = this
     var metricId = e.currentTarget.dataset.metric_id;
-    wx.vibrateShort({
-      type: 'light',
-    });
     wx.navigateTo({
       url: '/pages/chart/setting/setting?metricId=' + metricId,
       events: {
@@ -218,10 +221,6 @@ Page({
         for (var i = 0; i < userMetrics.length; i++) {
           _self.getMeasureData(userMetrics[i].metric_id)
         };
-
-        wx.vibrateShort({
-          type: 'light',
-        })
       }
     });
   },

@@ -45,6 +45,6 @@
   <text>退出登录</text>
 </view>
 
-<view class="footer bottom-footer">
+<view class="footer bottom text-third">
   <text class="slogan">{{slogan}}</text>
 </view>

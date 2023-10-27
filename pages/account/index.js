@@ -1,8 +1,8 @@
 // index.js
 // 获取应用实例
 const accountUtils = require('../../common/account.js')
+const logout = require('../../common/logout.js')
 const config = require("../../config")
-
 const app = getApp()
 
 Page({
@@ -74,7 +74,7 @@ Page({
 
   logout() {
     var _self = this
-    accountUtils.logout({
+    logout.logout({
       success() {
         wx.showToast({
           title: '退出成功',

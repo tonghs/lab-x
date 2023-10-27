@@ -76,9 +76,6 @@ Page({
       url: "/chronic_disease/user_metric/" + metricId + "/",
       method: method,
       success() {
-        wx.vibrateShort({
-          type: 'light',
-        })
         const eventChannel = _self.getOpenerEventChannel()
         eventChannel.emit("backCallabck", {data: {needRefresh: true}})
       }

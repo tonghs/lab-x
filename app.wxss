@@ -3,6 +3,25 @@ page {
   background-color: #fafafa;
 }
 
+.text-title{
+  color: #000000;
+  font-size: 105%;
+}
+
+.text-body {
+  color: #000000;
+}
+
+.text-tips, .text-footer {
+  color: #00000080;
+  font-size: 95%;
+}
+
+.text-third {
+  color: #644d4d50;
+  font-size: 95%;
+}
+
 .container {
   height: 100%;
   display: flex;
@@ -32,9 +51,6 @@ page {
 }
 
 .footer {
-  font-weight: 300;
-  color: #cdcdcd;
-  font-size: 24rpx;
   width: 100%;
   text-align: center;
 
@@ -44,7 +60,7 @@ page {
   margin-bottom: 40rpx;
 }
 
-.bottom-footer {
+.bottom {
   position: absolute;
   bottom: 60rpx;
 }
@@ -87,24 +103,18 @@ page {
 
 .card .title {
   flex-direction: row;
-  font-size: 30rpx;
   justify-content: space-between;
   padding-bottom: 10rpx;
 }
 
-.card .linked-secondary {
-  font-size: 30rpx;
-  background-size: 30rpx;
+.card .linked {
   display: flex;
   align-items: center;
-  line-height: 30rpx;
-  color: #cdcdcd;
   padding-right: 30rpx;
   padding: 15rpx 30rpx 15rpx;
 }
 
 .card .body {
-  font-size: 30rpx;
   padding-top: 10rpx;
   align-items:flex-start;
   justify-content: space-between;
@@ -134,8 +144,6 @@ page {
 
 .tips .item .label{
   margin-left: 10rpx;
-  font-size: 30rpx;
-  color: #00000080;
 }
 
 .normal-bg-color {
@@ -145,6 +153,7 @@ page {
 .warn-bg-color {
   background-color: #EE6666;
 }
+
 
 .normal-color {
   color: #91CB74;
@@ -166,9 +175,6 @@ page {
   border-radius: 10rpx;
 }
 
-.secondary {
-  color: #cdcdcd;
-}
 
 
 .label-container {
@@ -187,7 +193,6 @@ page {
   padding: 8rpx 0;
   margin: 0 20rpx;
   box-shadow: 0 0 5rpx #00000050;
-  font-size: 30rpx;
 }
 
 .disabled {

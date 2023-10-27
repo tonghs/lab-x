@@ -113,9 +113,6 @@ Page({
         url: "/chronic_disease/user_metric/" + this.data.metricId + "/default_selected/",
         method: "POST",
         success: function (res) {
-          wx.vibrateShort({
-            type: 'light',
-          })
           const eventChannel = _self.getOpenerEventChannel()
           eventChannel.emit('backCallabck', { data: { needRefresh: true } });
         }
@@ -136,9 +133,6 @@ Page({
         chart_type: typeName
       },
       success: function (res) {
-        wx.vibrateShort({
-          type: 'light',
-        })
         const eventChannel = _self.getOpenerEventChannel()
         eventChannel.emit('backCallabck', { data: { needRefresh: true } });
       }

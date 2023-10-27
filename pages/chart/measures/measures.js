@@ -14,7 +14,8 @@ Page({
     cursor: "",
     data: [],
     unit: "",
-    name: ""
+    name: "",
+    refValue: 0
   },
 
   /**
@@ -128,6 +129,7 @@ Page({
         }
         _self.setData({
           data: data,
+          refValue: content.refValue,
           cursor: content.next_cursor,
           name: content.metric_text,
           unit: content.metric_unit

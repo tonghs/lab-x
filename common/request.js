@@ -50,6 +50,11 @@ function refrehToken(options) {
         //     needRefresh: true
         //   });
         // }
+
+        wx.hideLoading({
+          success: (res) => { },
+        })
+        
         logout.logout({
           success(res) {
             wx.switchTab({
