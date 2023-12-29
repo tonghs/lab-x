@@ -32,6 +32,20 @@ page {
   font-size: 95%;
 }
 
+.text-center {
+  align-items: center;
+  text-align: center;
+}
+
+.text-left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.text-red {
+  color: #EE6666;
+}
+
 
 .list-header {
   font-weight: bold;

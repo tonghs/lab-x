@@ -298,9 +298,14 @@ Page({
           }
         }
         _self.setData({
-          userMetrics: userMetrics,
-          defaultMetricId: defaultMetricId
+          userMetrics: userMetrics
         });
+
+        if (defaultMetricId !== undefined) {
+          _self.setData({
+            defaultMetricId: defaultMetricId
+          });
+        }
 
         if (typeof (opts) != "undefined" && 'success' in opts) {
           opts.success(userMetrics)

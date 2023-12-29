@@ -1,0 +1,123 @@
+<!--pages/fujix.wxml-->
+<page-meta>
+  <navigation-bar title="Fujifilm RECIPE" />
+</page-meta>
+<view class="flex-column page-section">
+  <view class="auto">
+    <view class="ocr">
+      <button bind:tap="chooseMedia" type="primary">配方截图自动识别</button>
+    </view>
+    <!-- <view class="text-third text-center">•</view>
+    <mp-cells title="">
+      <mp-cell has-header="{{false}}" has-footer="{{false}}" title="" ext-class="">
+        <textarea class="weui-textarea" placeholder="输入配方文本自动识别" style="height: 3.3em" />
+        <view class="weui-textarea-counter">0/200</view>
+      </mp-cell>
+    </mp-cells> -->
+  </view>
+  <view class="text-third text-center">•</view>
+  <view class="text-body text-left text-red">
+    <view class="container" id="error">
+      <text>{{error}}</text>
+    </view>
+  </view>
+  <mp-form id="form" rules="{{rules}}" models="{{metadata}}">
+    <mp-cells title="RECIPE INFO" footer=" ">
+      <label>
+        <mp-cell prop="name" title="名称" ext-class="">
+          <input id="name" model:value="{{metadata.name}}" class="weui-input" placeholder="NAME" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+      <label>
+        <mp-cell prop="name" title="胶片模拟" ext-class="">
+          <input id="film_simulation" class="weui-input" model:value="{{metadata.film_simulation}}" placeholder="FILM SIMULATION" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+      <label>
+        <mp-cell prop="name" title="动态范围" ext-class="">
+          <input id="dynamic_range" class="weui-input" model:value="{{metadata.dynamic_range}}" placeholder="DYNAMIC RANGE" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+      <label>
+        <mp-cell prop="name" title="颗粒效果" ext-class="">
+          <input id="grain_effect" class="weui-input" model:value="{{metadata.grain_effect}}" placeholder="GRAIN EFFECT" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+      <label>
+        <mp-cell prop="name" title="彩色效果" ext-class="">
+          <input id="color_chrome_effect" class="weui-input" model:value="{{metadata.color_chrome_effect}}" placeholder="COLOR CHROME EFFECT" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+      <label>
+        <mp-cell prop="name" title="彩色 FX 蓝色" ext-class="">
+          <input id="color_chrome_effect_blue" class="weui-input" model:value="{{metadata.color_chrome_effect_blue}}" placeholder="COLOR CHROME EFFECT BLUE" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+      <label>
+        <mp-cell prop="name" title="白平衡" ext-class="">
+          <input id="white_balance" class="weui-input" model:value="{{metadata.white_balance}}" placeholder="WHITE BALANCE" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+      <label>
+        <mp-cell prop="name" title="高光" ext-class="">
+          <input id="highlight" class="weui-input" model:value="{{metadata.highlight}}" placeholder="HIGHLIGHT" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+      <label>
+        <mp-cell prop="name" title="阴影" ext-class="">
+          <input id="shadow" class="weui-input" model:value="{{metadata.shadow}}" placeholder="SHADOW" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+      <label>
+        <mp-cell prop="name" title="颜色" ext-class="">
+          <input id="color" class="weui-input" model:value="{{metadata.color}}" placeholder="COLOR" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+      <label>
+        <mp-cell prop="name" title="锐度" ext-class="">
+          <input id="sharpness" class="weui-input" model:value="{{metadata.sharpness}}" placeholder="SHARPNESS" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+      <label>
+        <mp-cell prop="name" title="降噪" ext-class="">
+          <input id="noise_reduction" class="weui-input" model:value="{{metadata.noise_reduction}}" placeholder="NOISE REDUCTION" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+      <label>
+        <mp-cell prop="name" title="清晰度" ext-class="">
+          <input id="clarity" class="weui-input" model:value="{{metadata.clarity}}" placeholder="CLARITY" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+      <label>
+        <mp-cell prop="name" title="ISO" ext-class="">
+          <input id="iso" class="weui-input" model:value="{{metadata.iso}}" placeholder="ISO" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+      <label>
+        <mp-cell prop="name" title="曝光补偿" ext-class="">
+          <input id="exposure_compensation" class="weui-input" model:value="{{metadata.exposure_compensation}}" placeholder="EXPOSURE_COMPENSATION" bindinput="inputChange" />
+        </mp-cell>
+      </label>
+
+    </mp-cells>
+  </mp-form>
+  <view class="container">
+    <view class="btn-container">
+      <button type="primary" size="mini" class="btn" disabled="{{btnDisabled}}" bindtap="save">保存</button>
+    </view>
+  </view>
+</view>

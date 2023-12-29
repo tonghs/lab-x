@@ -67,6 +67,36 @@ function refrehToken(options) {
   })
 }
 
+function uploadImage(options) {
+  options.data = options.data || {}
+  options.data.sign = getSign(options.data)
+
+  options.header = options.header || {}
+  options.header.Auth = wx.getStorageSync('accessToken')
+  let arr = options.filePath.split("/")
+  var fileName = arr[arr.length - 1];
+  options.data.fileName = fileName;
+  wx.showLoading({
+    title: '加载中',
+  })
+  wx.uploadFile({
+    url: options.url,
+    header: options.header,
+    filePath: options.filePath,
+    name: "file",
+    formData: options.data,
+    success(res){
+      wx.hideLoading({
+        success: (res) => { },
+      })
+      
+      if (options.success !== undefined) {
+        options.success(res);
+      }
+    }
+  })
+}
+
 function request(options) {
   wx.showLoading({
     title: '加载中',
@@ -147,5 +177,6 @@ module.exports = {
   getUrl: getUrl,
   refrehToken: refrehToken,
   request: request,
-  getSign: getSign
+  getSign: getSign,
+  uploadImage: uploadImage
 }

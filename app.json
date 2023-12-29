@@ -13,7 +13,8 @@
     "pages/chart/measures/measures",
     "pages/metric/metric",
     "pages/chart/setting/setting",
-    "pages/account/phone/phone"
+    "pages/account/phone/phone",
+    "pages/fujix/fujix"
   ],
   "entryPagePath": "pages/chart/index",
   "window": {
@@ -38,6 +39,12 @@
         "iconPath": "images/_report.png",
         "selectedIconPath": "images/report.png",
         "text": "报告和单据"
+      },
+      {
+        "pagePath": "pages/fujix/fujix",
+        "iconPath": "images/_gallery.png",
+        "selectedIconPath": "images/gallery.png",
+        "text": "fujix"
       },
       {
         "pagePath": "pages/account/index",

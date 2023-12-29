@@ -1,0 +1,8 @@
+/* pages/fujix.wxss */
+.auto {
+  margin-bottom: 20rpx;
+}
+
+.page-section {
+  padding: 40rpx 0;
+}
