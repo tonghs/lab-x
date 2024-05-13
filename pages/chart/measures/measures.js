@@ -110,7 +110,6 @@ Page({
     }
   },
 
-
   getMetricMeasure() {
     let _self = this
     req.request({
@@ -123,7 +122,7 @@ Page({
       method: "GET",
       success: function (res) {
         let content = res.data.content
-        var data = _self.data.data
+        var data = new Array
         for (var i = 0; i < content.datas.length; i ++) {
           data.push(content.datas[i])
         }

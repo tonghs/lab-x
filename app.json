@@ -41,12 +41,6 @@
         "text": "报告和单据"
       },
       {
-        "pagePath": "pages/fujix/fujix",
-        "iconPath": "images/_gallery.png",
-        "selectedIconPath": "images/gallery.png",
-        "text": "fujix"
-      },
-      {
         "pagePath": "pages/account/index",
         "iconPath": "images/_profile.png",
         "selectedIconPath": "images/profile.png",
