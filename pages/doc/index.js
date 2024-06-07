@@ -102,7 +102,7 @@ Page({
     var _self = this
     if (this.data.nextCursor !== "") {
       req.request({
-        url: _self.data.apiUrl.docPackagesUrl,
+        url: _self.data.apiUrl.getListUrl,
         data: {user_id: wx.getStorageSync('userId'), cursor: this.data.nextCursor, size: this.data.pageSize},
         method: "GET",
         success: function(res) {
