@@ -45,6 +45,7 @@ Page({
           var docPackages = res.data.content.doc_packages
           for (var i = 0; i < docPackages.length; i++){
             docPackages[i].ident_urls = utils.sliceArray(docPackages[i].ident_urls, 3)
+            docPackages[i].ident_pattern_urls = utils.sliceArray(docPackages[i].ident_pattern_urls, 3)
           }
           _self.setData({
             docPackages: docPackages,
@@ -66,9 +67,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (this.data.docPackages.length == 0) {
-      this.onLoad()
-    }
+
   },
 
   /**
@@ -109,6 +108,7 @@ Page({
           var docPackages = res.data.content.doc_packages
           for (var i = 0; i < docPackages.length; i++){
             docPackages[i].ident_urls = utils.sliceArray(docPackages[i].ident_urls, 3)
+            docPackages[i].ident_pattern_urls = utils.sliceArray(docPackages[i].ident_pattern_urls, 3)
             _self.data.docPackages.push(docPackages[i])
           }
           _self.setData({
@@ -166,6 +166,7 @@ Page({
       }
     }
     var url = e.currentTarget.dataset.url
+    console.log(url);
     wx.previewImage({
       current: url, // 当前显示图片的http链接
       urls: urls // 需要预览的图片http链接列表

@@ -10,7 +10,7 @@
           <radio-group bindchange="changeDefaultSelected">
           <radio checked="{{defaultSelected}}" value="1"></radio>
           </radio-group>
-          <span class="text-tips">单击右下角“+”号添加{{name}}值</span>
+          <span class="text-tips">单击右下角“+”快速号添加{{name}}值</span>
         </view>
       </view>
     </view>

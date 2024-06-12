@@ -12,8 +12,8 @@
 </page-meta>
 <wxs module="util">
   function getThumbnail(url, rowLen) {
-    var fixWidth = rowLen == 1 ? 320 : 160;
-    return url.replace('w/1024/q', 'w/' + fixWidth + '/q');
+    var height = rowLen == 1 ? 840 : 640;
+    return url.replace('h/#height/q', 'h/' + height + '/q');
   };
 
   module.exports.getThumbnail = getThumbnail;
@@ -29,7 +29,7 @@
       <view class="imgs">
         <view wx:for="{{item.ident_urls}}" wx:for-index="idx" wx:key="_id" wx:for-item="rows" class="flex-column">
           <view class="flex-row">
-            <view wx:for="{{rows}}" wx:for-item="sub_item" wx:key="id" class="{{rows.length > 2 ? 'preview' : (rows.length == 2 ? 'preview-double' : 'preview-full')}}" data-item-id="{{item.id}}" data-url="{{sub_item}}" bindtap="preview" style="background-image: url('{{util.getThumbnail(sub_item, rows.length)}}');">
+            <view wx:for="{{rows}}" wx:for-item="sub_item" wx:for-index="img_idx" wx:key="id" class="{{rows.length > 2 ? 'preview' : (rows.length == 2 ? 'preview-double' : 'preview-full')}}" data-item-id="{{item.id}}" data-url="{{sub_item}}" bindtap="preview" style="background-image: url('{{util.getThumbnail(item.ident_pattern_urls[idx][img_idx], rows.length)}}');">
             </view>
           </view>
         </view>

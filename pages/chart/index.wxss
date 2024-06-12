@@ -4,7 +4,6 @@ page {
   height: 100%;
 }
 
-
 .empty-tips {
   display: flex;
   text-align: center;
@@ -45,7 +44,7 @@ page {
 .summary-item-content {
   text-align: center;
   padding: 0 25rpx;
-  font-size: 30rpx;
+  font-size: 25rpx;
 }
 
 .metric-name {
